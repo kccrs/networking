@@ -7,7 +7,9 @@
     "start": "webpack-dev-server --hot --inline",
     "build": "webpack",
     "test": "mocha",
-    "feature-test": "./node_modules/.bin/wdio wdio.conf.js"
+    "feature-test": "./node_modules/.bin/wdio wdio.conf.js",
+    "sel": "java -jar selenium-server-standalone-2.53.0.jar"
+
   },
   "repository": {
     "type": "git",
