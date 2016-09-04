@@ -1,8 +1,5 @@
 const assert = require('chai').assert;
-require('./contact-test');
-require('./note-test');
-require('./user-test');
-
+const User = require('../lib/scripts/user');
 
 describe('our test bundle', function () {
   it('should work', function () {
