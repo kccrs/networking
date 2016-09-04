@@ -15,11 +15,28 @@
       <ul>
         <li><input type="text" placeholder="Search"></li>
         <li><button class="add-contact-button">Add Contact</button></li>
+        <li><button class="followup-button"><a href="./views/followup-list.html">Follow-up</a></button></li>
         <li><button class="log-out-button"><a href="./views/login.html">Log out</a></button></li>
       </ul>
     </nav>
   </header>
+  <section class="contact-info">
+    <input type="text" class="first-name" placeholder="First Name">
+    <input type="text" class="last-name" placeholder="Last Name">
+    <input type="text" class="company" placeholder="Company Name">
+    <input type="text" class="job-title" placeholder="Job Title">
+    <!-- TODO: add drop down for email type???  -->
+    <input type="text" class="email" placeholder="Email">
+    <!-- TODO: add drop down for phone type???  -->
+    <input type="text" class="phone" placeholder="Phone Number">
+    <textarea name="notes" placeholder="Notes"></textarea>
+    <input type="text" class="linked-in" placeholder="Linked In">
+    <input type="text" class="twitter" placeholder="Twitter">
+    <input type="text" class="github" placeholder="GitHub">
+    <input type="text" class="category" placeholder="Category">
+    <input type="checkbox" class="follow-up" value="false">Follow Up
 
+  </section>
   <script src="../main.bundle.js"></script>
 </body>
 </html>
