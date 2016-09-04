@@ -47,7 +47,7 @@
 	__webpack_require__(10);
 	mocha.setup("bdd");
 	__webpack_require__(18)
-	__webpack_require__(59);
+	__webpack_require__(62);
 	if(false) {
 		module.hot.accept();
 		module.hot.dispose(function() {
@@ -64,9 +64,99 @@
 /* 2 */,
 /* 3 */,
 /* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Note = __webpack_require__(6);
+
+	class Contact {
+	  constructor(options) {
+	    this.photo = options.photo || null;
+	    this.firstName = options.firstName;
+	    this.lastName = options.lastName;
+	    this.company = options.company || null;
+	    this.jobTitle = options.jobTitle || null;
+	    this.email = [];
+	    this.phone = [];
+	    this.category = [];
+	    this.notes = [];
+	    this.linkedIn = options.linkedIn || null;
+	    this.twitter = options.twitter || null;
+	    this.gitHub = options.gitHub || null;
+	    this.followUp = options.followUp || true;
+	  }
+
+	  updateInfo(property, newValue) {
+	    this.property = newValue;
+	  }
+
+	  addPhoneEmailCategory(property, newArrayItem) {
+	    this.property.push(newArrayItem);
+	  }
+
+	  addNote(text) {
+	    var note = new Note({ note: text });
+	    this.notes.push(note);
+	  }
+
+	  deleteNote(i) {
+	    this.notes.splice(i, 1);
+	  }
+
+	  // renderNote() {
+	  //
+	  // }
+
+	}
+
+	module.exports = Contact;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	class Note {
+	  constructor(options) {
+	    this.note = options.note || null;
+	    this.time = options.time || Date.now();
+	  }
+
+	  updateNote(newNote) {
+	    this.note = newNote;
+	  }
+
+	}
+
+	module.exports = Note;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Contact = __webpack_require__(5);
+
+	class User {
+	  constructor(options) {
+	    this.photo = options.photo;
+	    this.firstName = options.firstName;
+	    this.lastName = options.lastName;
+	    this.contacts = [];
+	  }
+
+	  addContacts(options) {
+	    var contact = new Contact(options);
+	    this.contacts.push(contact);
+	  }
+
+	  deleteContacts(i) {
+	    this.contacts.splice(i, 1);
+	  }
+
+	}
+
+	module.exports = User;
+
+/***/ },
 /* 8 */,
 /* 9 */,
 /* 10 */
@@ -357,6 +447,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	const assert = __webpack_require__(19).assert;
+	__webpack_require__(59);
+	__webpack_require__(60);
+	__webpack_require__(61);
 
 	describe('our test bundle', function () {
 	  it('should work', function () {
@@ -8250,6 +8343,45 @@
 /* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
+	const assert = __webpack_require__(19).assert;
+	const Contact = __webpack_require__(5);
+
+	describe('our test bundle', function () {
+	  it('should work', function () {
+	    assert(true);
+	  });
+	});
+
+/***/ },
+/* 60 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const assert = __webpack_require__(19).assert;
+	const Note = __webpack_require__(6);
+
+	describe('our test bundle', function () {
+	  it('should work', function () {
+	    assert(true);
+	  });
+	});
+
+/***/ },
+/* 61 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const assert = __webpack_require__(19).assert;
+	const User = __webpack_require__(7);
+
+	describe('our test bundle', function () {
+	  it('should work', function () {
+	    assert(true);
+	  });
+	});
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {process.nextTick(function() {
 		delete __webpack_require__.c[module.id];
 		if(typeof window !== "undefined" && window.mochaPhantomJS)
@@ -8258,10 +8390,10 @@
 			mocha.run();
 	});
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(63)))
 
 /***/ },
-/* 60 */
+/* 63 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
