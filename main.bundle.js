@@ -45,6 +45,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
+	__webpack_require__(5);
+	__webpack_require__(7);
+	__webpack_require__(6);
+	__webpack_require__(8);
 
 /***/ },
 /* 1 */
@@ -390,6 +394,90 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const Note = __webpack_require__(6);
+
+	class Contact {
+	  constructor(options) {
+	    this.photo = options.photo || null;
+	    this.firstName = options.firstName;
+	    this.lastName = options.lastName;
+	    this.company = options.company || null;
+	    this.jobTitle = options.jobTitle || null;
+	    this.email = [];
+	    this.phone = [];
+	    this.category = [];
+	    this.notes = [];
+	    this.linkedIn = options.linkedIn || null;
+	    this.twitter = options.twitter || null;
+	    this.gitHub = options.gitHub || null;
+	    this.followUp = options.followUp || true;
+	  }
+
+	  updateInfo(property, newValue) {
+	    this.property = newValue;
+	  }
+
+	  addPhoneEmailCategory(property, newArrayItem) {
+	    this.property.push(newArrayItem);
+	  }
+
+	  addNote(text) {
+	    var note = new Note({ note: text });
+	    this.notes.push(note);
+	  }
+
+	}
+
+	module.exports = Contact;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	class Note {
+	  constructor(options) {
+	    this.note = options.note || null;
+	    this.time = options.time || Date.now();
+	  }
+
+	  updateNote() {}
+
+	  deleteNote() {}
+
+	}
+
+	module.exports = Note;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	class User {
+	  constructor(options) {
+	    this.photo = options.photo;
+	    this.firstName = options.firstName;
+	    this.lastName = options.lastName;
+	    this.notes = [];
+	  }
+
+	  addContacts() {}
+
+	  deleteContacts() {}
+
+	}
+
+	module.exports = User;
 
 /***/ }
 /******/ ]);
