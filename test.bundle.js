@@ -116,13 +116,14 @@
 /***/ function(module, exports) {
 
 	class Note {
-	  constructor(options) {
-	    this.note = options.note || null;
-	    this.time = options.time || Date.now();
+	  constructor(content) {
+	    this.content = content || null;
+	    this.time = Date.now();
 	  }
 
-	  updateNote(newNote) {
-	    this.note = newNote;
+	  updateContent(newContent) {
+	    this.content = newContent;
+	    this.time = Date.now();
 	  }
 
 	}
@@ -8356,12 +8357,54 @@
 /* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* globals describe, it, context */
+
 	const assert = __webpack_require__(19).assert;
 	const Note = __webpack_require__(6);
 
-	describe('our test bundle', function () {
-	  it('should work', function () {
-	    assert(true);
+	describe('Note', function () {
+	  var note;
+
+	  context('constructor', function () {
+
+	    it('should default this.content to a value of null', function () {
+	      note = new Note();
+
+	      assert.equal(note.content, null);
+	    });
+
+	    it('can receive a different value as an argument', function () {
+	      note = new Note('programming');
+
+	      assert.equal(note.content, 'programming');
+	    });
+
+	    it('should default this.time to a number value', function () {
+	      note = new Note();
+
+	      assert.equal(typeof note.time, 'number');
+	    });
+	  });
+
+	  context('updateContent', function () {
+
+	    it('should update content of note', function () {
+	      note = new Note();
+	      var newContent = 'hello again';
+	      note.updateContent(newContent);
+
+	      assert.equal(note.content, newContent);
+	    });
+
+	    it('should update time of note', function () {
+	      note = new Note();
+	      var pastTime = note.time;
+
+	      setTimeout(function () {
+	        note.updateContent('');
+	        assert.notEqual(note.time, pastTime);
+	      }, 1000);
+	    });
 	  });
 	});
 
