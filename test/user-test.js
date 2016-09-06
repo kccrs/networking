@@ -1,18 +1,11 @@
-/* globals describe, it*/
+/* globals describe, it, context*/
 
 const assert = require('chai').assert;
 const User = require('../lib/scripts/user');
 
-describe('our test bundle', function () {
-  it('should work', function () {
-    assert(true);
-  });
-});
+describe('User', function() {
 
-describe('User constructor', function() {
-
-  context('User constructor object properties', function() {
-
+  context('constructor', function() {
     let user = new User({});
 
     it('is an object', function() {
@@ -51,7 +44,6 @@ describe('User constructor', function() {
     });
 
     context('contact array functions', function() {
-
       let anotherUser = new User({});
 
       it('should add a new contact into the array of contacts using addContacts', function() {
@@ -59,7 +51,6 @@ describe('User constructor', function() {
         assert.lengthOf(anotherUser.contacts, 1);
         anotherUser.addContacts({firstName: "Indigo", lastName: "Montoya"});
         assert.lengthOf(anotherUser.contacts, 2);
-
       });
 
       it('should remove a contact from the array of contacts using deleteContacts', function() {
