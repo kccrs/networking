@@ -1,3 +1,5 @@
+/* globals describe, it*/
+
 const assert = require('chai').assert;
 const User = require('../lib/scripts/user');
 
@@ -38,13 +40,13 @@ describe('User constructor', function() {
 
     it('should change a users firstName using  updateUserInfo', function() {
       let newFirstName = "George";
-      newUser.updateUserInfo(newUser.firstName, newFirstName);
+      newUser.updateUserInfo('firstName', newFirstName);
       assert.equal(newUser.firstName, "George");
     });
 
     it('should update a users lastName using updateUserInfo', function() {
       let newLastName = "Smith";
-      newUser.updateUserInfo(newUser.lastName, newLastName);
+      newUser.updateUserInfo('lastName', newLastName);
       assert.equal(newUser.lastName, "Smith");
     });
 
