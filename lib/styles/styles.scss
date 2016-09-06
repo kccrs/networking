@@ -1,6 +1,11 @@
 @import '_reset';
 @import '_variables';
 
+body {
+  max-width: 600px;
+  margin: auto;
+}
+
 
 a {
   color: $primary-font-color;
@@ -8,4 +13,19 @@ a {
 
 h2 {
   color: $secondary-font-color;
+}
+
+header{
+  display: flex;
+  flex-direction: flex-row;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: flex-row;
+}
+
+.contact-info {
+  outline: 5px solid black;
 }
