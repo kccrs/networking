@@ -567,7 +567,7 @@
 
 	$submitnote.on('click', function () {
 	  let contact = new Contact({ firstName: 'David', lastName: 'Kerr' });
-	  let content = 'blahblah';
+	  let content = $('.new-note').val();
 	  contact.addNote(content);
 	  $('.notes').prepend(contact.notes[0].shortHtmlTemplate());
 	});
