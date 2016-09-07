@@ -61,7 +61,7 @@ describe('Contact page navigation', function() {
 
 describe('Contact page input fields', function() {
 
-  xit('should clear all input fields on click of save button', function() {
+  it('should clear all input fields on click of save button', function() {
     browser.url('/public/views/contact.html');
 
     var firstName = browser.element('.first-name');
