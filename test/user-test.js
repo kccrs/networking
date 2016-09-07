@@ -50,7 +50,7 @@ describe('User', function() {
         anotherUser.addContacts({firstName: "Fancy", lastName: "Pants"});
         assert.lengthOf(anotherUser.contacts, 1);
         anotherUser.addContacts({firstName: "Indigo", lastName: "Montoya"});
-        assert.lengthOf(anotherUser.contacts, 2);
+        assert.lengthOf(anotherUser.contacts, 1);
       });
 
       it('should remove a contact from the array of contacts using deleteContacts', function() {
