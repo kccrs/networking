@@ -24,9 +24,16 @@ describe('Contact page', function() {
     browser.click('.log-out-button');
     assert.equal(browser.getUrl(),'http://localhost:8080/public/index.html');
   });
-  // it should accept all input fields and render each provided item to the page
 
-  // it should not render content to any field that user has not entered text
+  it('should take the user to the home page when they click add contact', function() {
+    browser.url('/public/views/home.html');
+    browser.click('.add-contact-button');
+    assert.equal(browser.getUrl(),'http://localhost:8080/public/views/contact.html');
+  });
+
+  //TODO it should accept all input fields and render each provided item to the page
+
+  //TODO it should not render content to any field that user has not entered text
 
 });
 
@@ -37,8 +44,12 @@ describe('Home page', function() {
     browser.click('.log-out-button');
     assert.equal(browser.getUrl(),'http://localhost:8080/public/index.html');
   });
-  // it should accept all input fields and render each provided item to the page
 
-  // it should not render content to any field that user has not entered text
+  it('should take the user to the contact page when they click add contact', function() {
+    browser.url('/public/views/home.html');
+    browser.click('.add-contact-button');
+    assert.equal(browser.getUrl(),'http://localhost:8080/public/views/contact.html');
+  });
+
 
 });
