@@ -28,13 +28,16 @@ describe('User', function() {
     });
 
     it('has correct default values', function() {
-      // let now = Date.now();
+    // debugger;
+      let user = new User({});
+      let now = Date.now();
+      user.id = now;
       assert.deepEqual(user, {
         photo: null,
         firstName: user.firstName,
         lastName: user.lastName,
         contacts: [],
-        // id: now
+        id: now
       });
     });
   });
@@ -60,9 +63,9 @@ describe('User', function() {
       let anotherUser = new User({});
 
       it('should add a new contact into the array of contacts using addContacts', function() {
-        anotherUser.addContacts({firstName: "Fancy", lastName: "Pants"});
+        anotherUser.addContact({firstName: "Fancy", lastName: "Pants"});
         assert.lengthOf(anotherUser.contacts, 1);
-        anotherUser.addContacts({firstName: "Indigo", lastName: "Montoya"});
+        anotherUser.addContact({firstName: "Indigo", lastName: "Montoya"});
         assert.lengthOf(anotherUser.contacts, 2);
       });
 

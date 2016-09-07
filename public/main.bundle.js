@@ -50,7 +50,7 @@
 	__webpack_require__(9);
 	const Contact = __webpack_require__(7);
 	const User = __webpack_require__(8);
-	const firebase = __webpack_require__(11);
+	const firebase = __webpack_require__(12);
 	// const validateInputFields = require('./validate-input-fields');
 	// const renderSnippet = require('./render-snippet');
 
@@ -122,7 +122,7 @@
 
 
 	// module
-	exports.push([module.id, "/* Eric Meyer's CSS Reset\n   http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n   This is a Sass partial\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nbody {\n  max-width: 600px;\n  margin: auto; }\n\na {\n  color: red; }\n\nh2 {\n  color: blue; }\n\nheader {\n  display: flex;\n  flex-direction: flex-row;\n  justify-content: space-between; }\n\nnav ul {\n  display: flex;\n  flex-direction: flex-row; }\n\n.contact-info {\n  outline: 5px solid black; }\n\n#new-snippet--form {\n  display: none; }\n", ""]);
+	exports.push([module.id, "/* Eric Meyer's CSS Reset\n   http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n   This is a Sass partial\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nbody {\n  max-width: 600px;\n  margin: auto; }\n\na {\n  color: red; }\n\nh2 {\n  color: blue; }\n\nheader {\n  display: flex;\n  flex-direction: flex-row;\n  justify-content: space-between; }\n\nnav ul {\n  display: flex;\n  flex-direction: flex-row; }\n\n.contact-info {\n  display: flex;\n  flex-direction: column;\n  height: 70vh;\n  margin-top: 10px;\n  outline: 5px solid black; }\n\n.default-img {\n  max-height: 50px;\n  max-width: auto; }\n", ""]);
 
 	// exports
 
@@ -465,14 +465,38 @@
 
 	let user = new User({ firstName: 'David', lastName: 'Kerr' });
 
-	function renderPreviews() {
-	  if (!user.contacts) return;
-	  for (let i = 0; i < user.contacts.length; i++) {
-	    $('.contact-list').append(user.contacts[i].shortHtmlTemplate());
-	  }
-	}
+	// function renderPreviews() {
+	//   if (!user.contacts) return;
+	//   for (let i = 0; i < user.contacts.length; i++) {
+	//     $('.contact-list').append(user.contacts[i].shortHtmlTemplate());
+	//   }
+	// }
 
-	module.exports = user;
+	function pageLoad() {}
+
+	var setStorage = () => {
+	  localStorage.setItem('contacts', JSON.stringify(user.contacts));
+	};
+
+	var getStorage = () => {
+	  let contacts = JSON.parse(localStorage.getItem('contacts'));
+	  if (contacts) {
+	    for (var i = 0; i < contacts.length; i++) {
+	      let preview = shortContactTemplate(contacts[i]);
+	      $('.contact-list').append(preview);
+	    }
+	  }
+	};
+
+	module.exports = {
+	  user,
+	  pageLoad,
+	  setStorage,
+	  getStorage
+	};
+
+	//TODO: combine html files into one
+	//TODO: create states for each button click that hides and shows sections
 
 /***/ },
 /* 7 */
@@ -495,6 +519,7 @@
 	    this.twitter = options.twitter || null;
 	    this.gitHub = options.gitHub || null;
 	    this.followUp = options.followUp || true;
+	    this.id = Date.now();
 	  }
 
 	  updateInfo(property, newValue) {
@@ -569,7 +594,7 @@
 	    this[property] = newValue;
 	  }
 
-	  addContacts(options) {
+	  addContact(options) {
 	    var contact = new Contact(options);
 	    this.contacts.push(contact);
 	  }
@@ -592,8 +617,11 @@
 	const Contact = __webpack_require__(7);
 	const Note = __webpack_require__(5);
 	const user = __webpack_require__(6);
-
-	let $submitnote = $('#submit-note');
+	const {
+	  shortContactTemplate,
+	  longContactTemplate,
+	  notesTemplate
+	} = __webpack_require__(11);
 
 	//TODO: this noteinput is returning an empty string
 	//with both .text and .value
@@ -611,40 +639,46 @@
 	let $category = $('.category');
 	let $save = $('#save-button');
 	let $edit = $('#edit-button');
+	let $contactInfo = $('.contact-info');
 	let $contactList = $('.contact-list');
 	let $longContact = $('.full-contact');
-
-	var shortContactTemplate = (photo, first, last) => {
-	  return `<ul style="border: 1px dotted black">
-	  <li><img src="${ photo }" alt="User Photo"></li>
-	  <li>First Name: ${ first }</li>
-	  <li>Last Name: ${ last }</li>
-	  </ul>`;
-	};
-
-	var longContactTemplate = (photo, first, last, company, jobTitle, email, phone, category, notes, linkedIn, twitter, gitHub, followUp) => {
-	  return `<ul style="border: 1px dotted black">
-	    <li> Follow up: ${ followUp }</li>
-	    <li><button type="button" class="delete-button">Delete</button></li>
-	    <li><button type="button" class="edit-button">Edit</button></li>
-	    <li><img src="${ photo }" alt="User Photo"></li>
-	    <li>First Name: ${ first }</li>
-	    <li>Last Name: ${ last }</li>
-	    <li>Company: ${ company }</li>
-	    <li>Job Title: ${ jobTitle }</li>
-	    <li>Email: ${ email }</li>
-	    <li>Phone: ${ phone }</li>
-	    <li>Category: ${ category }</li>
-	    <li>Notes: ${ notes }</li>
-	    <ul class="social-media">
-	      <li>LinkedIn: ${ linkedIn }</li>
-	      <li>Twitter: ${ twitter }</li>
-	      <li>GitHub: ${ gitHub }</li>
-	    </ul>
-	  </ul>`;
-	};
 	// the social media ^^ can be icons with links
 
+	var disableSaveButton = () => {
+	  $save.prop('disabled', true);
+	};
+
+	var enableSaveButton = () => {
+	  $save.prop('disabled', false);
+	};
+
+	$contactInfo.on('keyup', function () {
+	  if ($firstName.val() && $lastName.val()) {
+	    enableSaveButton();
+	  }
+	});
+
+	var disableEditButton = () => {
+	  $edit.prop('disabled', true);
+	};
+
+	var enableEditButton = () => {
+	  $edit.prop('disabled', false);
+	};
+
+	var clearInputFields = () => {
+	  $firstName.val('');
+	  $lastName.val('');
+	  $company.val('');
+	  $jobTitle.val('');
+	  $email.val('');
+	  $phone.val('');
+	  $noteinput.val('');
+	  $linkedIn.val('');
+	  $twitter.val('');
+	  $github.val('');
+	  $category.val('');
+	};
 
 	var setStorage = () => {
 	  localStorage.setItem('contacts', JSON.stringify(user.contacts));
@@ -654,39 +688,13 @@
 	  let contacts = JSON.parse(localStorage.getItem('contacts'));
 	  if (contacts) {
 	    for (var i = 0; i < contacts.length; i++) {
-	      let preview = shortContactTemplate(contacts[i].photo, contacts[i].firstName, contacts[i].lastName);
-	      let fullView = longContactTemplate(contacts[i].photo, contacts[i].firstName, contacts[i].lastName, contacts[i].company, contacts[i].jobTitle, contacts[i].email, contacts[i].phone, contacts[i].category, contacts[i].notes, contacts[i].linkedIn, contacts[i].twitter, contacts[i].gitHub);
+	      let preview = shortContactTemplate(contacts[i]);
+	      let fullView = longContactTemplate(contacts[i]);
 	      $contactList.append(preview);
 	      // $longContact.append(fullView);
 	    }
 	  }
 	};
-
-	getStorage();
-
-	var shortContactTemplate = (photo, first, last) => {
-	  return `<ul>
-	  <li> photo:${ photo }</li>
-	  <li> First Name: ${ first }</li>
-	  <li> Last Name: ${ last }</li>
-	  </ul>`;
-	};
-
-	var setStorage = () => {
-	  localStorage.setItem('contacts', JSON.stringify(user.contacts));
-	};
-
-	var getStorage = () => {
-	  let contacts = JSON.parse(localStorage.getItem('contacts'));
-	  if (contacts) {
-	    for (var i = 0; i < contacts.length; i++) {
-	      let preview = shortContactTemplate(contacts[i].photo, contacts[i].firstName, contacts[i].lastName);
-	      $('.contact-list').append(preview);
-	    }
-	  }
-	};
-
-	getStorage();
 
 	// $submitnote.on('click', function() {
 	//   let contact = new Contact({firstName: 'David', lastName: 'Kerr'});
@@ -696,7 +704,8 @@
 	// });
 
 	$save.on('click', function () {
-	  user.addContacts({
+	  // debugger;
+	  let contact = {
 	    firstName: $firstName.val(),
 	    lastName: $lastName.val(),
 	    company: $company.val(),
@@ -708,13 +717,18 @@
 	    twitter: $twitter.val(),
 	    gitHub: $github.val(),
 	    category: $category.val()
-	  });
-	  $longContact.prepend(user.contacts[0].longHtmlTemplate());
+	  };
+	  // $notes.prepend(user.contacts[0].shortHtmlTemplate());
+	  user.addContact(contact);
+	  $longContact.prepend(longContactTemplate(contact));
 	  setStorage();
+	  clearInputFields();
+	  disableSaveButton();
 	});
 
-	$('.loadstuffs').on('click', function () {
+	$(document).ready(function () {
 	  getStorage();
+	  // TODO: add render function for home.html
 	});
 
 /***/ },
@@ -2344,9 +2358,57 @@
 
 /***/ },
 /* 11 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var shortContactTemplate = contact => {
+	  return `<ul data=${ contact.id }>
+	  <li> photo:${ contact.photo }</li>
+	  <li> First Name: ${ contact.firstName }</li>
+	  <li> Last Name: ${ contact.lastName }</li>
+	  </ul>`;
+	};
+
+	var longContactTemplate = contact => {
+	  return `<ul style="border: 1px dotted black" data=${ contact.id }>
+	    <li> Follow up: ${ contact.followUp }</li>
+	    <li><button type="button" class="delete-button">Delete</button></li>
+	    <li><button type="button" class="edit-button">Edit</button></li>
+	    <li><img src="${ contact.photo }" alt="User Photo"></li>
+	    <li>First Name: ${ contact.first }</li>
+	    <li>Last Name: ${ contact.last }</li>
+	    <li>Company: ${ contact.company }</li>
+	    <li>Job Title: ${ contact.jobTitle }</li>
+	    <li>Email: ${ contact.email }</li>
+	    <li>Phone: ${ contact.phone }</li>
+	    <li>Category: ${ contact.category }</li>
+	    <li>Notes: ${ contact.notes }</li>
+	    <ul class="social-media">
+	      <li>LinkedIn: ${ contact.linkedIn }</li>
+	      <li>Twitter: ${ contact.twitter }</li>
+	      <li>GitHub: ${ contact.gitHub }</li>
+	    </ul>
+	  </ul>`;
+	};
+
+	var notesTemplate = note => {
+	  return `<p data=${ note.id }>${ note.content }
+	  <span>${ note.time }</span>
+	  </p>`;
+	};
+
+	module.exports = {
+	  shortContactTemplate: shortContactTemplate,
+	  longContactTemplate: longContactTemplate,
+	  notesTemplate: notesTemplate
+	};
+
+/***/ },
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	const firebase = __webpack_require__(12);
+	const firebase = __webpack_require__(13);
 
 	var config = {
 	  apiKey: "AIzaSyBA7TgbDpZI7LHJsYineLMnzNKfmkiQNKc",
@@ -2359,7 +2421,7 @@
 	module.exports = firebase;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2369,11 +2431,11 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	__webpack_require__(13);
+	__webpack_require__(14);
 	module.exports = firebase;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*! @license Firebase v3.3.0
