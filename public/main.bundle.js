@@ -610,6 +610,30 @@
 	let $save = $('#save-button');
 	let $edit = $('#edit-button');
 
+	var shortContactTemplate = (photo, first, last) => {
+	  return `<ul>
+	  <li> photo:${ photo }</li>
+	  <li> First Name: ${ first }</li>
+	  <li> Last Name: ${ last }</li>
+	  </ul>`;
+	};
+
+	var setStorage = () => {
+	  localStorage.setItem('contacts', JSON.stringify(user.contacts));
+	};
+
+	var getStorage = () => {
+	  let contacts = JSON.parse(localStorage.getItem('contacts'));
+	  if (contacts) {
+	    for (var i = 0; i < contacts.length; i++) {
+	      let preview = shortContactTemplate(contacts[i].photo, contacts[i].firstName, contacts[i].lastName);
+	      $('.contact-list').append(preview);
+	    }
+	  }
+	};
+
+	getStorage();
+
 	// $submitnote.on('click', function() {
 	//   let contact = new Contact({firstName: 'David', lastName: 'Kerr'});
 	//   let content = $('.new-note').val();
@@ -635,11 +659,9 @@
 	  setStorage();
 	});
 
-	var setStorage = () => {
-	  debugger;
-	  localStorage.clear();
-	  localStorage.setItem('users', JSON.stringify(user));
-	};
+	$('.loadstuffs').on('click', function () {
+	  getStorage();
+	});
 
 /***/ },
 /* 10 */
