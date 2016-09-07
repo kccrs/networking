@@ -6,7 +6,6 @@ body {
   margin: auto;
 }
 
-
 a {
   color: $primary-font-color;
 }
@@ -27,11 +26,18 @@ nav ul {
 }
 
 .contact-info {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  margin-top: 10px;
   outline: 5px solid black;
 }
 
-///
-
-#new-snippet--form {
-  display: none;
+.default-img {
+  max-height: 50px;
+  max-width: auto;
 }
+
+// #new-snippet--form {
+//   display: none;
+// }

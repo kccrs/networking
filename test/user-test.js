@@ -28,13 +28,13 @@ describe('User', function() {
     });
 
     it('has correct default values', function() {
-      let now = Date.now();
+      // let now = Date.now();
       assert.deepEqual(user, {
         photo: null,
         firstName: user.firstName,
         lastName: user.lastName,
         contacts: [],
-        id: now
+        // id: now
       });
     });
   });
