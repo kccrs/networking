@@ -128,28 +128,30 @@
 	  }
 
 	  shortHtmlTemplate() {
-	    return `<ul>
-	     <li> photo:${ this.photo }</li>
-	     <li> First Name: ${ this.firstName }</li>
-	     <li> Last Name: ${ this.lastName }</li>
-	     </ul>`;
+	    return `<ul style="border: 1px dotted black">
+	    <li><img src="${ this.photo }" alt="User Photo"></li>
+	    <li>First Name: ${ this.firstName }</li>
+	    <li>Last Name: ${ this.lastName }</li>
+	    </ul>`;
 	  }
 
 	  longHtmlTemplate() {
-	    return `<ul>
-	     <li>${ this.photo }</li>
-	     <li>${ this.firstName }</li>
-	     <li>${ this.lastName }</li>
-	     <li>${ this.company }</li>
-	     <li>${ this.jobTitle }</li>
-	     <li>${ this.email }</li>
-	     <li>${ this.phone }</li>
-	     <li>${ this.category }</li>
-	     <li>${ this.notes }</li>
-	     <li>${ this.linkedIn }</li>
-	     <li>${ this.twitter }</li>
-	     <li>${ this.gitHub }</li>
-	     <li>${ this.followUp }</li>
+	    return `<ul style="border: 1px dotted black">
+	    <li>Follow up: ${ this.followUp }</li>
+	    <li><button type="button" class="delete-button">Delete</button></li>
+	    <li><button type="button" class="edit-button">Edit</button></li>
+	    <li><img src="${ this.photo }" alt="User Photo"></li>
+	    <li>First Name: ${ this.firstName }</li>
+	    <li>Last Name: ${ this.lastName }</li>
+	    <li>Company: ${ this.company }</li>
+	    <li>Job Title: ${ this.jobTitle }</li>
+	    <li>Email: ${ this.email }</li>
+	    <li>Phone: ${ this.phone }</li>
+	    <li>Category: ${ this.category }</li>
+	    <li>Notes: ${ this.notes }</li>
+	    <li>LinkedIn: ${ this.linkedIn }</li>
+	    <li>Twitter: ${ this.twitter }</li>
+	    <li>GitHub: ${ this.gitHub }</li>
 	   </ul>`;
 	  }
 
@@ -221,8 +223,8 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/davidkerr/Projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/davidkerr/Projects/networking/node_modules/mocha/mocha.css", function() {
-			var newContent = require("!!/Users/davidkerr/Projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/davidkerr/Projects/networking/node_modules/mocha/mocha.css");
+		module.hot.accept("!!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha/mocha.css", function() {
+			var newContent = require("!!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha/mocha.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
