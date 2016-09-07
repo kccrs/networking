@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +7,14 @@
   </head>
 <body>
   <header>
-    <a href="./home.html"><img src="" alt="User Photo"></a>
+    <img class="default-img"  src="../../sketch-assets/default-user.png" alt="User Photo">
     <h1>GetWorking</h1>
     <nav>
       <ul>
         <li><input type="text" placeholder="Search"></li>
         <li><button class="add-contact-button" disabled>Add Contact</button></li>
         <li><button class="followup-button"><a href="./followup-list.html">Follow-up</a></button></li>
-        <li><button class="log-out-button"><a href="./login.html">Log out</a></button></li>
+        <li><button class="log-out-button"><a href="../index.html">Log out</a></button></li>
       </ul>
     </nav>
   </header>
@@ -29,15 +28,15 @@
     <input type="text" class="email" placeholder="Email">
     <!-- TODO: add drop down for multiple phones???  -->
     <input type="text" class="phone" placeholder="Phone Number">
-    <textarea class='new-note' name="notes" placeholder="Notes"></textarea>
     <input type="text" class="linked-in" placeholder="Linked In">
     <input type="text" class="twitter" placeholder="Twitter">
     <input type="text" class="github" placeholder="GitHub">
     <input type="text" class="category" placeholder="Category">
+    <textarea class='new-note' name="notes" placeholder="Notes"></textarea>
     <input type="checkbox" class="follow-up" value="false">Follow Up
     <!-- <button id='submit-note'>add new note</button> -->
     <!-- TODO: Make buttons below into icons -->
-    <button id="save-button">Save</button>
+    <button id="save-button" disabled>Save</button>
     <button id="edit-button">Edit</button>
 
     <!-- <ul class="notes"></ul> -->
@@ -45,8 +44,6 @@
   <section>
     <div class="full-contact"></div>
   </section>
-
-
   <script src="../../main.bundle.js"></script>
 </body>
 </html>

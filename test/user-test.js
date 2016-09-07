@@ -6,6 +6,17 @@ const User = require('../lib/scripts/user');
 describe('User', function() {
 
   context('constructor', function() {
+
+    // beforeEach(function() {
+    //   this.rightNow = Date.now();
+    //   this.dateNow = Date.now;
+    //   Date.now = () => this.rightNow;
+    // });
+    //
+    // afterEach(function() {
+    //   Date.now = this.dateNow;
+    // });
+
     let user = new User({});
 
     it('is an object', function() {
@@ -17,11 +28,13 @@ describe('User', function() {
     });
 
     it('has correct default values', function() {
+      // let now = Date.now();
       assert.deepEqual(user, {
         photo: null,
         firstName: user.firstName,
         lastName: user.lastName,
-        contacts: []
+        contacts: [],
+        // id: now
       });
     });
   });
@@ -31,7 +44,7 @@ describe('User', function() {
     let userLastName = "Loblaw";
     let newUser = new User({firstName: userFirstName, lastName: userLastName});
 
-    it('should change a users firstName using  updateUserInfo', function() {
+    it('should update a users firstName using  updateUserInfo', function() {
       let newFirstName = "George";
       newUser.updateUserInfo('firstName', newFirstName);
       assert.equal(newUser.firstName, "George");

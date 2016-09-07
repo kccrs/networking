@@ -223,8 +223,9 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha/mocha.css", function() {
-			var newContent = require("!!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/mjvalade/Desktop/Turing/Mod-2/projects/networking/node_modules/mocha/mocha.css");
+		module.hot.accept("!!/Users/caseycross/Documents/Turing/mod2-projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/caseycross/Documents/Turing/mod2-projects/networking/node_modules/mocha/mocha.css", function() {
+			var newContent = require("!!/Users/caseycross/Documents/Turing/mod2-projects/networking/node_modules/mocha-loader/node_modules/css-loader/index.js!/Users/caseycross/Documents/Turing/mod2-projects/networking/node_modules/mocha/mocha.css");
+
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -8514,11 +8515,14 @@
 	    });
 
 	    it('has correct default values', function () {
+	      var now = Date.now();
+
 	      assert.deepEqual(user, {
 	        photo: null,
 	        firstName: user.firstName,
 	        lastName: user.lastName,
-	        contacts: []
+	        contacts: [],
+	        id: now
 	      });
 	    });
 	  });
@@ -8528,7 +8532,7 @@
 	    let userLastName = "Loblaw";
 	    let newUser = new User({ firstName: userFirstName, lastName: userLastName });
 
-	    it('should change a users firstName using  updateUserInfo', function () {
+	    it('should update a users firstName using  updateUserInfo', function () {
 	      let newFirstName = "George";
 	      newUser.updateUserInfo('firstName', newFirstName);
 	      assert.equal(newUser.firstName, "George");
