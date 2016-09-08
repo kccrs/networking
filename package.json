@@ -47,5 +47,8 @@
     "webdriverio": "^4.2.11",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
+  },
+  "dependencies": {
+    "lodash": "^4.15.0"
   }
 }
