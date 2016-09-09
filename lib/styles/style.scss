@@ -1,4 +1,4 @@
-@import 'reset';
+@import '_reset';
 
 header {
   display: flex;
@@ -16,5 +16,4 @@ header {
     border:none;
     background-color: white;
   }
-
 }
