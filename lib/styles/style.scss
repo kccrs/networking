@@ -1,4 +1,19 @@
-.denise {
-  color: purple;
-  height: 400px;
+@import '_reset';
+
+header {
+  display: flex;
+  flex-direction: flex-row;
+  justify-content: space-between;
+  align-content: middle;
+
+  img {
+    height: 75px;
+    border-radius: 50%;
+  }
+
+  .AddNewContact {
+    margin-left:auto;
+    border:none;
+    background-color: white;
+  }
 }
