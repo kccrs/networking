@@ -11,6 +11,7 @@ header {
     margin-left: auto;
   }
 
+
   .AddNewContact{
     margin-right:auto;
     border:none;
@@ -26,4 +27,8 @@ header {
 
 .display {
   display: none;
+}
+
+article {
+  outline: 3px solid black;
 }
