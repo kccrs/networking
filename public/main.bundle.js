@@ -30148,33 +30148,26 @@
 	    'header',
 	    { className: 'UserInfo' },
 	    _react2.default.createElement(
-	      'div',
-	      { className: 'UserInfo--photograph' },
-	      _react2.default.createElement('img', {
-	        src: user.photoURL,
-	        alt: user.displayName + ' Photograph'
-	      })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'UserInfo--biography' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'UserInfo--displayName' },
-	        user.displayName
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'UserInfo--email' },
-	        user.email
-	      )
+	      'button',
+	      { className: 'AddNewContact', onClick: function onClick() {
+	          $('form').toggleClass('display');
+	          $('.ShortContact').toggleClass('display');
+	          $('.AddNewContact').toggleClass('display');
+	          $('.FollowUp').toggleClass('display');
+	          $('.BackButton').toggleClass('display');
+	        } },
+	      _react2.default.createElement('img', { src: '../lib/styles/addcontact.svg' })
 	    ),
 	    _react2.default.createElement(
 	      'button',
-	      { className: 'AddNewContact', onClick: function onClick() {
-	          return $('.CreateContact').toggleClass('.display');
+	      { className: 'BackButton display', onClick: function onClick() {
+	          $('form').toggleClass('display');
+	          $('.ShortContact').toggleClass('display');
+	          $('.AddNewContact').toggleClass('display');
+	          $('.FollowUp').toggleClass('display');
+	          $('.BackButton').toggleClass('display');
 	        } },
-	      _react2.default.createElement('img', { src: '../lib/styles/addcontact.svg' })
+	      'Back'
 	    ),
 	    _react2.default.createElement(
 	      'button',
@@ -30182,6 +30175,14 @@
 	          return _firebase2.default.auth().signOut();
 	        } },
 	      'Follow Up'
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'UserInfo--photograph' },
+	      _react2.default.createElement('img', {
+	        src: user.photoURL,
+	        alt: user.displayName + ' Photograph'
+	      })
 	    ),
 	    _react2.default.createElement(
 	      'button',
@@ -40355,7 +40356,6 @@
 	        if (!contacts) {
 	          return _this2.setState({ contacts: [] });
 	        }
-	        console.log(Object.entries(contacts));
 	        _this2.setState({
 	          contacts: _.map(Object.entries(contacts), function (_ref) {
 	            var _ref2 = _slicedToArray(_ref, 2);
@@ -40381,21 +40381,17 @@
 	      var contacts = this.state.contacts.map(function (contact) {
 	        return _react2.default.createElement(_ShortContact2.default, _extends({}, contact, { reference: _this3.reference.child(contact.key) }));
 	      });
-	      console.log(contacts);
 	      return _react2.default.createElement(
 	        'section',
 	        { className: 'ContactList' },
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'Contact List (',
-	          this.props.uid,
-	          ')'
+	          'Contact List'
 	        ),
 	        _react2.default.createElement(_CreateContact2.default, { reference: this.reference }),
 	        contacts
 	      );
-	      console.log(this.props.uid);
 	    }
 	  }, {
 	    key: 'reference',
@@ -40487,6 +40483,7 @@
 
 	      reference.push({ firstName: firstName, lastName: lastName, photo: photo, company: company, jobTitle: jobTitle, phone: phone,
 	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes });
+
 	      this.setState({ firstName: '', lastName: '', photo: '', company: '', jobTitle: '', phone: '',
 	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: ''
 	      });
@@ -40498,7 +40495,7 @@
 
 	      return _react2.default.createElement(
 	        'form',
-	        { name: 'create-contact', className: 'CreateContact', onSubmit: this.createContact.bind(this) },
+	        { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact.bind(this) },
 	        _react2.default.createElement(
 	          'label',
 	          null,
@@ -40641,7 +40638,7 @@
 	              return _this2.setState({ notes: e.target.value });
 	            } })
 	        ),
-	        _react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'Create Contact' })
+	        _react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'Save' })
 	      );
 	    }
 	  }]);
@@ -40754,13 +40751,6 @@
 	    ),
 	    _react2.default.createElement(
 	      'button',
-	      { name: 'delete', onClick: function onClick() {
-	          return reference.remove();
-	        } },
-	      'Delete'
-	    ),
-	    _react2.default.createElement(
-	      'button',
 	      { name: 'edit', onClick: function onClick() {
 	          return reference.update({ firstName: 'Casey' });
 	        } },
@@ -40797,7 +40787,9 @@
 
 	  return _react2.default.createElement(
 	    'article',
-	    { className: 'ShortContact' },
+	    { className: 'ShortContact', onClick: function onClick() {
+	        console.log('hello casey');
+	      } },
 	    _react2.default.createElement(
 	      'p',
 	      null,
@@ -57620,7 +57612,7 @@
 
 
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput[type=range] {\n  -webkit-appearance: none;\n  /* Hides the slider so that custom slider can be made */\n  width: 100%;\n  /* Specific width is required for Firefox. */\n  background: transparent;\n  /* Otherwise white in Chrome */ }\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none; }\n\ninput[type=range]:focus {\n  outline: none;\n  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n\ninput[type=range]::-ms-track {\n  width: 100%;\n  cursor: pointer;\n  /* Hides the slider so custom styles can be added */\n  background: transparent;\n  border-color: transparent;\n  color: transparent; }\n\nheader {\n  display: flex;\n  flex-direction: flex-row;\n  justify-content: space-between;\n  align-content: middle; }\n  header img {\n    height: 75px;\n    border-radius: 50%; }\n  header .AddNewContact {\n    margin-left: auto;\n    border: none;\n    background-color: white; }\n  header .display {\n    display: none; }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput[type=range] {\n  -webkit-appearance: none;\n  /* Hides the slider so that custom slider can be made */\n  width: 100%;\n  /* Specific width is required for Firefox. */\n  background: transparent;\n  /* Otherwise white in Chrome */ }\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none; }\n\ninput[type=range]:focus {\n  outline: none;\n  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n\ninput[type=range]::-ms-track {\n  width: 100%;\n  cursor: pointer;\n  /* Hides the slider so custom styles can be added */\n  background: transparent;\n  border-color: transparent;\n  color: transparent; }\n\nheader {\n  display: flex;\n  flex-direction: flex-row;\n  align-content: middle; }\n  header img {\n    height: 75px;\n    border-radius: 50%;\n    margin-left: auto; }\n  header .AddNewContact {\n    margin-right: auto;\n    border: none;\n    background-color: white; }\n  header .UserInfo--photograph {\n    margin-left: auto; }\n\n.display {\n  display: none; }\n\narticle {\n  outline: 3px solid black;\n  margin-top: 15px; }\n", ""]);
 
 	// exports
 
