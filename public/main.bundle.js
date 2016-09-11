@@ -40454,7 +40454,8 @@
 	      website: '',
 	      linkedIn: '',
 	      category: '',
-	      notes: ''
+	      notes: '',
+	      followUp: ''
 	    };
 	    return _this;
 	  }
@@ -40479,13 +40480,15 @@
 	      var linkedIn = _state.linkedIn;
 	      var category = _state.category;
 	      var notes = _state.notes;
+	      var followUp = _state.followUp;
 
 
 	      reference.push({ firstName: firstName, lastName: lastName, photo: photo, company: company, jobTitle: jobTitle, phone: phone,
-	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes });
+	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes, followUp: followUp });
 
+	      // reference.push(...this.state);
 	      this.setState({ firstName: '', lastName: '', photo: '', company: '', jobTitle: '', phone: '',
-	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: ''
+	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: '', followUp: ''
 	      });
 	    }
 	  }, {
@@ -40638,6 +40641,7 @@
 	              return _this2.setState({ notes: e.target.value });
 	            } })
 	        ),
+	        _react2.default.createElement('input', { type: 'checkbox', name: 'followUp', value: 'true' }),
 	        _react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'Save' })
 	      );
 	    }
@@ -40672,6 +40676,7 @@
 	  var linkedIn = _ref.linkedIn;
 	  var category = _ref.category;
 	  var notes = _ref.notes;
+	  var followUp = _ref.followUp;
 	  var reference = _ref.reference;
 
 	  return _react2.default.createElement(
@@ -40750,6 +40755,19 @@
 	      notes
 	    ),
 	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'Follow Up: ',
+	      followUp
+	    ),
+	    _react2.default.createElement(
+	      'button',
+	      { name: 'delete', onClick: function onClick() {
+	          return reference.remove();
+	        } },
+	      'Delete'
+	    ),
+	    _react2.default.createElement(
 	      'button',
 	      { name: 'edit', onClick: function onClick() {
 	          return reference.update({ firstName: 'Casey' });
@@ -40779,37 +40797,7 @@
 	  value: true
 	});
 
-	exports.default = function (_ref) {
-	  var firstName = _ref.firstName;
-	  var lastName = _ref.lastName;
-	  var photo = _ref.photo;
-	  var company = _ref.company;
-
-	  return _react2.default.createElement(
-	    'article',
-	    { className: 'ShortContact', onClick: function onClick() {
-	        console.log('hello casey');
-	      } },
-	    _react2.default.createElement(
-	      'p',
-	      null,
-	      photo
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      null,
-	      firstName,
-	      ' ',
-	      lastName
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      null,
-	      'Company: ',
-	      company
-	    )
-	  );
-	};
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(299);
 
@@ -40820,6 +40808,85 @@
 	var _firebase2 = _interopRequireDefault(_firebase);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ShortContact = function (_Component) {
+	  _inherits(ShortContact, _Component);
+
+	  function ShortContact(_ref) {
+	    var photo = _ref.photo;
+	    var firstName = _ref.firstName;
+	    var lastName = _ref.lastName;
+	    var company = _ref.company;
+	    var followUp = _ref.followUp;
+
+	    _classCallCheck(this, ShortContact);
+
+	    var _this = _possibleConstructorReturn(this, (ShortContact.__proto__ || Object.getPrototypeOf(ShortContact)).call(this));
+
+	    _this.state = {
+	      followUp: followUp.value
+	    };
+	    return _this;
+	  }
+
+	  _createClass(ShortContact, [{
+	    key: 'toggleFollowUp',
+	    value: function toggleFollowUp() {
+	      if (this.state.followUp) {
+	        return this.state.followUp = false;
+	      }
+	      return this.state.followUp = true;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'ShortContact', onClick: function onClick() {
+	            console.log('hello casey');
+	          } },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          photo
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          firstName,
+	          ' ',
+	          lastName
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Company: ',
+	          company
+	        ),
+	        _react2.default.createElement(
+	          'label',
+	          null,
+	          'Follow Up',
+	          _react2.default.createElement('input', { type: 'checkbox', name: 'FollowUp', value: '{this.state.followUp}', onClick: function onClick() {
+	              return _this2.toggleFollowUp();
+	            } })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ShortContact;
+	}(_react.Component);
+
+	exports.default = ShortContact;
 
 /***/ },
 /* 480 */
