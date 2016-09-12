@@ -29453,6 +29453,7 @@
 	      var user = this.state.user;
 
 	      if (user) {
+	        console.log(user);
 	        console.log('user logged in');
 	        return _react2.default.createElement(
 	          'div',
@@ -40389,17 +40390,22 @@
 	  }, {
 	    key: 'updateRecord',
 	    value: function updateRecord(key, property, newValue) {
-	      this.reference.update({ followUp: newValue });
+	      console.log(property);
+	      console.log(newValue);
+	      console.log(this);
+	      console.log(this.selected);
+	      this.reference.update({ selected: newValue });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
 
-	      var contacts = this.state.contacts.map(function (contact) {
+	      var contacts = _.map(this.state.contacts, function (contact) {
 	        return _react2.default.createElement(_ShortContact2.default, _extends({}, contact, { reference: _this3.reference.child(contact.key), updateFunction: _this3.updateRecord }));
 	      });
-	      console.log(contacts);
+	      //TODO:if a contact is not selected return contacts
+	      //TODO: otherwise return the selected contact
 	      return _react2.default.createElement(
 	        'section',
 	        { className: 'ContactList' },
@@ -40408,6 +40414,7 @@
 	          null,
 	          'Contact List'
 	        ),
+	        '// ',
 	        _react2.default.createElement(_CreateContact2.default, { reference: this.reference }),
 	        contacts
 	      );
@@ -40466,7 +40473,7 @@
 	      photo: '',
 	      company: '',
 	      jobTitle: '',
-	      phone: '',
+	      phone: [],
 	      email: '',
 	      twitter: '',
 	      gitHub: '',
@@ -40474,7 +40481,8 @@
 	      linkedIn: '',
 	      category: '',
 	      notes: '',
-	      followUp: ''
+	      followUp: '',
+	      selected: false
 	    };
 	    return _this;
 	  }
@@ -40500,20 +40508,39 @@
 	      var category = _state.category;
 	      var notes = _state.notes;
 	      var followUp = _state.followUp;
+	      var selected = _state.selected;
 
 
 	      reference.push({ firstName: firstName, lastName: lastName, photo: photo, company: company, jobTitle: jobTitle, phone: phone,
-	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes, followUp: followUp });
+	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes, followUp: followUp, selected: selected });
 
 	      // reference.push(...this.state);
-	      this.setState({ firstName: '', lastName: '', photo: '', company: '', jobTitle: '', phone: '',
-	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: '', followUp: ''
+	      this.setState({ firstName: '', lastName: '', photo: '', company: '', jobTitle: '', phone: [],
+	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: '', followUp: '',
+	        selected: false
 	      });
+	    }
+	  }, {
+	    key: 'inputWithLabel',
+	    value: function inputWithLabel(property, label, value) {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'label',
+	        null,
+	        label,
+	        _react2.default.createElement('input', { type: 'text', name: property,
+	          value: this.state[property],
+	          onChange: function onChange(e) {
+	            return _this2.setState({ property: e.target.value });
+	          }
+	        })
+	      );
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      return _react2.default.createElement(
 	        'form',
@@ -40525,7 +40552,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'first-name',
 	            value: this.state.firstName,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ firstName: e.target.value });
+	              return _this3.setState({ firstName: e.target.value });
 	            }
 	          })
 	        ),
@@ -40536,7 +40563,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'last-name',
 	            value: this.state.lastName,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ lastName: e.target.value });
+	              return _this3.setState({ lastName: e.target.value });
 	            }
 	          })
 	        ),
@@ -40547,7 +40574,7 @@
 	          _react2.default.createElement('input', { type: 'image', name: 'photo',
 	            value: this.state.photo,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ photo: e.target.value });
+	              return _this3.setState({ photo: e.target.value });
 	            }
 	          })
 	        ),
@@ -40558,7 +40585,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'company',
 	            value: this.state.company,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ company: e.target.value });
+	              return _this3.setState({ company: e.target.value });
 	            }
 	          })
 	        ),
@@ -40569,7 +40596,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'job-title',
 	            value: this.state.jobTitle,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ jobTitle: e.target.value });
+	              return _this3.setState({ jobTitle: e.target.value });
 	            }
 	          })
 	        ),
@@ -40578,9 +40605,9 @@
 	          null,
 	          'Phone number',
 	          _react2.default.createElement('input', { type: 'tel', name: 'phone',
-	            value: this.state.phone,
+	            value: this.state.phone[0],
 	            onChange: function onChange(e) {
-	              return _this2.setState({ phone: e.target.value });
+	              return _this3.state.phone.push(e.target.value);
 	            }
 	          })
 	        ),
@@ -40591,7 +40618,7 @@
 	          _react2.default.createElement('input', { type: 'email', name: 'email',
 	            value: this.state.email,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ email: e.target.value });
+	              return _this3.setState({ email: e.target.value });
 	            }
 	          })
 	        ),
@@ -40602,7 +40629,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'website',
 	            value: this.state.website,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ website: e.target.value });
+	              return _this3.setState({ website: e.target.value });
 	            }
 	          })
 	        ),
@@ -40613,7 +40640,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'twitter',
 	            value: this.state.twitter,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ twitter: e.target.value });
+	              return _this3.setState({ twitter: e.target.value });
 	            }
 	          })
 	        ),
@@ -40624,7 +40651,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'github',
 	            value: this.state.gitHub,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ gitHub: e.target.value });
+	              return _this3.setState({ gitHub: e.target.value });
 	            }
 	          })
 	        ),
@@ -40635,7 +40662,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'linked-in',
 	            value: this.state.linkedIn,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ linkedIn: e.target.value });
+	              return _this3.setState({ linkedIn: e.target.value });
 	            }
 	          })
 	        ),
@@ -40646,7 +40673,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'category',
 	            value: this.state.category,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ category: e.target.value });
+	              return _this3.setState({ category: e.target.value });
 	            }
 	          })
 	        ),
@@ -40657,7 +40684,7 @@
 	          _react2.default.createElement('textarea', { name: 'notes',
 	            value: this.state.notes,
 	            onChange: function onChange(e) {
-	              return _this2.setState({ notes: e.target.value });
+	              return _this3.setState({ notes: e.target.value });
 	            } })
 	        ),
 	        _react2.default.createElement(
@@ -40703,6 +40730,8 @@
 	  var followUp = _ref.followUp;
 	  var reference = _ref.reference;
 
+	  //selected
+	  // if {!notes} {console.log('potatoe!')}
 	  return _react2.default.createElement(
 	    'article',
 	    { className: 'Contact' },
@@ -40851,13 +40880,12 @@
 	  _createClass(ShortContact, [{
 	    key: 'updateProperty',
 	    value: function updateProperty(property, value) {
-
-	      if (value) {
-	        return this.props.updateFunction(this.props.reference.key, property, false);
-	      }
-	      if (!value) {
-	        return this.props.updateFunction(this.props.reference.key, property, true);
-	      }
+	      // if (value) {
+	      return this.props.updateFunction(this.props.reference.key, property, value);
+	      // }
+	      // if (!value) {
+	      //   return this.props.updateFunction(this.props.reference.key , property , true);
+	      // }
 	    }
 	  }, {
 	    key: 'followUpClass',
@@ -40870,14 +40898,24 @@
 	      }
 	    }
 	  }, {
+	    key: 'setSelected',
+	    value: function setSelected() {
+	      console.log(this.props.selected);
+	      if (this.props.selected === false) {
+	        return this.updateProperty('selected', true);
+	      }
+	      if (this.props.selected === true) {
+	        return this.updateProperty('selected', false);
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
-	      if (this.props.followUp) {}
 	      return _react2.default.createElement(
 	        'article',
-	        { className: this.followUpClass(this.props.followUp), onClick: function onClick() {} },
+	        { className: this.followUpClass(this.props.followUp) },
 	        _react2.default.createElement(
 	          'p',
 	          null,
@@ -40885,10 +40923,13 @@
 	        ),
 	        _react2.default.createElement(
 	          'p',
-	          null,
+	          { onClick: function onClick() {
+	              return _this2.setSelected();
+	            } },
 	          this.props.firstName,
 	          ' ',
-	          this.props.lastName
+	          this.props.lastName,
+	          ' '
 	        ),
 	        _react2.default.createElement(
 	          'p',
@@ -40899,17 +40940,11 @@
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'followUp', name: 'followUp', value: this.props.followUp, onClick: function onClick() {
-	              return _this2.updateProperty(_this2.name, _this2.props.followUp);
+	              return _this2.updateProperty('followUp', _this2.props.followUp);
 	            } },
 	          'Follow Up'
 	        )
 	      );
-	    }
-	  }, {
-	    key: 'reference',
-	    get: function get() {
-	      // debugger;
-	      return _firebase2.default.database().ref('user-contacts/' + this.props.reference.key);
 	    }
 	  }]);
 
