@@ -1,5 +1,6 @@
 .Application.logged-in {
   width: 90%;
+  margin: auto;
 }
 
 header {
@@ -17,13 +18,17 @@ header {
     margin-left: auto;
   }
 
+// Plus button
   .AddNewContact {
-    background-color: none;
+    // background-color: none;
+    background: url(../../assets/plus-circle-white.svg);
+    background-repeat: no-repeat;
     outline: none;
-    height: 75px;
-    width: 75px;
-    background: none;
+    height: 50px;
+    width: 50px;
+    // background: none;
     border: none;
+    cursor: pointer;
   }
 
   .AddNewContact img {
@@ -33,8 +38,27 @@ header {
     width: 75px;
   }
 
-  .AddNewContact img:hover {
+  .AddNewContact:hover {
     background-image: url(../../assets/plus-circle-blue.svg);
+  }
+
+  .BackButton {
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: #3E9ADB;
+    color: white;
+    height: 2em;
+    width: 90px;
+    margin: 10px;
+    outline: none;
+    font-family: $main-font;
+    cursor: pointer;
+  }
+
+  .BackButton:hover {
+    border: 2px solid #3E9ADB;
+    background-color: white;
+    color: #3E9ADB;
   }
 
   .FollowUp {
@@ -46,6 +70,8 @@ header {
     width: 90px;
     margin: 10px;
     outline: none;
+    font-family: $main-font;
+    cursor: pointer;
   }
 
   .FollowUp:hover {
@@ -60,19 +86,21 @@ header {
 
   .UserInfo--signOut {
     border-radius: 5px;
-    border: 2px solid white;
-    background-color: #3E9ADB;
-    color: white;
+    border: 2px solid #3E9ADB;
+    background-color: white;
+    color: #3E9ADB;
     height: 2em;
     width: 90px;
     margin: 10px;
     outline: none;
+    cursor: pointer;
+
   }
 
   .UserInfo--signOut:hover {
-    border: 2px solid #3E9ADB;
-    background-color: white;
-    color: #3E9ADB;
+    border: 2px solid white;
+    background-color: #3E9ADB;
+    color: white;
   }
 }
 
@@ -114,10 +142,14 @@ h3 {
 
 .ShortText {
   display: inline-block;
+  cursor: pointer;
+
 }
 
-// Follow Up button
+// Follow Up button in contact
 .followUp {
   display: inline-block;
   float: right;
+  cursor: pointer;
+
 }
