@@ -29416,6 +29416,13 @@
 	
 	var _ContactList2 = _interopRequireDefault(_ContactList);
 	
+<<<<<<< HEAD
+=======
+	var _CreateContact = __webpack_require__(477);
+	
+	var _CreateContact2 = _interopRequireDefault(_CreateContact);
+	
+>>>>>>> development
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29433,7 +29440,8 @@
 	    var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this));
 	
 	    _this.state = {
-	      user: null
+	      user: null,
+	      addContact: false
 	    };
 	    return _this;
 	  }
@@ -29450,15 +29458,35 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+<<<<<<< HEAD
 	      var user = this.state.user;
 	
-	      if (user) {
-	        console.log(user);
-	        console.log('user logged in');
+=======
+	      var _this3 = this;
+	
+	      var _state = this.state;
+	      var user = _state.user;
+	      var addContact = _state.addContact;
+	
+	      if (addContact === true) {
 	        return _react2.default.createElement(
 	          'div',
 	          { className: 'Application logged-in' },
-	          _react2.default.createElement(_UserInfo2.default, { user: user }),
+	          _react2.default.createElement(_CreateContact2.default, { reference: this.reference }),
+	          '// ',
+	          _react2.default.createElement(_ContactList2.default, { uid: user.uid })
+	        );
+	      }
+>>>>>>> development
+	      if (user) {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'Application logged-in' },
+	          _react2.default.createElement(_UserInfo2.default, { user: user,
+	            handleClick: function handleClick() {
+	              return _this3.setState({ addContact: true });
+	            }
+	          }),
 	          _react2.default.createElement(_ContactList2.default, { uid: user.uid })
 	        );
 	      }
@@ -30010,6 +30038,7 @@
 	try{firebase.INTERNAL.registerService("database",function(a){var b=xf.Wb(),c=a.options.databaseURL;p(c)||ed("Can't determine Firebase Database URL.  Be sure to include databaseURL option when calling firebase.intializeApp().");var d=fd(c),c=d.kc;wf("Invalid Firebase Database URL",d);d.path.e()||ed("Database URL must point to the root of a Firebase Database (not including a child path).");(d=x(b.nb,a.name))&&ed("FIREBASE INTERNAL ERROR: Database initialized multiple times.");d=new sf(c,b.Ff,a);b.nb[a.name]=
 	d;return d.$a},{Reference:U,Query:X,Database:rf,enableLogging:bd,INTERNAL:Y,TEST_ACCESS:Z,ServerValue:uf})}catch(mi){ed("Failed to register the Firebase Database Service ("+mi+")")};})();
 	
+<<<<<<< HEAD
 	(function() {var k,aa=aa||{},l=this,n=function(a){return void 0!==a},ba=function(){},ca=function(){throw Error("unimplemented abstract method");},p=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";
 	if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},da=function(a){var b=p(a);return"array"==b||"object"==b&&"number"==typeof a.length},q=function(a){return"string"==typeof a},r=function(a){return"function"==p(a)},ea=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==b},fa="closure_uid_"+(1E9*Math.random()>>>
 	0),ga=0,ha=function(a,b,c){return a.call.apply(a.bind,arguments)},ia=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}},t=function(a,b,c){t=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?ha:ia;return t.apply(null,arguments)},ja=Date.now||function(){return+new Date},
@@ -30017,6 +30046,15 @@
 	var ma=function(){return new v("unknown","An unknown error occurred, please check the error payload for server response.")},na=function(){return new v("canceled","User canceled the upload/download.")},oa=function(){return new v("cannot-slice-blob","Cannot slice blob for upload. Please retry the upload.")},pa=function(a,b,c){return new v("invalid-argument","Invalid argument in `"+b+"` at index "+a+": "+c)},qa=function(){return new v("app-deleted","The Firebase app was deleted.")},ra=function(a,b){return new v("invalid-format",
 	"String does not match format '"+a+"': "+b)};var sa=function(a,b){for(var c in a)Object.prototype.hasOwnProperty.call(a,c)&&b(c,a[c])},ta=function(a){var b={};sa(a,function(a,d){b[a]=d});return b};var w=function(a,b,c,d){this.i=a;this.b={};this.method=b;this.headers={};this.body="";this.N=c;this.c=this.a=null;this.f=[200];this.g=[];this.h=d};var ua={STATE_CHANGED:"state_changed"},va={RUNNING:"running",PAUSED:"paused",SUCCESS:"success",CANCELED:"canceled",ERROR:"error"},wa=function(a){switch(a){case "running":case "pausing":case "canceling":return"running";case "paused":return"paused";case "success":return"success";case "canceled":return"canceled";case "error":return"error";default:return"error"}};var y=function(a){return n(a)&&null!==a},xa=function(a){return"string"===typeof a||a instanceof String},ya=function(){return"undefined"!==typeof Blob};var za=function(a,b,c){this.f=c;this.c=a;this.g=b;this.b=0;this.a=null};za.prototype.get=function(){var a;0<this.b?(this.b--,a=this.a,this.a=a.next,a.next=null):a=this.c();return a};var Aa=function(a,b){a.g(b);a.b<a.f&&(a.b++,b.next=a.a,a.a=b)};var Ba=function(a){if(Error.captureStackTrace)Error.captureStackTrace(this,Ba);else{var b=Error().stack;b&&(this.stack=b)}a&&(this.message=String(a))};u(Ba,Error);Ba.prototype.name="CustomError";var Ca=function(a,b,c,d,e){this.reset(a,b,c,d,e)};Ca.prototype.a=null;var Da=0;Ca.prototype.reset=function(a,b,c,d,e){"number"==typeof e||Da++;d||ja();this.b=b;delete this.a};var Ea=function(a){var b=[],c=0,d;for(d in a)b[c++]=a[d];return b},Fa=function(a){var b=[],c=0,d;for(d in a)b[c++]=d;return b},Ga="constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(" "),Ha=function(a,b){for(var c,d,e=1;e<arguments.length;e++){d=arguments[e];for(c in d)a[c]=d[c];for(var f=0;f<Ga.length;f++)c=Ga[f],Object.prototype.hasOwnProperty.call(d,c)&&(a[c]=d[c])}};var Ia=function(a){a.prototype.then=a.prototype.then;a.prototype.$goog_Thenable=!0},Ja=function(a){if(!a)return!1;try{return!!a.$goog_Thenable}catch(b){return!1}};var Ka=function(a){Ka[" "](a);return a};Ka[" "]=ba;var Ma=function(a,b){var c=La;return Object.prototype.hasOwnProperty.call(c,a)?c[a]:c[a]=b(a)};var Na=function(a,b){for(var c=a.split("%s"),d="",e=Array.prototype.slice.call(arguments,1);e.length&&1<c.length;)d+=c.shift()+e.shift();return d+c.join("%s")},Oa=String.prototype.trim?function(a){return a.trim()}:function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")},Pa=function(a,b){return a<b?-1:a>b?1:0};var Qa=function(a,b){this.a=a;this.b=b};var z=function(a,b){this.bucket=a;this.path=b},Ra=function(a){var b=encodeURIComponent;return"/b/"+b(a.bucket)+"/o/"+b(a.path)},Sa=function(a){for(var b=null,c=[{ia:/^gs:\/\/([A-Za-z0-9.\-]+)(\/(.*))?$/i,ba:{bucket:1,path:3},ha:function(a){"/"===a.path.charAt(a.path.length-1)&&(a.path=a.path.slice(0,-1))}},{ia:/^https?:\/\/firebasestorage\.googleapis\.com\/v[A-Za-z0-9_]+\/b\/([A-Za-z0-9.\-]+)\/o(\/([^?#]*).*)?$/i,ba:{bucket:1,path:3},ha:function(a){a.path=decodeURIComponent(a.path)}}],d=0;d<c.length;d++){var e=
 	c[d],f=e.ia.exec(a);if(f){b=f[e.ba.bucket];(f=f[e.ba.path])||(f="");b=new z(b,f);e.ha(b);break}}if(null==b)throw new v("invalid-url","Invalid URL '"+a+"'.");return b};var Ta=function(a,b,c){r(a)||y(b)||y(c)?(this.next=a,this.a=b||null,this.b=c||null):(this.next=a.next||null,this.a=a.error||null,this.b=a.complete||null)};var Ua={RAW:"raw",BASE64:"base64",BASE64URL:"base64url",DATA_URL:"data_url"},Va=function(a){switch(a){case "raw":case "base64":case "base64url":case "data_url":break;default:throw"Expected one of the event types: [raw, base64, base64url, data_url].";}},Wa=function(a,b){this.data=a;this.a=b||null},$a=function(a,b){switch(a){case "raw":return new Wa(Xa(b));case "base64":case "base64url":return new Wa(Ya(a,b));case "data_url":return a=new Za(b),a=a.a?Ya("base64",a.c):Xa(a.c),new Wa(a,(new Za(b)).b)}throw ma();
+=======
+	(function() {var k,aa=aa||{},m=this,n=function(a){return void 0!==a},ba=function(){},p=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=
+	typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},ca=function(a){var b=p(a);return"array"==b||"object"==b&&"number"==typeof a.length},q=function(a){return"string"==typeof a},r=function(a){return"function"==p(a)},da=function(a){var b=typeof a;return"object"==b&&null!=a||"function"==b},ea="closure_uid_"+(1E9*Math.random()>>>0),fa=0,ga=function(a,b,c){return a.call.apply(a.bind,
+	arguments)},ha=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}},t=function(a,b,c){t=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?ga:ha;return t.apply(null,arguments)},ia=Date.now||function(){return+new Date},u=function(a,b){function c(){}
+	c.prototype=b.prototype;a.I=b.prototype;a.prototype=new c;a.La=function(a,c,f){for(var g=Array(arguments.length-2),h=2;h<arguments.length;h++)g[h-2]=arguments[h];return b.prototype[c].apply(a,g)}};var ja=function(a,b,c){function d(){ya||(ya=!0,b.apply(null,arguments))}function e(b){l=setTimeout(function(){l=null;a(f,2===N)},b)}function f(a,b){if(!ya)if(a)d.apply(null,arguments);else if(2===N||F)d.apply(null,arguments);else{64>h&&(h*=2);var c;1===N?(N=2,c=0):c=1E3*(h+Math.random());e(c)}}function g(a){cc||(cc=!0,ya||(null!==l?(a||(N=2),clearTimeout(l),e(0)):a||(N=1)))}var h=1,l=null,F=!1,N=0,ya=!1,cc=!1;e(0);setTimeout(function(){F=!0;g(!0)},c);return g};var ka="https://firebasestorage.googleapis.com";var v=function(a,b){this.code="storage/"+a;this.message="Firebase Storage: "+b;this.serverResponse=null;this.name="FirebaseError"};u(v,Error);
+	var la=function(){return new v("unknown","An unknown error occurred, please check the error payload for server response.")},ma=function(){return new v("canceled","User canceled the upload/download.")},na=function(){return new v("cannot-slice-blob","Cannot slice blob for upload. Please retry the upload.")},oa=function(a,b,c){return new v("invalid-argument","Invalid argument in `"+b+"` at index "+a+": "+c)},pa=function(){return new v("app-deleted","The Firebase app was deleted.")},qa=function(a,b){return new v("invalid-format",
+	"String does not match format '"+a+"': "+b)};var ra=function(a,b){for(var c in a)Object.prototype.hasOwnProperty.call(a,c)&&b(c,a[c])},sa=function(a){var b={};ra(a,function(a,d){b[a]=d});return b};var w=function(a,b,c,d){this.l=a;this.f={};this.i=b;this.b={};this.c="";this.M=c;this.g=this.a=null;this.h=[200];this.j=d};var ta={STATE_CHANGED:"state_changed"},ua={RUNNING:"running",PAUSED:"paused",SUCCESS:"success",CANCELED:"canceled",ERROR:"error"},va=function(a){switch(a){case "running":case "pausing":case "canceling":return"running";case "paused":return"paused";case "success":return"success";case "canceled":return"canceled";case "error":return"error";default:return"error"}};var x=function(a){return n(a)&&null!==a},wa=function(a){return"string"===typeof a||a instanceof String},xa=function(){return"undefined"!==typeof Blob};var za=function(a,b,c){this.f=c;this.c=a;this.g=b;this.b=0;this.a=null};za.prototype.get=function(){var a;0<this.b?(this.b--,a=this.a,this.a=a.next,a.next=null):a=this.c();return a};var Aa=function(a,b){a.g(b);a.b<a.f&&(a.b++,b.next=a.a,a.a=b)};var Ba=function(a){if(Error.captureStackTrace)Error.captureStackTrace(this,Ba);else{var b=Error().stack;b&&(this.stack=b)}a&&(this.message=String(a))};u(Ba,Error);Ba.prototype.name="CustomError";var Ca=function(a,b,c,d,e){this.reset(a,b,c,d,e)};Ca.prototype.a=null;var Da=0;Ca.prototype.reset=function(a,b,c,d,e){"number"==typeof e||Da++;d||ia();this.b=b;delete this.a};var Ea=function(a){var b=[],c=0,d;for(d in a)b[c++]=a[d];return b},Fa=function(a){var b=[],c=0,d;for(d in a)b[c++]=d;return b},Ga="constructor hasOwnProperty isPrototypeOf propertyIsEnumerable toLocaleString toString valueOf".split(" "),Ha=function(a,b){for(var c,d,e=1;e<arguments.length;e++){d=arguments[e];for(c in d)a[c]=d[c];for(var f=0;f<Ga.length;f++)c=Ga[f],Object.prototype.hasOwnProperty.call(d,c)&&(a[c]=d[c])}};var Ia=function(a){a.prototype.then=a.prototype.then;a.prototype.$goog_Thenable=!0},Ja=function(a){if(!a)return!1;try{return!!a.$goog_Thenable}catch(b){return!1}};var Ka=function(a){Ka[" "](a);return a};Ka[" "]=ba;var Ma=function(a,b){var c=La;return Object.prototype.hasOwnProperty.call(c,a)?c[a]:c[a]=b(a)};var Na=function(a,b){for(var c=a.split("%s"),d="",e=Array.prototype.slice.call(arguments,1);e.length&&1<c.length;)d+=c.shift()+e.shift();return d+c.join("%s")},Oa=String.prototype.trim?function(a){return a.trim()}:function(a){return a.replace(/^[\s\xa0]+|[\s\xa0]+$/g,"")},Pa=function(a,b){return a<b?-1:a>b?1:0};var Qa=function(a,b){this.a=a;this.b=b};var y=function(a,b){this.bucket=a;this.path=b},Ra=function(a){var b=encodeURIComponent;return"/b/"+b(a.bucket)+"/o/"+b(a.path)},Sa=function(a){for(var b=null,c=[{ia:/^gs:\/\/([A-Za-z0-9.\-]+)(\/(.*))?$/i,ba:{bucket:1,path:3},ha:function(a){"/"===a.path.charAt(a.path.length-1)&&(a.path=a.path.slice(0,-1))}},{ia:/^https?:\/\/firebasestorage\.googleapis\.com\/v[A-Za-z0-9_]+\/b\/([A-Za-z0-9.\-]+)\/o(\/([^?#]*).*)?$/i,ba:{bucket:1,path:3},ha:function(a){a.path=decodeURIComponent(a.path)}}],d=0;d<c.length;d++){var e=
+	c[d],f=e.ia.exec(a);if(f){b=f[e.ba.bucket];(f=f[e.ba.path])||(f="");b=new y(b,f);e.ha(b);break}}if(null==b)throw new v("invalid-url","Invalid URL '"+a+"'.");return b};var Ta=function(a,b,c){r(a)||x(b)||x(c)?(this.next=a,this.a=b||null,this.b=c||null):(this.next=a.next||null,this.a=a.error||null,this.b=a.complete||null)};var Ua={RAW:"raw",BASE64:"base64",BASE64URL:"base64url",DATA_URL:"data_url"},Va=function(a){switch(a){case "raw":case "base64":case "base64url":case "data_url":break;default:throw"Expected one of the event types: [raw, base64, base64url, data_url].";}},Wa=function(a,b){this.data=a;this.a=b||null},$a=function(a,b){switch(a){case "raw":return new Wa(Xa(b));case "base64":case "base64url":return new Wa(Ya(a,b));case "data_url":return a=new Za(b),a=a.a?Ya("base64",a.c):Xa(a.c),new Wa(a,(new Za(b)).b)}throw la();
+>>>>>>> development
 	},Xa=function(a){for(var b=[],c=0;c<a.length;c++){var d=a.charCodeAt(c);if(127>=d)b.push(d);else if(2047>=d)b.push(192|d>>6,128|d&63);else if(55296==(d&64512))if(c<a.length-1&&56320==(a.charCodeAt(c+1)&64512)){var e=a.charCodeAt(++c),d=65536|(d&1023)<<10|e&1023;b.push(240|d>>18,128|d>>12&63,128|d>>6&63,128|d&63)}else b.push(239,191,189);else 56320==(d&64512)?b.push(239,191,189):b.push(224|d>>12,128|d>>6&63,128|d&63)}return new Uint8Array(b)},Ya=function(a,b){switch(a){case "base64":var c=-1!==b.indexOf("-"),
 	d=-1!==b.indexOf("_");if(c||d)throw ra(a,"Invalid character '"+(c?"-":"_")+"' found: is it base64url encoded?");break;case "base64url":c=-1!==b.indexOf("+");d=-1!==b.indexOf("/");if(c||d)throw ra(a,"Invalid character '"+(c?"+":"/")+"' found: is it base64 encoded?");b=b.replace(/-/g,"+").replace(/_/g,"/")}var e;try{e=atob(b)}catch(f){throw ra(a,"Invalid character found");}a=new Uint8Array(e.length);for(b=0;b<e.length;b++)a[b]=e.charCodeAt(b);return a},Za=function(a){var b=a.match(/^data:([^,]+)?,/);
 	if(null===b)throw ra("data_url","Must be formatted 'data:[<mediatype>][;base64],<data>");b=b[1]||null;this.a=!1;this.b=null;if(null!=b){var c=b.length-7;this.b=(this.a=0<=c&&b.indexOf(";base64",c)==c)?b.substring(0,b.length-7):b}this.c=a.substring(a.indexOf(",")+1)};var ab=function(a){var b=encodeURIComponent,c="?";sa(a,function(a,e){a=b(a)+"="+b(e);c=c+a+"&"});return c=c.slice(0,-1)};var A=function(a,b,c,d,e,f){this.b=a;this.h=b;this.f=c;this.a=d;this.g=e;this.c=f};k=A.prototype;k.na=function(){return this.b};k.Ja=function(){return this.h};k.Ga=function(){return this.f};k.Ba=function(){return this.a};k.pa=function(){if(y(this.a)){var a=this.a.downloadURLs;return y(a)&&y(a[0])?a[0]:null}return null};k.Ia=function(){return this.g};k.Ea=function(){return this.c};var bb=function(a,b){b.unshift(a);Ba.call(this,Na.apply(null,b));b.shift()};u(bb,Ba);bb.prototype.name="AssertionError";
@@ -30053,6 +30091,7 @@
 	 The Closure Authors under the MIT license. All other code is Copyright
 	 2005-2009 The Closure Authors. All Rights Reserved.
 	*/
+<<<<<<< HEAD
 	var hd=function(a,b){this.c=[];this.m=b||null;this.a=this.h=!1;this.b=void 0;this.j=this.g=!1;this.f=0;this.i=null;this.o=0};hd.prototype.l=function(a,b){this.g=!1;this.h=!0;this.b=b;this.a=!a;id(this)};var jd=function(a,b,c){B(!a.j,"Blocking Deferreds can not be re-used");a.c.push([b,c,void 0]);a.h&&id(a)};hd.prototype.then=function(a,b,c){var d,e,f=new G(function(a,b){d=a;e=b});jd(this,d,function(a){e(a)});return f.then(a,b,c)};Ia(hd);
 	var kd=function(a){return rb(a.c,function(a){return r(a[1])})},id=function(a){if(a.f&&a.h&&kd(a)){var b=a.f,c=ld[b];c&&(l.clearTimeout(c.a),delete ld[b]);a.f=0}a.i&&(a.i.o--,delete a.i);for(var b=a.b,d=c=!1;a.c.length&&!a.g;){var e=a.c.shift(),f=e[0],g=e[1],e=e[2];if(f=a.a?g:f)try{var h=f.call(e||a.m,b);n(h)&&(a.a=a.a&&(h==b||h instanceof Error),a.b=b=h);if(Ja(b)||"function"===typeof l.Promise&&b instanceof l.Promise)d=!0,a.g=!0}catch(m){b=m,a.a=!0,kd(a)||(c=!0)}}a.b=b;d&&(h=t(a.l,a,!0),d=t(a.l,a,
 	!1),b instanceof hd?(jd(b,h,d),b.j=!0):b.then(h,d));c&&(b=new md(b),ld[b.a]=b,a.f=b.a)},md=function(a){this.a=l.setTimeout(t(this.c,this),0);this.b=a};md.prototype.c=function(){B(ld[this.a],"Cannot throw an error that is not scheduled.");delete ld[this.a];throw this.b;};var ld={};var nd=function(a){this.f=a;this.b=this.c=this.a=null},od=function(a,b){this.name=a;this.value=b};od.prototype.toString=function(){return this.name};var pd=new od("SEVERE",1E3),qd=new od("CONFIG",700),rd=new od("FINE",500),sd=function(a){if(a.c)return a.c;if(a.a)return sd(a.a);db("Root logger has no level set.");return null};
@@ -30107,6 +30146,60 @@
 	Y.prototype.capi_=function(a){la=a};W.prototype.on=W.prototype.M;W.prototype.resume=W.prototype.R;W.prototype.pause=W.prototype.P;W.prototype.cancel=W.prototype.L;Z(W.prototype,"snapshot",W.prototype.D);Z(A.prototype,"bytesTransferred",A.prototype.na);Z(A.prototype,"totalBytes",A.prototype.Ja);Z(A.prototype,"state",A.prototype.Ga);Z(A.prototype,"metadata",A.prototype.Ba);Z(A.prototype,"downloadURL",A.prototype.pa);Z(A.prototype,"task",A.prototype.Ia);Z(A.prototype,"ref",A.prototype.Ea);
 	ua.STATE_CHANGED="state_changed";va.RUNNING="running";va.PAUSED="paused";va.SUCCESS="success";va.CANCELED="canceled";va.ERROR="error";Ua.RAW="raw";Ua.BASE64="base64";Ua.BASE64URL="base64url";Ua.DATA_URL="data_url";G.prototype["catch"]=G.prototype.l;G.prototype.then=G.prototype.then;
 	(function(){function a(a){return new Y(a)}var b={TaskState:va,TaskEvent:ua,StringFormat:Ua,Storage:Y,Reference:X};if(window.firebase&&firebase.INTERNAL&&firebase.INTERNAL.registerService)firebase.INTERNAL.registerService("storage",a,b);else throw Error("Cannot install Firebase Storage - be sure to load firebase-app.js first.");})();})();
+=======
+	var id=function(a,b){this.c=[];this.m=b||null;this.a=this.h=!1;this.b=void 0;this.j=this.g=!1;this.f=0;this.i=null;this.o=0};id.prototype.l=function(a,b){this.g=!1;this.h=!0;this.b=b;this.a=!a;jd(this)};var kd=function(a,b,c){A(!a.j,"Blocking Deferreds can not be re-used");a.c.push([b,c,void 0]);a.h&&jd(a)};id.prototype.then=function(a,b,c){var d,e,f=new H(function(a,b){d=a;e=b});kd(this,d,function(a){e(a)});return f.then(a,b,c)};Ia(id);
+	var ld=function(a){return sb(a.c,function(a){return r(a[1])})},jd=function(a){if(a.f&&a.h&&ld(a)){var b=a.f,c=md[b];c&&(m.clearTimeout(c.a),delete md[b]);a.f=0}a.i&&(a.i.o--,delete a.i);for(var b=a.b,d=c=!1;a.c.length&&!a.g;){var e=a.c.shift(),f=e[0],g=e[1],e=e[2];if(f=a.a?g:f)try{var h=f.call(e||a.m,b);n(h)&&(a.a=a.a&&(h==b||h instanceof Error),a.b=b=h);if(Ja(b)||"function"===typeof m.Promise&&b instanceof m.Promise)d=!0,a.g=!0}catch(l){b=l,a.a=!0,ld(a)||(c=!0)}}a.b=b;d&&(h=t(a.l,a,!0),d=t(a.l,a,
+	!1),b instanceof id?(kd(b,h,d),b.j=!0):b.then(h,d));c&&(b=new nd(b),md[b.a]=b,a.f=b.a)},nd=function(a){this.a=m.setTimeout(t(this.c,this),0);this.b=a};nd.prototype.c=function(){A(md[this.a],"Cannot throw an error that is not scheduled.");delete md[this.a];throw this.b;};var md={};var od=function(a){this.f=a;this.b=this.c=this.a=null},pd=function(a,b){this.name=a;this.value=b};pd.prototype.toString=function(){return this.name};var qd=new pd("SEVERE",1E3),rd=new pd("CONFIG",700),sd=new pd("FINE",500),td=function(a){if(a.c)return a.c;if(a.a)return td(a.a);eb("Root logger has no level set.");return null};
+	od.prototype.log=function(a,b,c){if(a.value>=td(this).value)for(r(b)&&(b=b()),a=new Ca(a,String(b),this.f),c&&(a.a=c),c="log:"+a.b,m.console&&(m.console.timeStamp?m.console.timeStamp(c):m.console.markTimeline&&m.console.markTimeline(c)),m.msWriteProfilerMark&&m.msWriteProfilerMark(c),c=this;c;)c=c.a};
+	var ud={},vd=null,wd=function(a){vd||(vd=new od(""),ud[""]=vd,vd.c=rd);var b;if(!(b=ud[a])){b=new od(a);var c=a.lastIndexOf("."),d=a.substr(c+1),c=wd(a.substr(0,c));c.b||(c.b={});c.b[d]=b;b.a=c;ud[a]=b}return b};var xd=function(){B.call(this);this.b=new Ib(this);this.Z=this;this.G=null};u(xd,B);xd.prototype[gb]=!0;xd.prototype.removeEventListener=function(a,b,c,d){ad(this,a,b,c,d)};
+	var J=function(a,b){Uc(a);var c,d=a.G;if(d){c=[];for(var e=1;d;d=d.G)c.push(d),A(1E3>++e,"infinite loop")}a=a.Z;d=b.type||b;q(b)?b=new Cb(b,a):b instanceof Cb?b.target=b.target||a:(e=b,b=new Cb(d,a),Ha(b,e));var e=!0,f;if(c)for(var g=c.length-1;0<=g;g--)f=b.a=c[g],e=yd(f,d,!0,b)&&e;f=b.a=a;e=yd(f,d,!0,b)&&e;e=yd(f,d,!1,b)&&e;if(c)for(g=0;g<c.length;g++)f=b.a=c[g],e=yd(f,d,!1,b)&&e};
+	xd.prototype.C=function(){xd.I.C.call(this);if(this.b){var a=this.b,b=0,c;for(c in a.a){for(var d=a.a[c],e=0;e<d.length;e++)++b,Eb(d[e]);delete a.a[c];a.b--}}this.G=null};var yd=function(a,b,c,d){b=a.b.a[String(b)];if(!b)return!0;b=b.concat();for(var e=!0,f=0;f<b.length;++f){var g=b[f];if(g&&!g.N&&g.V==c){var h=g.listener,l=g.M||g.src;g.U&&Lb(a.b,g);e=!1!==h.call(l,d)&&e}}return e&&0!=d.ja},Uc=function(a){A(a.b,"Event target is not initialized. Did you call the superclass (goog.events.EventTarget) constructor?")};var K=function(a,b){this.h=new $b;I.call(this,a,b)};u(K,I);k=K.prototype;k.X=function(a,b){if(!a)return K.I.X.call(this);Qb(this.h,n(b)?b:100,a);this.aa()};k.aa=function(){for(var a=this.h;0<a.b();){var b=this.X();if(b){var c;var d=a,e=d.a,f=e.length;c=e[0];if(0>=f)c=void 0;else{if(1==f)vb(e);else{e[0]=e.pop();for(var e=0,d=d.a,f=d.length,g=d[e];e<f>>1;){var h=2*e+1,l=2*e+2,h=l<f&&d[l].a<d[h].a?l:h;if(d[h].a>g.a)break;d[e]=d[h];e=h}d[e]=g}c=c.b}c.apply(this,[b])}else break}};
+	k.$=function(a){K.I.$.call(this,a);this.aa()};k.T=function(){K.I.T.call(this);this.aa()};k.C=function(){K.I.C.call(this);m.clearTimeout(void 0);vb(this.h.a);this.h=null};var L=function(a,b){a&&a.log(sd,b,void 0)};var zd=function(a,b,c){if(r(a))c&&(a=t(a,c));else if(a&&"function"==typeof a.handleEvent)a=t(a.handleEvent,a);else throw Error("Invalid listener argument");return 2147483647<Number(b)?-1:m.setTimeout(a,b||0)};var M=function(a){xd.call(this);this.K=new G;this.B=a||null;this.c=!1;this.w=this.a=null;this.O=this.l="";this.J=0;this.h="";this.f=this.F=this.j=this.D=!1;this.i=0;this.m=null;this.S="";this.u=this.ca=this.Y=!1};u(M,xd);var Ad=M.prototype,Bd=wd("goog.net.XhrIo");Ad.v=Bd;var Cd=/^https?$/i,Dd=["POST","PUT"];
+	M.prototype.send=function(a,b,c,d){if(this.a)throw Error("[goog.net.XhrIo] Object is active with another request="+this.l+"; newUri="+a);b=b?b.toUpperCase():"GET";this.l=a;this.h="";this.J=0;this.O=b;this.D=!1;this.c=!0;this.a=this.B?Ob(this.B):Ob(Mb);this.w=this.B?nb(this.B):nb(Mb);this.a.onreadystatechange=t(this.R,this);this.ca&&"onprogress"in this.a&&(this.a.onprogress=t(function(a){this.P(a,!0)},this),this.a.upload&&(this.a.upload.onprogress=t(this.P,this)));try{L(this.v,O(this,"Opening Xhr")),
+	this.F=!0,this.a.open(b,String(a),!0),this.F=!1}catch(f){L(this.v,O(this,"Error opening Xhr: "+f.message));Ed(this,f);return}a=c||"";var e=new G(this.K);d&&Ub(d,function(a,b){e.set(b,a)});d=ub(e.H());c=m.FormData&&a instanceof m.FormData;!(0<=ob(Dd,b))||d||c||e.set("Content-Type","application/x-www-form-urlencoded;charset=utf-8");e.forEach(function(a,b){this.a.setRequestHeader(b,a)},this);this.S&&(this.a.responseType=this.S);"withCredentials"in this.a&&this.a.withCredentials!==this.Y&&(this.a.withCredentials=
+	this.Y);try{Fd(this),0<this.i&&(this.u=Gd(this.a),L(this.v,O(this,"Will abort after "+this.i+"ms if incomplete, xhr2 "+this.u)),this.u?(this.a.timeout=this.i,this.a.ontimeout=t(this.L,this)):this.m=zd(this.L,this.i,this)),L(this.v,O(this,"Sending request")),this.j=!0,this.a.send(a),this.j=!1}catch(f){L(this.v,O(this,"Send error: "+f.message)),Ed(this,f)}};var Gd=function(a){return D&&E(9)&&"number"==typeof a.timeout&&n(a.ontimeout)},tb=function(a){return"content-type"==a.toLowerCase()};
+	M.prototype.L=function(){"undefined"!=typeof aa&&this.a&&(this.h="Timed out after "+this.i+"ms, aborting",this.J=8,L(this.v,O(this,this.h)),J(this,"timeout"),Hd(this,8))};var Ed=function(a,b){a.c=!1;a.a&&(a.f=!0,a.a.abort(),a.f=!1);a.h=b;a.J=5;Id(a);Kd(a)},Id=function(a){a.D||(a.D=!0,J(a,"complete"),J(a,"error"))},Hd=function(a,b){a.a&&a.c&&(L(a.v,O(a,"Aborting")),a.c=!1,a.f=!0,a.a.abort(),a.f=!1,a.J=b||7,J(a,"complete"),J(a,"abort"),Kd(a))};
+	M.prototype.C=function(){this.a&&(this.c&&(this.c=!1,this.f=!0,this.a.abort(),this.f=!1),Kd(this,!0));M.I.C.call(this)};M.prototype.R=function(){this.g||(this.F||this.j||this.f?Ld(this):this.la())};M.prototype.la=function(){Ld(this)};
+	var Ld=function(a){if(a.c&&"undefined"!=typeof aa)if(a.w[1]&&4==Md(a)&&2==P(a))L(a.v,O(a,"Local request error detected and ignored"));else if(a.j&&4==Md(a))zd(a.R,0,a);else if(J(a,"readystatechange"),4==Md(a)){L(a.v,O(a,"Request complete"));a.c=!1;try{if(Nd(a))J(a,"complete"),J(a,"success");else{a.J=6;var b;try{b=2<Md(a)?a.a.statusText:""}catch(c){L(a.v,"Can not get status: "+c.message),b=""}a.h=b+" ["+P(a)+"]";Id(a)}}finally{Kd(a)}}};
+	M.prototype.P=function(a,b){A("progress"===a.type,"goog.net.EventType.PROGRESS is of the same type as raw XHR progress.");J(this,Od(a,"progress"));J(this,Od(a,b?"downloadprogress":"uploadprogress"))};
+	var Od=function(a,b){return{type:b,lengthComputable:a.lengthComputable,loaded:a.loaded,total:a.total}},Kd=function(a,b){if(a.a){Fd(a);var c=a.a,d=a.w[0]?ba:null;a.a=null;a.w=null;b||J(a,"ready");try{c.onreadystatechange=d}catch(e){(a=a.v)&&a.log(qd,"Problem encountered resetting onreadystatechange: "+e.message,void 0)}}},Fd=function(a){a.a&&a.u&&(a.a.ontimeout=null);"number"==typeof a.m&&(m.clearTimeout(a.m),a.m=null)},Nd=function(a){var b=P(a),c;a:switch(b){case 200:case 201:case 202:case 204:case 206:case 304:case 1223:c=
+	!0;break a;default:c=!1}if(!c){if(b=0===b)a=String(a.l).match(Fb)[1]||null,!a&&m.self&&m.self.location&&(a=m.self.location.protocol,a=a.substr(0,a.length-1)),b=!Cd.test(a?a.toLowerCase():"");c=b}return c},Md=function(a){return a.a?a.a.readyState:0},P=function(a){try{return 2<Md(a)?a.a.status:-1}catch(b){return-1}},Pd=function(a){try{return a.a?a.a.responseText:""}catch(b){return L(a.v,"Can not get responseText: "+b.message),""}},Qd=function(a,b){return a.a&&4==Md(a)?a.a.getResponseHeader(b):void 0},
+	O=function(a,b){return b+" ["+a.O+" "+a.l+" "+P(a)+"]"};var Rd=function(a,b,c,d){this.u=a;this.w=!!d;K.call(this,b,c)};u(Rd,K);Rd.prototype.i=function(){var a=new M,b=this.u;b&&b.forEach(function(b,d){a.K.set(d,b)});this.w&&(a.Y=!0);return a};Rd.prototype.l=function(a){return!a.g&&!a.a};var fd=new Rd;var Td=function(a,b,c,d,e,f,g,h,l,F){this.K=a;this.F=b;this.w=c;this.m=d;this.G=e.slice();this.l=this.o=this.f=this.c=null;this.h=this.i=!1;this.u=f;this.j=g;this.g=l;this.L=F;this.D=h;var N=this;this.B=new H(function(a,b){N.o=a;N.l=b;Sd(N)})},Ud=function(a,b,c){this.b=a;this.c=b;this.a=!!c},Sd=function(a){function b(a,b){b?a(!1,new Ud(!1,null,!0)):fd.X(function(b){b.Y=d.L;d.c=b;var c=null;null!==d.g&&(b.ca=!0,c=Sc(b,"uploadprogress",function(a){d.g(a.loaded,a.lengthComputable?a.total:-1)}),b.ca=
+	null!==d.g);b.send(d.K,d.F,d.m,d.w);$c(b,"complete",function(b){null!==c&&bd(c);d.c=null;b=b.target;var f=6===b.J&&100<=P(b),f=Nd(b)||f,g=P(b);!f||500<=g&&600>g||429===g?(f=7===b.J,gd(b),a(!1,new Ud(!1,null,f))):(f=0<=ob(d.G,g),a(!0,new Ud(f,b)))})})}function c(a,b){var c=d.o;a=d.l;var h=b.c;if(b.b)try{var l=d.u(h,Pd(h));n(l)?c(l):c()}catch(F){a(F)}else null!==h?(b=la(),l=Pd(h),b.serverResponse=l,d.j?a(d.j(h,b)):a(b)):(b=b.a?d.h?pa():ma():new v("retry-limit-exceeded","Max retry time for operation exceeded, please try again."),
+	a(b));gd(h)}var d=a;a.i?c(0,new Ud(!1,null,!0)):a.f=ja(b,c,a.D)};Td.prototype.a=function(){return this.B};Td.prototype.b=function(a){this.i=!0;this.h=a||!1;null!==this.f&&(0,this.f)(!1);null!==this.c&&Hd(this.c)};var Vd=function(a,b,c){var d=bb(a.f),d=a.l+d,e=a.b?sa(a.b):{};null!==b&&0<b.length&&(e.Authorization="Firebase "+b);e["X-Firebase-Storage-Version"]="webjs/"+("undefined"!==typeof firebase?firebase.SDK_VERSION:"AppManager");return new Td(d,a.i,e,a.c,a.h,a.M,a.a,a.j,a.g,c)};var Wd=function(a){var b=m.BlobBuilder||m.WebKitBlobBuilder;if(n(b)){for(var b=new b,c=0;c<arguments.length;c++)b.append(arguments[c]);return b.getBlob()}b=xb(arguments);c=m.BlobBuilder||m.WebKitBlobBuilder;if(n(c)){for(var c=new c,d=0;d<b.length;d++)c.append(b[d],void 0);b=c.getBlob(void 0)}else if(n(m.Blob))b=new Blob(b,{});else throw Error("This browser doesn't seem to support creating Blobs");return b},Xd=function(a,b,c){n(c)||(c=a.size);return a.webkitSlice?a.webkitSlice(b,c):a.mozSlice?a.mozSlice(b,
+	c):a.slice?dc&&!E("13.0")||ec&&!E("537.1")?(0>b&&(b+=a.size),0>b&&(b=0),0>c&&(c+=a.size),c<b&&(c=b),a.slice(b,c-b)):a.slice(b,c):null};var Q=function(a,b){xa()&&a instanceof Blob?(this.s=a,b=a.size,a=a.type):(a instanceof ArrayBuffer?(b?this.s=new Uint8Array(a):(this.s=new Uint8Array(a.byteLength),this.s.set(new Uint8Array(a))),b=this.s.length):(b?this.s=a:(this.s=new Uint8Array(a.length),this.s.set(a)),b=a.length),a="");this.a=b;this.b=a};Q.prototype.type=function(){return this.b};
+	Q.prototype.slice=function(a,b){if(xa()&&this.s instanceof Blob)return a=Xd(this.s,a,b),null===a?null:new Q(a);a=new Uint8Array(this.s.buffer,a,b-a);return new Q(a,!0)};
+	var Yd=function(a){var b=[];Array.prototype.push.apply(b,arguments);if(xa())return b=rb(b,function(a){return a instanceof Q?a.s:a}),new Q(Wd.apply(null,b));var b=rb(b,function(a){return wa(a)?$a("raw",a).data.buffer:a.s.buffer}),c=0;pb(b,function(a){c+=a.byteLength});var d=new Uint8Array(c),e=0;pb(b,function(a){a=new Uint8Array(a);for(var b=0;b<a.length;b++)d[e++]=a[b]});return new Q(d,!0)};var Zd=function(a){this.c=Dc(a)};Zd.prototype.a=function(){return this.c};Zd.prototype.b=function(){};var $d=function(){this.a={};this.b=Number.MIN_SAFE_INTEGER},ae=function(a,b){function c(){delete e.a[d]}var d=a.b;a.b++;a.a[d]=b;var e=a;b.a().then(c,c)},be=function(a){ra(a.a,function(a,c){c&&c.b(!0)});a.a={}};var ce=function(a,b,c,d){this.a=a;this.g=null;if(null!==this.a&&(a=this.a.options,x(a))){a=a.storageBucket||null;if(null==a)a=null;else{var e=null;try{e=Sa(a)}catch(f){}if(null!==e){if(""!==e.path)throw new v("invalid-default-bucket","Invalid default bucket '"+a+"'.");a=e.bucket}}this.g=a}this.l=b;this.j=c;this.i=d;this.c=12E4;this.b=6E4;this.h=new $d;this.f=!1},de=function(a){return null!==a.a&&x(a.a.INTERNAL)&&x(a.a.INTERNAL.getToken)?a.a.INTERNAL.getToken().then(function(a){return x(a)?a.accessToken:
+	null},function(){return null}):Cc(null)};ce.prototype.bucket=function(){if(this.f)throw pa();return this.g};var R=function(a,b,c){if(a.f)return new Zd(pa());b=a.j(b,c,null===a.a);ae(a.h,b);return b};var ee=function(a,b){return b},S=function(a,b,c,d){this.c=a;this.b=b||a;this.f=!!c;this.a=d||ee},fe=null,ge=function(){if(fe)return fe;var a=[];a.push(new S("bucket"));a.push(new S("generation"));a.push(new S("metageneration"));a.push(new S("name","fullPath",!0));var b=new S("name");b.a=function(a,b){return!wa(b)||2>b.length?b:Hb(b)};a.push(b);b=new S("size");b.a=function(a,b){return x(b)?+b:b};a.push(b);a.push(new S("timeCreated"));a.push(new S("updated"));a.push(new S("md5Hash",null,!0));a.push(new S("cacheControl",
+	null,!0));a.push(new S("contentDisposition",null,!0));a.push(new S("contentEncoding",null,!0));a.push(new S("contentLanguage",null,!0));a.push(new S("contentType",null,!0));a.push(new S("metadata","customMetadata",!0));a.push(new S("downloadTokens","downloadURLs",!1,function(a,b){if(!(wa(b)&&0<b.length))return[];var e=encodeURIComponent;return rb(b.split(","),function(b){var d=a.fullPath,d="https://firebasestorage.googleapis.com/v0"+("/b/"+e(a.bucket)+"/o/"+e(d));b=bb({alt:"media",token:b});return d+
+	b})}));return fe=a},he=function(a,b){Object.defineProperty(a,"ref",{get:function(){return b.l(b,new y(a.bucket,a.fullPath))}})},ie=function(a,b){for(var c={},d=b.length,e=0;e<d;e++){var f=b[e];f.f&&(c[f.c]=a[f.b])}return JSON.stringify(c)},je=function(a){if(!a||"object"!==typeof a)throw"Expected Metadata object.";for(var b in a){var c=a[b];if("customMetadata"===b&&"object"!==typeof c)throw"Expected object for 'customMetadata' mapping.";}};var T=function(a,b,c){for(var d=b.length,e=b.length,f=0;f<b.length;f++)if(b[f].b){d=f;break}if(!(d<=c.length&&c.length<=e))throw d===e?(b=d,d=1===d?"argument":"arguments"):(b="between "+d+" and "+e,d="arguments"),new v("invalid-argument-count","Invalid argument count in `"+a+"`: Expected "+b+" "+d+", received "+c.length+".");for(f=0;f<c.length;f++)try{b[f].a(c[f])}catch(g){if(g instanceof Error)throw oa(f,a,g.message);throw oa(f,a,g);}},U=function(a,b){var c=this;this.a=function(b){c.b&&!n(b)||a(b)};
+	this.b=!!b},ke=function(a,b){return function(c){a(c);b(c)}},le=function(a,b){function c(a){if(!("string"===typeof a||a instanceof String))throw"Expected string.";}var d;a?d=ke(c,a):d=c;return new U(d,b)},me=function(){return new U(function(a){if(!(a instanceof Uint8Array||a instanceof ArrayBuffer||xa()&&a instanceof Blob))throw"Expected Blob or File.";})},ne=function(){return new U(function(a){if(!(("number"===typeof a||a instanceof Number)&&0<=a))throw"Expected a number 0 or greater.";})},oe=function(a,
+	b){return new U(function(b){if(!(null===b||x(b)&&b instanceof Object))throw"Expected an Object.";x(a)&&a(b)},b)},pe=function(){return new U(function(a){if(null!==a&&!r(a))throw"Expected a Function.";},!0)};var qe=function(a){if(!a)throw la();},re=function(a,b){return function(c,d){a:{var e;try{e=JSON.parse(d)}catch(h){c=null;break a}c=da(e)?e:null}if(null===c)c=null;else{d={type:"file"};e=b.length;for(var f=0;f<e;f++){var g=b[f];d[g.b]=g.a(d,c[g.c])}he(d,a);c=d}qe(null!==c);return c}},se=function(a){return function(b,c){b=401===P(b)?new v("unauthenticated","User is not authenticated, please authenticate using Firebase Authentication and try again."):402===P(b)?new v("quota-exceeded","Quota for bucket '"+
+	a.bucket+"' exceeded, please view quota on https://firebase.google.com/pricing/."):403===P(b)?new v("unauthorized","User does not have permission to access '"+a.path+"'."):c;b.serverResponse=c.serverResponse;return b}},te=function(a){var b=se(a);return function(c,d){var e=b(c,d);404===P(c)&&(e=new v("object-not-found","Object '"+a.path+"' does not exist."));e.serverResponse=d.serverResponse;return e}},ue=function(a,b,c){var d=Ra(b);a=new w(ka+"/v0"+d,"GET",re(a,c),a.c);a.a=te(b);return a},ve=function(a,
+	b){var c=Ra(b);a=new w(ka+"/v0"+c,"DELETE",function(){},a.c);a.h=[200,204];a.a=te(b);return a},we=function(a,b,c){c=c?sa(c):{};c.fullPath=a.path;c.size=b.a;c.contentType||(a=b&&b.type()||"application/octet-stream",c.contentType=a);return c},xe=function(a,b,c,d,e){var f="/b/"+encodeURIComponent(b.bucket)+"/o",g={"X-Goog-Upload-Protocol":"multipart"},h;h="";for(var l=0;2>l;l++)h+=Math.random().toString().slice(2);g["Content-Type"]="multipart/related; boundary="+h;e=we(b,d,e);l=ie(e,c);d=Yd("--"+h+"\r\nContent-Type: application/json; charset=utf-8\r\n\r\n"+
+	l+"\r\n--"+h+"\r\nContent-Type: "+e.contentType+"\r\n\r\n",d,"\r\n--"+h+"--");if(null===d)throw na();a=new w(ka+"/v0"+f,"POST",re(a,c),a.b);a.f={name:e.fullPath};a.b=g;a.c=d.s;a.a=se(b);return a},ye=function(a,b,c,d){this.a=a;this.total=b;this.b=!!c;this.c=d||null},ze=function(a,b){var c;try{c=Qd(a,"X-Goog-Upload-Status")}catch(d){qe(!1)}a=0<=ob(b||["active"],c);qe(a);return c},Ae=function(a,b,c,d,e){var f="/b/"+encodeURIComponent(b.bucket)+"/o",g=we(b,d,e);e={name:g.fullPath};f=ka+"/v0"+f;d={"X-Goog-Upload-Protocol":"resumable",
+	"X-Goog-Upload-Command":"start","X-Goog-Upload-Header-Content-Length":d.a,"X-Goog-Upload-Header-Content-Type":g.contentType,"Content-Type":"application/json; charset=utf-8"};c=ie(g,c);a=new w(f,"POST",function(a){ze(a);var b;try{b=Qd(a,"X-Goog-Upload-URL")}catch(c){qe(!1)}qe(wa(b));return b},a.b);a.f=e;a.b=d;a.c=c;a.a=se(b);return a},Be=function(a,b,c,d){a=new w(c,"POST",function(a){var b=ze(a,["active","final"]),c;try{c=Qd(a,"X-Goog-Upload-Size-Received")}catch(h){qe(!1)}a=c;isFinite(a)&&(a=String(a));
+	a=q(a)?/^\s*-?0x/i.test(a)?parseInt(a,16):parseInt(a,10):NaN;qe(!isNaN(a));return new ye(a,d.a,"final"===b)},a.b);a.b={"X-Goog-Upload-Command":"query"};a.a=se(b);return a},Ce=function(a,b,c,d,e,f){var g=new ye(0,0);f?(g.a=f.a,g.total=f.total):(g.a=0,g.total=d.a);if(d.a!==g.total)throw new v("server-file-wrong-size","Server recorded incorrect upload file size, please retry the upload.");var h=f=g.total-g.a,h=Math.min(h,262144),l=g.a;f={"X-Goog-Upload-Command":h===f?"upload, finalize":"upload","X-Goog-Upload-Offset":g.a};
+	l=d.slice(l,l+h);if(null===l)throw na();c=new w(c,"POST",function(a,c){var f=ze(a,["active","final"]),l=g.a+h,Jd=d.a,ab;"final"===f?ab=re(b,e)(a,c):ab=null;return new ye(l,Jd,"final"===f,ab)},b.b);c.b=f;c.c=l.s;c.g=null;c.a=se(a);return c};var W=function(a,b,c,d,e,f){this.K=a;this.c=b;this.i=c;this.f=e;this.h=f||null;this.o=d;this.j=0;this.G=this.m=!1;this.B=[];this.Z=262144<this.f.a;this.b="running";this.a=this.u=this.g=null;var g=this;this.W=function(a){g.a=null;"storage/canceled"===a.code?(g.m=!0,De(g)):(g.g=a,V(g,"error"))};this.S=function(a){g.a=null;"storage/canceled"===a.code?De(g):(g.g=a,V(g,"error"))};this.w=this.l=null;this.F=new H(function(a,b){g.l=a;g.w=b;Ee(g)});this.F.then(null,function(){})},Ee=function(a){"running"===
+	a.b&&null===a.a&&(a.Z?null===a.u?Fe(a):a.m?Ge(a):a.G?He(a):Ie(a):Je(a))},Ke=function(a,b){de(a.c).then(function(c){switch(a.b){case "running":b(c);break;case "canceling":V(a,"canceled");break;case "pausing":V(a,"paused")}})},Fe=function(a){Ke(a,function(b){var c=Ae(a.c,a.i,a.o,a.f,a.h);a.a=R(a.c,c,b);a.a.a().then(function(b){a.a=null;a.u=b;a.m=!1;De(a)},this.W)})},Ge=function(a){var b=a.u;Ke(a,function(c){var d=Be(a.c,a.i,b,a.f);a.a=R(a.c,d,c);a.a.a().then(function(b){a.a=null;Le(a,b.a);a.m=!1;b.b&&
+	(a.G=!0);De(a)},a.W)})},Ie=function(a){var b=new ye(a.j,a.f.a),c=a.u;Ke(a,function(d){var e;try{e=Ce(a.i,a.c,c,a.f,a.o,b)}catch(f){a.g=f;V(a,"error");return}a.a=R(a.c,e,d);a.a.a().then(function(b){a.a=null;Le(a,b.a);b.b?(a.h=b.c,V(a,"success")):De(a)},a.W)})},He=function(a){Ke(a,function(b){var c=ue(a.c,a.i,a.o);a.a=R(a.c,c,b);a.a.a().then(function(b){a.a=null;a.h=b;V(a,"success")},a.S)})},Je=function(a){Ke(a,function(b){var c=xe(a.c,a.i,a.o,a.f,a.h);a.a=R(a.c,c,b);a.a.a().then(function(b){a.a=null;
+	a.h=b;Le(a,a.f.a);V(a,"success")},a.W)})},Le=function(a,b){var c=a.j;a.j=b;a.j>c&&Me(a)},V=function(a,b){if(a.b!==b)switch(b){case "canceling":a.b=b;null!==a.a&&a.a.b();break;case "pausing":a.b=b;null!==a.a&&a.a.b();break;case "running":var c="paused"===a.b;a.b=b;c&&(Me(a),Ee(a));break;case "paused":a.b=b;Me(a);break;case "canceled":a.g=ma();a.b=b;Me(a);break;case "error":a.b=b;Me(a);break;case "success":a.b=b,Me(a)}},De=function(a){switch(a.b){case "pausing":V(a,"paused");break;case "canceling":V(a,
+	"canceled");break;case "running":Ee(a)}};W.prototype.D=function(){return new z(this.j,this.f.a,va(this.b),this.h,this,this.K)};
+	W.prototype.O=function(a,b,c,d){function e(a){try{g(a);return}catch(b){}try{if(h(a),!(n(a.next)||n(a.error)||n(a.complete)))throw"";}catch(b){throw"Expected a function or an Object with one of `next`, `error`, `complete` properties.";}}function f(a){return function(b,c,d){null!==a&&T("on",a,arguments);var e=new Ta(b,c,d);Ne(l,e);return function(){wb(l.B,e)}}}var g=pe().a,h=oe(null,!0).a;T("on",[le(function(){if("state_changed"!==a)throw"Expected one of the event types: [state_changed].";}),oe(e,!0),
+	pe(),pe()],arguments);var l=this,F=[oe(function(a){if(null===a)throw"Expected a function or an Object with one of `next`, `error`, `complete` properties.";e(a)}),pe(),pe()];return n(b)||n(c)||n(d)?f(null)(b,c,d):f(F)};W.prototype.then=function(a,b){return this.F.then(a,b)};
+	var Ne=function(a,b){a.B.push(b);Oe(a,b)},Me=function(a){Pe(a);var b=xb(a.B);pb(b,function(b){Oe(a,b)})},Pe=function(a){if(null!==a.l){var b=!0;switch(va(a.b)){case "success":Oc(a.l.bind(null,a.D()))();break;case "canceled":case "error":Oc(a.w.bind(null,a.g))();break;default:b=!1}b&&(a.l=null,a.w=null)}},Oe=function(a,b){switch(va(a.b)){case "running":case "paused":null!==b.next&&Oc(b.next.bind(b,a.D()))();break;case "success":null!==b.b&&Oc(b.b.bind(b))();break;case "canceled":case "error":null!==
+	b.a&&Oc(b.a.bind(b,a.g))();break;default:null!==b.a&&Oc(b.a.bind(b,a.g))()}};W.prototype.R=function(){T("resume",[],arguments);var a="paused"===this.b||"pausing"===this.b;a&&V(this,"running");return a};W.prototype.P=function(){T("pause",[],arguments);var a="running"===this.b;a&&V(this,"pausing");return a};W.prototype.L=function(){T("cancel",[],arguments);var a="running"===this.b||"pausing"===this.b;a&&V(this,"canceling");return a};var X=function(a,b){this.b=a;if(b)this.a=b instanceof y?b:Sa(b);else if(a=a.bucket(),null!==a)this.a=new y(a,"");else throw new v("no-default-bucket","No default bucket found. Did you set the 'storageBucket' property when initializing the app?");};X.prototype.toString=function(){T("toString",[],arguments);return"gs://"+this.a.bucket+"/"+this.a.path};var Qe=function(a,b){return new X(a,b)};k=X.prototype;
+	k.fa=function(a){T("child",[le()],arguments);var b=Gb(this.a.path,a);return Qe(this.b,new y(this.a.bucket,b))};k.Ea=function(){var a;a=this.a.path;if(0==a.length)a=null;else{var b=a.lastIndexOf("/");a=-1===b?"":a.slice(0,b)}return null===a?null:Qe(this.b,new y(this.a.bucket,a))};k.Ga=function(){return Qe(this.b,new y(this.a.bucket,""))};k.na=function(){return this.a.bucket};k.za=function(){return this.a.path};k.Da=function(){return Hb(this.a.path)};k.Ia=function(){return this.b.i};
+	k.sa=function(a,b){T("put",[me(),new U(je,!0)],arguments);Re(this,"put");return new W(this,this.b,this.a,ge(),new Q(a),b)};k.ta=function(a,b,c){T("putString",[le(),le(Va,!0),new U(je,!0)],arguments);Re(this,"putString");var d=$a(x(b)?b:"raw",a),e=c?sa(c):{};e.contentType=d.a;return new W(this,this.b,this.a,ge(),new Q(d.data,!0),e)};k.delete=function(){T("delete",[],arguments);Re(this,"delete");var a=this;return de(this.b).then(function(b){var c=ve(a.b,a.a);return R(a.b,c,b).a()})};
+	k.ga=function(){T("getMetadata",[],arguments);Re(this,"getMetadata");var a=this;return de(this.b).then(function(b){var c=ue(a.b,a.a,ge());return R(a.b,c,b).a()})};k.ua=function(a){T("updateMetadata",[new U(je,void 0)],arguments);Re(this,"updateMetadata");var b=this;return de(this.b).then(function(c){var d=b.b,e=b.a,f=a,g=ge(),h=Ra(e),h=ka+"/v0"+h,f=ie(f,g),d=new w(h,"PATCH",re(d,g),d.c);d.b={"Content-Type":"application/json; charset=utf-8"};d.c=f;d.a=te(e);return R(b.b,d,c).a()})};
+	k.ra=function(){T("getDownloadURL",[],arguments);Re(this,"getDownloadURL");return this.ga().then(function(a){a=a.downloadURLs[0];if(x(a))return a;throw new v("no-download-url","The given file does not have any download URLs.");})};var Re=function(a,b){if(""===a.a.path)throw new v("invalid-root-operation","The operation '"+b+"' cannot be performed on a root reference, create a non-root reference using child, such as .child('file.png').");};var Y=function(a){this.a=new ce(a,function(a,c){return new X(a,c)},Vd,this);this.b=a;this.c=new Se(this)};k=Y.prototype;k.va=function(a){T("ref",[le(function(a){if(/^[A-Za-z]+:\/\//.test(a))throw"Expected child path but got a URL, use refFromURL instead.";},!0)],arguments);var b=new X(this.a);return n(a)?b.fa(a):b};
+	k.wa=function(a){T("refFromURL",[le(function(a){if(!/^[A-Za-z]+:\/\//.test(a))throw"Expected full URL but got a child path, use ref instead.";try{Sa(a)}catch(c){throw"Expected valid full URL but got an invalid one.";}},!1)],arguments);return new X(this.a,a)};k.Ba=function(){return this.a.b};k.ya=function(a){T("setMaxUploadRetryTime",[ne()],arguments);this.a.b=a};k.Aa=function(){return this.a.c};k.xa=function(a){T("setMaxOperationRetryTime",[ne()],arguments);this.a.c=a};k.ma=function(){return this.b};
+	k.ka=function(){return this.c};var Se=function(a){this.a=a};Se.prototype.delete=function(){var a=this.a.a;a.f=!0;a.a=null;be(a.h)};var Z=function(a,b,c){Object.defineProperty(a,b,{get:c})};X.prototype.toString=X.prototype.toString;X.prototype.child=X.prototype.fa;X.prototype.put=X.prototype.sa;X.prototype.putString=X.prototype.ta;X.prototype["delete"]=X.prototype.delete;X.prototype.getMetadata=X.prototype.ga;X.prototype.updateMetadata=X.prototype.ua;X.prototype.getDownloadURL=X.prototype.ra;Z(X.prototype,"parent",X.prototype.Ea);Z(X.prototype,"root",X.prototype.Ga);Z(X.prototype,"bucket",X.prototype.na);
+	Z(X.prototype,"fullPath",X.prototype.za);Z(X.prototype,"name",X.prototype.Da);Z(X.prototype,"storage",X.prototype.Ia);Y.prototype.ref=Y.prototype.va;Y.prototype.refFromURL=Y.prototype.wa;Z(Y.prototype,"maxOperationRetryTime",Y.prototype.Aa);Y.prototype.setMaxOperationRetryTime=Y.prototype.xa;Z(Y.prototype,"maxUploadRetryTime",Y.prototype.Ba);Y.prototype.setMaxUploadRetryTime=Y.prototype.ya;Z(Y.prototype,"app",Y.prototype.ma);Z(Y.prototype,"INTERNAL",Y.prototype.ka);Se.prototype["delete"]=Se.prototype.delete;
+	Y.prototype.capi_=function(a){ka=a};W.prototype.on=W.prototype.O;W.prototype.resume=W.prototype.R;W.prototype.pause=W.prototype.P;W.prototype.cancel=W.prototype.L;Z(W.prototype,"snapshot",W.prototype.D);Z(z.prototype,"bytesTransferred",z.prototype.oa);Z(z.prototype,"totalBytes",z.prototype.Ka);Z(z.prototype,"state",z.prototype.Ha);Z(z.prototype,"metadata",z.prototype.Ca);Z(z.prototype,"downloadURL",z.prototype.qa);Z(z.prototype,"task",z.prototype.Ja);Z(z.prototype,"ref",z.prototype.Fa);
+	ta.STATE_CHANGED="state_changed";ua.RUNNING="running";ua.PAUSED="paused";ua.SUCCESS="success";ua.CANCELED="canceled";ua.ERROR="error";Ua.RAW="raw";Ua.BASE64="base64";Ua.BASE64URL="base64url";Ua.DATA_URL="data_url";H.prototype["catch"]=H.prototype.l;H.prototype.then=H.prototype.then;
+	(function(){function a(a){return new Y(a)}var b={TaskState:ua,TaskEvent:ta,StringFormat:Ua,Storage:Y,Reference:X};if(window.firebase&&firebase.INTERNAL&&firebase.INTERNAL.registerService)firebase.INTERNAL.registerService("storage",a,b);else throw Error("Cannot install Firebase Storage - be sure to load firebase-app.js first.");})();})();
+>>>>>>> development
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -30155,6 +30248,7 @@
 	  value: true
 	});
 	
+<<<<<<< HEAD
 	exports.default = function (_ref) {
 	  var user = _ref.user;
 	
@@ -30207,6 +30301,9 @@
 	    )
 	  );
 	};
+=======
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+>>>>>>> development
 	
 	var _react = __webpack_require__(299);
 	
@@ -30218,7 +30315,123 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+<<<<<<< HEAD
+=======
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+>>>>>>> development
 	var $ = __webpack_require__(475);
+	
+	var UserInfo = function (_Component) {
+	  _inherits(UserInfo, _Component);
+	
+	  function UserInfo(_ref) {
+	    var user = _ref.user;
+	    var handleClick = _ref.handleClick;
+	
+	    _classCallCheck(this, UserInfo);
+	
+	    return _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this));
+	  }
+	
+	  // addContact() {
+	  //   debugger;
+	  //   const { user, handleClick } = this.props;
+	  //   return (
+	  //     <header className="UserInfo">
+	  //         <button className="AddNewContact" onClick={() => {handleClick}
+	  //         }>
+	  //           <img src='../assets/plus-circle-white.svg'/>
+	  //         </button>
+	  //         <button className="BackButton display" onClick={() => {
+	  //           $('form').toggleClass('display')
+	  //           $('.ShortContact').toggleClass('display')
+	  //           $('.AddNewContact').toggleClass('display')
+	  //           $('.FollowUp').toggleClass('display')
+	  //           $('.BackButton').toggleClass('display')
+	  //           }
+	  //         }>
+	  //         Back
+	  //         </button>
+	  //         <button className="FollowUp" onClick={() => firebase.auth().signOut()}>
+	  //         Follow Up
+	  //         </button>
+	  //
+	  //         <div className="UserInfo--photograph">
+	  //         <img className="userPhoto"
+	  //         src={user.photoURL}
+	  //         alt={`${user.displayName} Photograph`}
+	  //         />
+	  //         </div>
+	  //         <button className="UserInfo--signOut" onClick={() => firebase.auth().signOut()}>
+	  //         Sign Out
+	  //         </button>
+	  //     </header>
+	  //   );
+	  // }
+	
+	  _createClass(UserInfo, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var user = _props.user;
+	      var handleClick = _props.handleClick;
+	
+	      return _react2.default.createElement(
+	        'header',
+	        { className: 'UserInfo' },
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'AddNewContact', onClick: function onClick() {
+	              handleClick();
+	            } },
+	          _react2.default.createElement('img', { src: '../assets/plus-circle-white.svg' })
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'BackButton display', onClick: function onClick() {
+	              $('form').toggleClass('display');
+	              $('.ShortContact').toggleClass('display');
+	              $('.AddNewContact').toggleClass('display');
+	              $('.FollowUp').toggleClass('display');
+	              $('.BackButton').toggleClass('display');
+	            } },
+	          'Back'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'FollowUp', onClick: function onClick() {
+	              return _firebase2.default.auth().signOut();
+	            } },
+	          'Follow Up'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'UserInfo--photograph' },
+	          _react2.default.createElement('img', { className: 'userPhoto',
+	            src: user.photoURL,
+	            alt: user.displayName + ' Photograph'
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'UserInfo--signOut', onClick: function onClick() {
+	              return _firebase2.default.auth().signOut();
+	            } },
+	          'Sign Out'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return UserInfo;
+	}(_react.Component);
+	
+	exports.default = UserInfo;
 
 /***/ },
 /* 475 */
@@ -40408,12 +40621,29 @@
 	      var selectedContact = this.state.selectedContact;
 	
 	      if (selectedContact) {
+<<<<<<< HEAD
 	        return _react2.default.createElement(_Contact2.default, _extends({}, selectedContact, {
 	          reference: this.reference.child(selectedContact.key),
 	          handleDeselect: function handleDeselect() {
 	            return _this3.setState({ selectedContact: null });
 	          }
 	        }));
+=======
+	        return _react2.default.createElement(
+	          'section',
+	          { className: 'ContactList' },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Contact List'
+	          ),
+	          _react2.default.createElement(_Contact2.default, _extends({}, selectedContact, {
+	            reference: this.reference.child(selectedContact.key),
+	            handleDeselect: function handleDeselect() {
+	              return _this3.setState({ selectedContact: null });
+	            } }))
+	        );
+>>>>>>> development
 	      }
 	      var contacts = _.map(this.state.contacts, function (contact) {
 	        return _react2.default.createElement(_ShortContact2.default, _extends({}, contact, {
@@ -40501,17 +40731,25 @@
 	      linkedIn: '',
 	      category: '',
 	      notes: '',
+<<<<<<< HEAD
 	      followUp: true
+=======
+	      followUp: false,
+	      selected: false
+>>>>>>> development
 	    };
 	    return _this;
 	  }
 	
+<<<<<<< HEAD
 	  // getInitialState () {
 	  //   return {
 	  //     saveDisabled: true
 	  //   };
 	  // }
 	
+=======
+>>>>>>> development
 	  _createClass(CreateContact, [{
 	    key: 'createContact',
 	    value: function createContact(e) {
@@ -40533,6 +40771,10 @@
 	      var category = _state.category;
 	      var notes = _state.notes;
 	      var followUp = _state.followUp;
+<<<<<<< HEAD
+=======
+	      var selected = _state.selected;
+>>>>>>> development
 	
 	
 	      reference.push({ firstName: firstName, lastName: lastName, photo: photo, company: company, jobTitle: jobTitle, phone: phone,
@@ -40746,6 +40988,7 @@
 	  value: true
 	});
 	
+<<<<<<< HEAD
 	exports.default = function (_ref) {
 	  var firstName = _ref.firstName;
 	  var lastName = _ref.lastName;
@@ -40866,6 +41109,9 @@
 	    )
 	  );
 	};
+=======
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+>>>>>>> development
 	
 	var _react = __webpack_require__(299);
 	
@@ -40874,8 +41120,135 @@
 	var _firebase = __webpack_require__(470);
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Contact = function (_Component) {
+	  _inherits(Contact, _Component);
+	
+	  function Contact(props) {
+	    _classCallCheck(this, Contact);
+	
+	    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this));
+	  }
+	
+	  _createClass(Contact, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'Contact' },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.firstName,
+	          ' ',
+	          this.props.lastName
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.photo
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Company: ',
+	          this.props.company,
+	          ' Title: ',
+	          this.props.jobTitle
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Phone: ',
+	          this.props.phone
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Email: ',
+	          this.props.email
+	        ),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Website: ',
+	            this.props.website
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'GitHub: ',
+	            this.props.gitHub
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'Twitter: ',
+	            this.props.twitter
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            'LinkedIn: ',
+	            this.props.linkedIn
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Category: ',
+	          this.props.category
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Notes: ',
+	          this.props.notes
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Follow Up: ',
+	          this.props.followUp
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { name: 'delete', onClick: function onClick() {
+	              return reference.remove();
+	            } },
+	          'Delete'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { name: 'edit', onClick: function onClick() {
+	              return reference.update({ firstName: 'Casey' });
+	            } },
+	          'Edit'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { name: 'deselect', onClick: this.props.handleDeselect },
+	          'DESELECT'
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Contact;
+	}(_react.Component);
+	
+	exports.default = Contact;
 
 /***/ },
 /* 479 */
@@ -40939,6 +41312,22 @@
 	        'article',
 	        {
 	          className: this.followUpClass(this.props.followUp) },
+<<<<<<< HEAD
+=======
+	        _react2.default.createElement(
+	          'p',
+	          { onClick: this.props.handleClick },
+	          this.props.photo
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { onClick: this.props.handleClick },
+	          this.props.firstName,
+	          ' ',
+	          this.props.lastName,
+	          ' '
+	        ),
+>>>>>>> development
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'ShortText', onClick: this.props.handleClick },
