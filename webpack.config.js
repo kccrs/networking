@@ -2,12 +2,12 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: ['babel-polyfill', './lib/index.js'],//what is babel-polyfill
+    main: ['babel-polyfill', './lib/index.js'],
     test: "mocha!./test/index.js"
   },
   output: {
     path: path.join(__dirname, 'public'),
-    publicPath: '/public/',//what does this do?
+    publicPath: '/public/',
     filename: "[name].bundle.js"
   },
   module: {
@@ -23,6 +23,9 @@ module.exports = {
         { test: /\.svg$/, loader: 'svg-url-loader'},
         { test: /\.css$/, loader: 'style!css' },
         { test: /\.scss$/, loader: 'style!css!sass' },
+        { test: /\.png$/, loader: "url-loader",
+          query: { mimetype: "image/png" }},
+
       ],
     },
   resolve: {
@@ -30,8 +33,3 @@ module.exports = {
   },
   devtool: 'source-maps'
 };
-
-
-// wdio wdio.conf.js
-
-// ./node_modules/.bin/wdio wdio.conf.js
