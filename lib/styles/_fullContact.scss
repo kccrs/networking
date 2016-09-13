@@ -4,7 +4,7 @@
 
 .Contact {
   border: 2px solid white;
-  background-color: #3E9ADB;
+  background-color: $hightlight-color;
   border-radius: 5px;
   color: white;
   width: 80%;
@@ -15,5 +15,5 @@
 
 .Contact p {
   margin: 5px auto 5px auto;
-  
+
 }

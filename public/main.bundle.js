@@ -29511,6 +29511,11 @@
 	        _react2.default.createElement(_SignIn2.default, null)
 	      );
 	    }
+	  }, {
+	    key: 'reference',
+	    get: function get() {
+	      return _firebase2.default.database().ref('user-contacts/' + this.state.user.uid);
+	    }
 	  }]);
 	
 	  return Application;
@@ -30491,7 +30496,6 @@
 	  _createClass(CreateContact, [{
 	    key: 'createContact',
 	    value: function createContact(e) {
-	      debugger;
 	      e.preventDefault();
 	
 	      var reference = this.props.reference;
@@ -30520,27 +30524,19 @@
 	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: '', followUp: ''
 	
 	      });
+	      this.props.handleBackClick();
 	    }
-	  }, {
-	    key: 'inputWithLabel',
-	    value: function inputWithLabel(property, label, value) {
-	      var _this2 = this;
 	
-	      return _react2.default.createElement(
-	        'label',
-	        null,
-	        label,
-	        _react2.default.createElement('input', { type: 'text', name: property,
-	          value: this.state[property],
-	          onChange: function onChange(e) {
-	            return _this2.setState({ property: e.target.value });
-	          }
-	        })
-	      );
-	    }
-	  }, {
-	    key: 'render',
-	
+	    // inputWithLabel(property, label, value) {
+	    //   return (
+	    //     <label>
+	    //     {label}
+	    //     <input type="text" name={property}
+	    //       value={this.state[property]}
+	    //       onChange={(e) => this.setState({ property: e.target.value })}
+	    //     />
+	    //   </label>
+	    // )};
 	
 	    // enableSaveButton() {
 	    //   if (document.querySelector('.FirstName').value && document.querySelector('.LastName').value ) {
@@ -30551,12 +30547,14 @@
 	    //   }
 	    // }
 	
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
+	      var _this2 = this;
 	
 	      return _react2.default.createElement(
 	        'form',
-	        { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact() },
+	        { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact.bind(this) },
 	        _react2.default.createElement(
 	          'h3',
 	          null,
@@ -30569,7 +30567,7 @@
 	          _react2.default.createElement('input', { type: 'image', name: 'photo',
 	            value: this.state.photo,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ photo: e.target.value });
+	              return _this2.setState({ photo: e.target.value });
 	            }
 	          })
 	        ),
@@ -30581,7 +30579,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'first-name',
 	            value: this.state.firstName, required: true, placeholder: 'required',
 	            onChange: function onChange(e) {
-	              return _this3.setState({ firstName: e.target.value });
+	              return _this2.setState({ firstName: e.target.value });
 	            }
 	          })
 	        ),
@@ -30592,7 +30590,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'last-name',
 	            value: this.state.lastName, required: true, placeholder: 'required',
 	            onChange: function onChange(e) {
-	              return _this3.setState({ lastName: e.target.value });
+	              return _this2.setState({ lastName: e.target.value });
 	            }
 	          })
 	        ),
@@ -30603,7 +30601,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'company',
 	            value: this.state.company,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ company: e.target.value });
+	              return _this2.setState({ company: e.target.value });
 	            }
 	          })
 	        ),
@@ -30615,7 +30613,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'job-title',
 	            value: this.state.jobTitle,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ jobTitle: e.target.value });
+	              return _this2.setState({ jobTitle: e.target.value });
 	            }
 	          })
 	        ),
@@ -30626,7 +30624,7 @@
 	          _react2.default.createElement('input', { type: 'tel', name: 'phone',
 	            value: this.state.phone[0],
 	            onChange: function onChange(e) {
-	              return _this3.state.phone.push(e.target.value);
+	              return _this2.state.phone.push(e.target.value);
 	            }
 	          })
 	        ),
@@ -30637,7 +30635,7 @@
 	          _react2.default.createElement('input', { type: 'email', name: 'email',
 	            value: this.state.email,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ email: e.target.value });
+	              return _this2.setState({ email: e.target.value });
 	            }
 	          })
 	        ),
@@ -30649,7 +30647,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'website',
 	            value: this.state.website,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ website: e.target.value });
+	              return _this2.setState({ website: e.target.value });
 	            }
 	          })
 	        ),
@@ -30660,7 +30658,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'twitter',
 	            value: this.state.twitter,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ twitter: e.target.value });
+	              return _this2.setState({ twitter: e.target.value });
 	            }
 	          })
 	        ),
@@ -30671,7 +30669,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'github',
 	            value: this.state.gitHub,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ gitHub: e.target.value });
+	              return _this2.setState({ gitHub: e.target.value });
 	            }
 	          })
 	        ),
@@ -30682,7 +30680,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'linked-in',
 	            value: this.state.linkedIn,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ linkedIn: e.target.value });
+	              return _this2.setState({ linkedIn: e.target.value });
 	            }
 	          })
 	        ),
@@ -30693,7 +30691,7 @@
 	          _react2.default.createElement('input', { type: 'text', name: 'category',
 	            value: this.state.category,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ category: e.target.value });
+	              return _this2.setState({ category: e.target.value });
 	            }
 	          })
 	        ),
@@ -30705,7 +30703,7 @@
 	          _react2.default.createElement('textarea', { name: 'notes',
 	            value: this.state.notes,
 	            onChange: function onChange(e) {
-	              return _this3.setState({ notes: e.target.value });
+	              return _this2.setState({ notes: e.target.value });
 	            } })
 	        ),
 	        _react2.default.createElement(
@@ -30714,10 +30712,7 @@
 	          'Follow Up',
 	          _react2.default.createElement('input', { type: 'checkbox', name: 'followUp', value: 'true' })
 	        ),
-	        _react2.default.createElement('input', { className: 'SaveButton', type: 'submit', name: 'saveContact', value: 'Save',
-	          onClick: function onClick() {
-	            _this3.props.handleBackClick();
-	          } })
+	        _react2.default.createElement('input', { className: 'SaveButton', type: 'submit', name: 'submit', value: 'Save' })
 	      );
 	    }
 	  }]);
