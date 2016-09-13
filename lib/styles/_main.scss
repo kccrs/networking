@@ -112,7 +112,12 @@ h3 {
   font-family: $header-font;
 }
 
+.ShortText {
+  display: inline-block;
+}
+
 // Follow Up button
 .followUp {
-  margin-left: auto;
+  display: inline-block;
+  float: right;
 }
