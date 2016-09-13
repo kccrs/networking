@@ -10,12 +10,12 @@
   width: 200px;
   display: block;
   border: 4px solid white;
-  background-color: #3E9ADB;
+  background-color: $hightlight-color;
   margin: auto;
 }
 
 .title {
-  color: #3E9ADB;
+  color: $hightlight-color;
   font-size: 2em;
   text-align: center;
   margin-top: 1em;
@@ -26,7 +26,7 @@
 .buttonSignIn {
   border-radius: 5px;
   border: 2px solid white;
-  background-color: #3E9ADB;
+  background-color: $hightlight-color;
   color: white;
   width: 40%;
   height: 2em;
@@ -34,11 +34,11 @@
   outline: none;
   margin: 5px 40% 5px 29%;
   cursor: pointer;
-  
+
 }
 
 .buttonSignIn:hover {
-  border: 2px solid #3E9ADB;
+  border: 2px solid $hightlight-color;
   background-color: white;
-  color: #3E9ADB;
+  color: $hightlight-color;
 }

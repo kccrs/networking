@@ -29473,7 +29473,11 @@
 	              return _this3.setState({ addContact: false });
 	            }
 	          }),
-	          _react2.default.createElement(_CreateContact2.default, { reference: this.reference })
+	          _react2.default.createElement(_CreateContact2.default, { reference: this.reference,
+	            handleBackClick: function handleBackClick() {
+	              return _this3.setState({ addContact: false });
+	            }
+	          })
 	        );
 	      }
 	      if (user) {
@@ -29506,6 +29510,11 @@
 	        ),
 	        _react2.default.createElement(_SignIn2.default, null)
 	      );
+	    }
+	  }, {
+	    key: 'reference',
+	    get: function get() {
+	      return _firebase2.default.database().ref('user-contacts/' + this.state.user.uid);
 	    }
 	  }]);
 	
@@ -30385,7 +30394,9 @@
 	            reference: this.reference.child(selectedContact.key),
 	            handleDeselect: function handleDeselect() {
 	              return _this3.setState({ selectedContact: null });
-	            } }))
+	            },
+	            updateFunction: this.updateRecord
+	          }))
 	        );
 	      }
 	      var contacts = _.map(this.state.contacts, function (contact) {
@@ -30405,7 +30416,11 @@
 	          null,
 	          'Contact List'
 	        ),
-	        contacts
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'shortContainer' },
+	          contacts
+	        )
 	      );
 	    }
 	  }, {
@@ -30446,35 +30461,50 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	function createContactTemplate() {
+	  var contact = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	  return Object.assign({
+	    firstName: '',
+	    lastName: '',
+	    photo: '',
+	    company: '',
+	    jobTitle: '',
+	    phone: '',
+	    email: '',
+	    twitter: '',
+	    gitHub: '',
+	    website: '',
+	    linkedIn: '',
+	    category: '',
+	    notes: '',
+	    followUp: true
+	  }, contact);
+	}
+	
+	function updateContact(property, value) {}
+	
 	var CreateContact = function (_Component) {
 	  _inherits(CreateContact, _Component);
 	
-	  function CreateContact() {
+	  function CreateContact(_ref) {
+	    var _ref$contact = _ref.contact;
+	    var contact = _ref$contact === undefined ? {} : _ref$contact;
+	
 	    _classCallCheck(this, CreateContact);
 	
 	    var _this = _possibleConstructorReturn(this, (CreateContact.__proto__ || Object.getPrototypeOf(CreateContact)).call(this));
 	
 	    _this.state = {
-	      firstName: '',
-	      lastName: '',
-	      photo: '',
-	      company: '',
-	      jobTitle: '',
-	      phone: [],
-	      email: '',
-	      twitter: '',
-	      gitHub: '',
-	      website: '',
-	      linkedIn: '',
-	      category: '',
-	      notes: '',
-	      followUp: true
+	      contact: createContactTemplate(contact)
 	    };
 	    return _this;
 	  }
@@ -30484,6 +30514,7 @@
 	    value: function createContact(e) {
 	      e.preventDefault();
 	
+<<<<<<< HEAD
 	      var reference = this.props.reference;
 	      var _state = this.state;
 	      var firstName = _state.firstName;
@@ -30514,181 +30545,364 @@
 	    key: 'inputWithLabel',
 	    value: function inputWithLabel(property, label, value) {
 	      var _this2 = this;
+=======
+	      this.props.reference.push(this.state.contact);
+>>>>>>> development
 	
-	      return _react2.default.createElement(
-	        'label',
-	        null,
-	        label,
-	        _react2.default.createElement('input', { type: 'text', name: property,
-	          value: this.state[property],
-	          onChange: function onChange(e) {
-	            return _this2.setState({ property: e.target.value });
-	          }
-	        })
-	      );
+	      this.setState(createContactTemplate());
+	      this.props.handleBackClick();
 	    }
+<<<<<<< HEAD
+=======
+	
+	    // inputWithLabel(property, label, value) {
+	    //   return (
+	    //     <label>
+	    //     {label}
+	    //     <input type="text" name={property}
+	    //       value={this.state[property]}
+	    //       onChange={(e) => this.setState({ property: e.target.value })}
+	    //     />
+	    //   </label>
+	    // )};
+	
+	    // enableSaveButton() {
+	    //   if (document.querySelector('.FirstName').value && document.querySelector('.LastName').value ) {
+	    //     return false
+	    //   }
+	    //   else {
+	    //     return true
+	    //   }
+	    // }
+	
+	  }, {
+	    key: 'updateProperty',
+	    value: function updateProperty(e) {
+	      this.setState({ contact: Object.assign(this.state.contact, _defineProperty({}, e.target.name, e.target.value)) });
+	    }
+>>>>>>> development
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
+	      var _this2 = this;
 	
-	      return _react2.default.createElement(
-	        'form',
-	        { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact.bind(this) },
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Photo',
-	          _react2.default.createElement('input', { type: 'image', name: 'photo',
-	            value: this.state.photo,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ photo: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement('span', { className: 'divider' }),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'First Name',
-	          _react2.default.createElement('input', { type: 'text', name: 'first-name',
-	            value: this.state.firstName, required: true, placeholder: 'required',
-	            onChange: function onChange(e) {
-	              return _this3.setState({ firstName: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Last Name',
-	          _react2.default.createElement('input', { type: 'text', name: 'last-name',
-	            value: this.state.lastName, required: true, placeholder: 'required',
-	            onChange: function onChange(e) {
-	              return _this3.setState({ lastName: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Company',
-	          _react2.default.createElement('input', { type: 'text', name: 'company',
-	            value: this.state.company,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ company: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement('span', { className: 'divider' }),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Job Title',
-	          _react2.default.createElement('input', { type: 'text', name: 'job-title',
-	            value: this.state.jobTitle,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ jobTitle: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Phone number',
-	          _react2.default.createElement('input', { type: 'tel', name: 'phone',
-	            value: this.state.phone[0],
-	            onChange: function onChange(e) {
-	              return _this3.state.phone.push(e.target.value);
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Email',
-	          _react2.default.createElement('input', { type: 'email', name: 'email',
-	            value: this.state.email,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ email: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement('span', { className: 'divider' }),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Website',
-	          _react2.default.createElement('input', { type: 'text', name: 'website',
-	            value: this.state.website,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ website: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Twitter',
-	          _react2.default.createElement('input', { type: 'text', name: 'twitter',
-	            value: this.state.twitter,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ twitter: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'GitHub',
-	          _react2.default.createElement('input', { type: 'text', name: 'github',
-	            value: this.state.gitHub,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ gitHub: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'LinkedIn',
-	          _react2.default.createElement('input', { type: 'text', name: 'linked-in',
-	            value: this.state.linkedIn,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ linkedIn: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Category',
-	          _react2.default.createElement('input', { type: 'text', name: 'category',
-	            value: this.state.category,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ category: e.target.value });
-	            }
-	          })
-	        ),
-	        _react2.default.createElement('span', { className: 'divider' }),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Notes:',
-	          _react2.default.createElement('textarea', { name: 'notes',
-	            value: this.state.notes,
-	            onChange: function onChange(e) {
-	              return _this3.setState({ notes: e.target.value });
-	            } })
-	        ),
-	        _react2.default.createElement(
-	          'label',
-	          null,
-	          'Follow Up',
-	          _react2.default.createElement('input', { type: 'checkbox', name: 'followUp', value: 'true' })
-	        ),
-	        _react2.default.createElement('input', { className: 'SaveButton', type: 'submit', name: 'saveContact', value: 'Save' })
-	      );
+	      if (!this.props.firstName) {
+	        return _react2.default.createElement(
+	          'form',
+	          { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact.bind(this) },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'New Contact'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Photo',
+	            _react2.default.createElement('input', { type: 'image', name: 'photo',
+	              value: this.state.contact.photo,
+	              onChange: function onChange(e) {
+	                return _this2.setState({ photo: e.target.value });
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'First Name',
+	            _react2.default.createElement('input', { type: 'text', name: 'firstName',
+	              value: this.state.contact.firstName, required: true, placeholder: 'required',
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Last Name',
+	            _react2.default.createElement('input', { type: 'text', name: 'lastName',
+	              value: this.state.contact.lastName, required: true, placeholder: 'required',
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Company',
+	            _react2.default.createElement('input', { type: 'text', name: 'company',
+	              value: this.state.contact.company,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Job Title',
+	            _react2.default.createElement('input', { type: 'text', name: 'jobTitle',
+	              value: this.state.contact.jobTitle,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'phone',
+	              value: this.state.contact.phone[0],
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Email',
+	            _react2.default.createElement('input', { type: 'email', name: 'email',
+	              value: this.state.contact.email,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Website',
+	            _react2.default.createElement('input', { type: 'text', name: 'website',
+	              value: this.state.contact.website,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Twitter',
+	            _react2.default.createElement('input', { type: 'text', name: 'twitter',
+	              value: this.state.contact.twitter,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'GitHub',
+	            _react2.default.createElement('input', { type: 'text', name: 'github',
+	              value: this.state.contact.gitHub,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'LinkedIn',
+	            _react2.default.createElement('input', { type: 'text', name: 'linkedIn',
+	              value: this.state.contact.linkedIn,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Category',
+	            _react2.default.createElement('input', { type: 'text', name: 'category',
+	              value: this.state.contact.category,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Notes:',
+	            _react2.default.createElement('textarea', { name: 'notes',
+	              value: this.state.contact.notes,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              } })
+	          ),
+	          _react2.default.createElement('input', { className: 'SaveButton', type: 'submit', name: 'submit', value: 'Save' })
+	        );
+	      }
+	
+	      if (this.props.firstName) {
+	        return _react2.default.createElement(
+	          'form',
+	          { name: 'create-contact', className: 'CreateContact display', onSubmit: this.createContact.bind(this) },
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'New Contact'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Photo',
+	            _react2.default.createElement('input', { type: 'image', name: 'photo',
+	              value: this.props.photo,
+	              onChange: function onChange(e) {
+	                return _this2.setState({ photo: e.target.value });
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'First Name',
+	            _react2.default.createElement('input', { type: 'text', name: 'firstName',
+	              value: this.props.firstName, required: true, placeholder: 'required',
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Last Name',
+	            _react2.default.createElement('input', { type: 'text', name: 'lastName',
+	              value: this.props.lastName, required: true, placeholder: 'required',
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Company',
+	            _react2.default.createElement('input', { type: 'text', name: 'company',
+	              value: this.props.company,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Job Title',
+	            _react2.default.createElement('input', { type: 'text', name: 'jobTitle',
+	              value: this.props.jobTitle,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'phone',
+	              value: this.props.phone,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Email',
+	            _react2.default.createElement('input', { type: 'email', name: 'email',
+	              value: this.props.email,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Website',
+	            _react2.default.createElement('input', { type: 'text', name: 'website',
+	              value: this.props.website,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Twitter',
+	            _react2.default.createElement('input', { type: 'text', name: 'twitter',
+	              value: this.props.twitter,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'GitHub',
+	            _react2.default.createElement('input', { type: 'text', name: 'github',
+	              value: this.props.gitHub,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'LinkedIn',
+	            _react2.default.createElement('input', { type: 'text', name: 'linkedIn',
+	              value: this.props.linkedIn,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Category',
+	            _react2.default.createElement('input', { type: 'text', name: 'category',
+	              value: this.props.category,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement('span', { className: 'divider' }),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Notes:',
+	            _react2.default.createElement('textarea', { name: 'notes',
+	              value: this.props.notes,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              } })
+	          ),
+	          _react2.default.createElement('input', { className: 'SaveButton', type: 'submit', name: 'submit', value: 'Save' })
+	        );
+	      }
 	    }
 	  }]);
 	
@@ -30717,6 +30931,10 @@
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
+	var _CreateContact = __webpack_require__(476);
+	
+	var _CreateContact2 = _interopRequireDefault(_CreateContact);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30731,7 +30949,12 @@
 	  function Contact(props) {
 	    _classCallCheck(this, Contact);
 	
-	    return _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this));
+	
+	    _this.state = {
+	      editable: false
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(Contact, [{
@@ -30739,68 +30962,101 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      return _react2.default.createElement(
-	        'article',
-	        { className: 'Contact' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          this.props.firstName,
-	          ' ',
-	          this.props.lastName
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          this.props.photo
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Company: ',
-	          this.props.company,
-	          ' Title: ',
-	          this.props.jobTitle
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Phone: ',
-	          this.props.phone
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Email: ',
-	          this.props.email
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
+	      if (this.state.editable === false) {
+	        return _react2.default.createElement(
+	          'article',
+	          { className: 'Contact' },
 	          _react2.default.createElement(
-	            'li',
-	            null,
-	            'Website: ',
-	            this.props.website
+	            'p',
+	            { className: 'name' },
+	            this.props.firstName,
+	            ' ',
+	            this.props.lastName
 	          ),
 	          _react2.default.createElement(
-	            'li',
+	            'p',
 	            null,
-	            'GitHub: ',
-	            this.props.gitHub
+	            this.props.photo
 	          ),
 	          _react2.default.createElement(
-	            'li',
+	            'p',
 	            null,
-	            'Twitter: ',
-	            this.props.twitter
+	            'Company: ',
+	            this.props.company,
+	            ' Title: ',
+	            this.props.jobTitle
 	          ),
 	          _react2.default.createElement(
-	            'li',
+	            'p',
 	            null,
-	            'LinkedIn: ',
-	            this.props.linkedIn
+	            'Phone: ',
+	            this.props.phone
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Email: ',
+	            this.props.email
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'Website: ',
+	              this.props.website
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'GitHub: ',
+	              this.props.gitHub
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'Twitter: ',
+	              this.props.twitter
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              'LinkedIn: ',
+	              this.props.linkedIn
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Category: ',
+	            this.props.category
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Notes: ',
+	            this.props.notes
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Follow Up: ',
+	            this.props.followUp
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { name: 'delete', onClick: function onClick() {
+	                _this2.props.reference.remove();_this2.props.handleDeselect();
+	              } },
+	            'Delete'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { name: 'deselect', onClick: this.props.handleDeselect },
+	            'Back'
 	          )
+<<<<<<< HEAD
 	        ),
 	        _react2.default.createElement(
 	          'p',
@@ -30840,6 +31096,14 @@
 	          'Deselect'
 	        )
 	      );
+=======
+	        );
+	      }
+	
+	      if (this.state.editable === true) {
+	        return _react2.default.createElement(_CreateContact2.default, this.props);
+	      }
+>>>>>>> development
 	    }
 	  }]);
 	
@@ -30924,7 +31188,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'p',
-	            null,
+	            { className: 'firstName' },
 	            this.props.firstName,
 	            ' ',
 	            this.props.lastName,
@@ -47719,7 +47983,7 @@
 	var content = __webpack_require__(482);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(486)(content, {});
+	var update = __webpack_require__(484)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -47744,7 +48008,7 @@
 	
 	
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput[type=range] {\n  -webkit-appearance: none;\n  /* Hides the slider so that custom slider can be made */\n  width: 100%;\n  /* Specific width is required for Firefox. */\n  background: transparent;\n  /* Otherwise white in Chrome */ }\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none; }\n\ninput[type=range]:focus {\n  outline: none;\n  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n\ninput[type=range]::-ms-track {\n  width: 100%;\n  cursor: pointer;\n  /* Hides the slider so custom styles can be added */\n  background: transparent;\n  border-color: transparent;\n  color: transparent; }\n\n.HeroLogo {\n  border-radius: 50%;\n  height: 200px;\n  width: 200px;\n  display: block;\n  border: 4px solid white;\n  background-color: #3E9ADB;\n  margin: auto; }\n\n.title {\n  color: #3E9ADB;\n  font-size: 2em;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  font-family: \"BioRhyme Expanded\", serif; }\n\n.buttonSignIn {\n  border-radius: 5px;\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  color: white;\n  width: 40%;\n  height: 2em;\n  font-size: 2em;\n  outline: none;\n  margin: 5px 40% 5px 29%;\n  cursor: pointer; }\n\n.buttonSignIn:hover {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  color: #3E9ADB; }\n\n.Application.logged-in {\n  width: 90%;\n  margin: auto; }\n\nheader {\n  display: flex;\n  align-items: center;\n  font-family: \"BioRhyme Expanded\", serif; }\n  header .userPhoto {\n    height: 75px;\n    border-radius: 50%;\n    border: 2px solid #3E9ADB;\n    margin-left: auto; }\n  header .AddNewContact {\n    background: url(" + __webpack_require__(484) + ");\n    background-repeat: no-repeat;\n    outline: none;\n    height: 50px;\n    width: 50px;\n    border: none;\n    cursor: pointer; }\n  header .AddNewContact img {\n    margin-right: auto;\n    border: none;\n    height: 75px;\n    width: 75px; }\n  header .AddNewContact:hover {\n    background-image: url(" + __webpack_require__(485) + "); }\n  header .BackButton {\n    border-radius: 5px;\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    font-family: \"Noto Sans\", sans-serif;\n    cursor: pointer; }\n  header .BackButton:hover {\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB; }\n  header .FollowUp {\n    border-radius: 5px;\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    font-family: \"Noto Sans\", sans-serif;\n    cursor: pointer; }\n  header .FollowUp:hover {\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB; }\n  header .UserInfo--photograph {\n    margin-left: auto; }\n  header .UserInfo--signOut {\n    border-radius: 5px;\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    cursor: pointer; }\n  header .UserInfo--signOut:hover {\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white; }\n\n.display {\n  display: none; }\n\n.followUpNotActive {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  border-radius: 5px;\n  color: #3E9ADB;\n  width: 80%;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\n.followUpActive {\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  border-radius: 5px;\n  color: white;\n  width: 80%;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\nh3 {\n  color: #3E9ADB;\n  font-size: 2em;\n  text-align: center;\n  margin-top: .5em;\n  margin-bottom: .5em;\n  font-family: \"BioRhyme Expanded\", serif; }\n\n.ShortText {\n  display: inline-block;\n  cursor: pointer; }\n\n.followUp {\n  display: inline-block;\n  float: right;\n  cursor: pointer; }\n\n.CreateContact {\n  display: flex;\n  flex-direction: column;\n  color: #3E9ADB;\n  overflow-y: scroll; }\n\nlabel {\n  font-size: 1.5em;\n  margin: 5px auto 10px auto; }\n\ninput {\n  margin-left: 5px; }\n\ntextarea {\n  margin-left: 5px; }\n\n.divider {\n  border-bottom: 2px solid #3E9ADB;\n  width: 75%;\n  margin: 5px auto 5px auto; }\n\n.SaveButton {\n  border-radius: 5px;\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  color: white;\n  height: 2em;\n  width: 90px;\n  margin: 10px;\n  outline: none;\n  margin: 5px auto 5px auto;\n  cursor: pointer; }\n\n.SaveButton:hover {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  color: #3E9ADB; }\n\n.Contact {\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  border-radius: 5px;\n  color: white;\n  width: 80%;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\n.Contact p {\n  margin: 5px auto 5px auto; }\n\nbody {\n  font-family: \"Noto Sans\", sans-serif;\n  background-color: #38393D;\n  height: 100vh; }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ninput[type=range] {\n  -webkit-appearance: none;\n  /* Hides the slider so that custom slider can be made */\n  width: 100%;\n  /* Specific width is required for Firefox. */\n  background: transparent;\n  /* Otherwise white in Chrome */ }\n\ninput[type=range]::-webkit-slider-thumb {\n  -webkit-appearance: none; }\n\ninput[type=range]:focus {\n  outline: none;\n  /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }\n\ninput[type=range]::-ms-track {\n  width: 100%;\n  cursor: pointer;\n  /* Hides the slider so custom styles can be added */\n  background: transparent;\n  border-color: transparent;\n  color: transparent; }\n\n.HeroLogo {\n  border-radius: 50%;\n  height: 200px;\n  width: 200px;\n  display: block;\n  border: 4px solid white;\n  background-color: #3E9ADB;\n  margin: auto; }\n\n.title {\n  color: #3E9ADB;\n  font-size: 2em;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 1em;\n  font-family: \"BioRhyme Expanded\", serif; }\n\n.buttonSignIn {\n  border-radius: 5px;\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  color: white;\n  width: 40%;\n  height: 2em;\n  font-size: 2em;\n  outline: none;\n  margin: 5px 40% 5px 29%;\n  cursor: pointer; }\n\n.buttonSignIn:hover {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  color: #3E9ADB; }\n\n.Application.logged-in {\n  width: 90%;\n  margin: auto; }\n\nheader {\n  display: flex;\n  align-items: center;\n  font-family: \"BioRhyme Expanded\", serif; }\n  header .userPhoto {\n    height: 50px;\n    border-radius: 50%;\n    border: 2px solid white;\n    margin-left: auto; }\n  header .AddNewContact {\n    background: url(\"/assets/plus-circle-white.png\");\n    background-repeat: no-repeat;\n    outline: none;\n    height: 50px;\n    width: 50px;\n    border: none;\n    cursor: pointer; }\n  header .AddNewContact img {\n    margin-right: auto;\n    border: none;\n    height: 75px;\n    width: 75px; }\n  header .AddNewContact:hover {\n    background-image: url(\"/assets/plus-circle-blue.png\"); }\n  header .BackButton {\n    border-radius: 5px;\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    font-family: \"Noto Sans\", sans-serif;\n    cursor: pointer; }\n  header .BackButton:hover {\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB; }\n  header .FollowUp {\n    border-radius: 5px;\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    font-family: \"Noto Sans\", sans-serif;\n    cursor: pointer; }\n  header .FollowUp:hover {\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB; }\n  header .UserInfo--photograph {\n    margin-left: auto; }\n  header .UserInfo--signOut {\n    border-radius: 5px;\n    border: 2px solid #3E9ADB;\n    background-color: white;\n    color: #3E9ADB;\n    height: 2em;\n    width: 90px;\n    margin: 10px;\n    outline: none;\n    cursor: pointer; }\n  header .UserInfo--signOut:hover {\n    border: 2px solid white;\n    background-color: #3E9ADB;\n    color: white; }\n\n.display {\n  display: none; }\n\n.shortContainer {\n  justify-content: space-between; }\n\n.followUpNotActive {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  border-radius: 5px;\n  color: #3E9ADB;\n  width: 80%;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\n.followUpActive {\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  border-radius: 5px;\n  color: white;\n  width: 80%;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\nh3 {\n  color: #3E9ADB;\n  font-size: 2em;\n  text-align: center;\n  margin-top: .5em;\n  margin-bottom: .5em;\n  font-family: \"BioRhyme Expanded\", serif; }\n\n.ShortText {\n  display: inline-block;\n  cursor: pointer;\n  width: 75%; }\n\n.firstName {\n  font-size: 1.5em; }\n\n.followUp {\n  display: inline-block;\n  float: right;\n  cursor: pointer; }\n\n.CreateContact {\n  display: flex;\n  flex-direction: column;\n  color: #3E9ADB;\n  overflow-y: scroll; }\n\nh3 {\n  color: #3E9ADB;\n  font-size: 2em;\n  text-align: center;\n  margin-top: .5em;\n  margin-bottom: .5em;\n  font-family: \"BioRhyme Expanded\", serif; }\n\nlabel {\n  font-size: 1.5em;\n  margin: 5px auto 10px auto; }\n\ninput {\n  margin-left: 5px; }\n\ntextarea {\n  margin-left: 5px; }\n\n.divider {\n  border-bottom: 2px solid #3E9ADB;\n  width: 50%;\n  margin: 10px auto 10px auto; }\n\n.SaveButton {\n  border-radius: 5px;\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  color: white;\n  height: 2em;\n  width: 90px;\n  margin: 10px;\n  outline: none;\n  margin: 5px auto 5px auto;\n  cursor: pointer; }\n\n.SaveButton:hover {\n  border: 2px solid #3E9ADB;\n  background-color: white;\n  color: #3E9ADB; }\n\n.Contact {\n  border: 2px solid white;\n  background-color: #3E9ADB;\n  border-radius: 5px;\n  color: white;\n  width: 80%;\n  height: 70vh;\n  padding: 5px;\n  margin: 1em auto 1em auto; }\n\n.name {\n  font-size: 2em !important; }\n\n.Contact p {\n  margin: 10px auto 10px auto;\n  font-size: 1.5em; }\n\n.Contact li {\n  margin: 10px auto 10px auto;\n  font-size: 1.5em; }\n\nbody {\n  font-family: \"Noto Sans\", sans-serif;\n  background-color: #38393D;\n  height: 100vh; }\n", ""]);
 	
 	// exports
 
@@ -47807,18 +48071,6 @@
 
 /***/ },
 /* 484 */
-/***/ function(module, exports) {
-
-	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='512px' height='512px' viewBox='0 0 512 512' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3ESlice 1%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='plus-circle' fill='%23FFFFFF'%3E %3Cpath d='M255.992,0 C114.616,0 0.001,114.609 0.001,256.003 C0.001,397.391 114.616,512 255.992,512 C397.381,512 511.999,397.391 511.999,256.003 C511.999,114.612 397.381,0 255.992,0 L255.992,0 Z M302.01,302.036 L302.01,439.972 L209.946,439.972 L209.946,302.036 L72.017,302.036 L72.017,209.945 L209.946,209.945 L209.946,72.019 L302.01,72.019 L302.01,209.945 L439.978,209.945 L439.978,302.036 L302.01,302.036 L302.01,302.036 Z' id='Shape'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
-
-/***/ },
-/* 485 */
-/***/ function(module, exports) {
-
-	module.exports = "\"data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E %3Csvg width='512px' height='512px' viewBox='0 0 512 512' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E %3C!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch --%3E %3Ctitle%3ESlice 1%3C/title%3E %3Cdesc%3ECreated with Sketch.%3C/desc%3E %3Cdefs%3E%3C/defs%3E %3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E %3Cg id='plus-circle' fill='%233E9ADB'%3E %3Cpath d='M255.992,0 C114.616,0 0.001,114.609 0.001,256.003 C0.001,397.391 114.616,512 255.992,512 C397.381,512 511.999,397.391 511.999,256.003 C511.999,114.612 397.381,0 255.992,0 L255.992,0 Z M302.01,302.036 L302.01,439.972 L209.946,439.972 L209.946,302.036 L72.017,302.036 L72.017,209.945 L209.946,209.945 L209.946,72.019 L302.01,72.019 L302.01,209.945 L439.978,209.945 L439.978,302.036 L302.01,302.036 L302.01,302.036 Z' id='Shape'%3E%3C/path%3E %3C/g%3E %3C/g%3E %3C/svg%3E\""
-
-/***/ },
-/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

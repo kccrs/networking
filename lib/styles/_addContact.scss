@@ -1,10 +1,18 @@
 .CreateContact {
   display: flex;
   flex-direction: column;
-  color: #3E9ADB;
+  color: $hightlight-color;
   overflow-y: scroll;
 }
 
+h3 {
+  color: $hightlight-color;
+  font-size: 2em;
+  text-align: center;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  font-family: $header-font;
+}
 label {
   font-size: 1.5em;
   margin: 5px auto 10px auto;
@@ -20,16 +28,16 @@ textarea {
 }
 
 .divider {
-  border-bottom: 2px solid #3E9ADB;
-  width: 75%;
-  margin: 5px auto 5px auto;
+  border-bottom: 2px solid $hightlight-color;
+  width: 50%;
+  margin: 10px auto 10px auto;
 
 }
 
 .SaveButton {
   border-radius: 5px;
   border: 2px solid white;
-  background-color: #3E9ADB;
+  background-color: $hightlight-color;
   color: white;
   height: 2em;
   width: 90px;
@@ -37,13 +45,13 @@ textarea {
   outline: none;
   margin: 5px auto 5px auto;
   cursor: pointer;
-  
+
 }
 
 .SaveButton:hover {
-  border: 2px solid #3E9ADB;
+  border: 2px solid $hightlight-color;
   background-color: white;
-  color: #3E9ADB;
+  color: $hightlight-color;
 }
 
 
