@@ -11,17 +11,16 @@ header {
   font-family: $header-font;
 
   .userPhoto {
-    height: 75px;
+    height: 50px;
     border-radius: 50%;
-    border: 2px solid #3E9ADB;
-    // or white border?
+    border: 2px solid white;
     margin-left: auto;
   }
 
 // Plus button
   .AddNewContact {
     // background-color: none;
-    background: url(../../assets/plus-circle-white.svg);
+    background: url('/assets/plus-circle-white.png');
     background-repeat: no-repeat;
     outline: none;
     height: 50px;
@@ -39,7 +38,7 @@ header {
   }
 
   .AddNewContact:hover {
-    background-image: url(../../assets/plus-circle-blue.svg);
+    background-image: url('/assets/plus-circle-blue.png');
   }
 
   .BackButton {
@@ -109,6 +108,10 @@ header {
 }
 
 // Short view contacts
+.shortContainer {
+  justify-content: space-between;
+}
+
 .followUpNotActive {
   border: 2px solid #3E9ADB;
   background-color: white;
@@ -143,7 +146,11 @@ h3 {
 .ShortText {
   display: inline-block;
   cursor: pointer;
+  width: 75%;
+}
 
+.firstName {
+  font-size: 1.5em;
 }
 
 // Follow Up button in contact
@@ -151,5 +158,6 @@ h3 {
   display: inline-block;
   float: right;
   cursor: pointer;
-
+  // z-index: 2;
+  // position: absolute;
 }
