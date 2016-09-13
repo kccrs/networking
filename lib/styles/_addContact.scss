@@ -7,6 +7,21 @@
 
 label {
   font-size: 1.5em;
+  margin: 5px auto 10px auto;
+
+}
+
+input {
+  margin-left: 5px;
+}
+
+textarea {
+  margin-left: 5px;
+}
+
+.divider {
+  border-bottom: 2px solid #3E9ADB;
+  width: 75%;
   margin: 5px auto 5px auto;
 
 }
@@ -21,6 +36,8 @@ label {
   margin: 10px;
   outline: none;
   margin: 5px auto 5px auto;
+  cursor: pointer;
+  
 }
 
 .SaveButton:hover {
