@@ -1,12 +1,12 @@
 .CreateContact {
   display: flex;
   flex-direction: column;
-  color: $hightlight-color;
+  color: $highlight-color;
   overflow-y: scroll;
 }
 
 h3 {
-  color: $hightlight-color;
+  color: $highlight-color;
   font-size: 2em;
   text-align: center;
   margin-top: .5em;
@@ -28,30 +28,54 @@ textarea {
 }
 
 .divider {
-  border-bottom: 2px solid $hightlight-color;
+  border-bottom: 2px solid $highlight-color;
   width: 50%;
   margin: 10px auto 10px auto;
 
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .SaveButton {
   border-radius: 5px;
   border: 2px solid white;
-  background-color: $hightlight-color;
+  background-color: $highlight-color;
   color: white;
   height: 2em;
   width: 90px;
   margin: 10px;
   outline: none;
-  margin: 5px auto 5px auto;
   cursor: pointer;
 
 }
 
 .SaveButton:hover {
-  border: 2px solid $hightlight-color;
+  border: 2px solid $highlight-color;
   background-color: white;
-  color: $hightlight-color;
+  color: $highlight-color;
+}
+
+.CancelButton {
+  border-radius: 5px;
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.CancelButton:hover {
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
 }
 
 
