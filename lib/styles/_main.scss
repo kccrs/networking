@@ -1,13 +1,13 @@
 .Application.logged-in {
-  width: 90%;
   margin: auto;
+  width: 90%;
 }
 
 header {
-  display: flex;
-  // flex-direction: flex-row;
   // align-content: middle;
+  // flex-direction: flex-row;
   align-items: center;
+  display: flex;
   font-family: $header-font;
 
   .userPhoto {
