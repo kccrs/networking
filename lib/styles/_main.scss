@@ -1,6 +1,7 @@
 .Application.logged-in {
   width: 90%;
   margin: auto;
+  margin-top: 1em;
 }
 
 header {
@@ -17,15 +18,13 @@ header {
     margin-left: auto;
   }
 
-// Plus button
+// Add Contact Plus button
   .AddNewContact {
-    // background-color: none;
     background: url('/assets/plus-circle-white.png');
     background-repeat: no-repeat;
     outline: none;
     height: 50px;
     width: 50px;
-    // background: none;
     border: none;
     cursor: pointer;
   }
@@ -41,53 +40,15 @@ header {
     background-image: url('/assets/plus-circle-blue.png');
   }
 
-  .BackButton {
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: $hightlight-color;
-    color: white;
-    height: 2em;
-    width: 90px;
-    margin: 10px;
-    outline: none;
-    font-family: $main-font;
-    cursor: pointer;
-  }
-
-  .BackButton:hover {
-    border: 2px solid $hightlight-color;
-    background-color: white;
-    color: $hightlight-color;
-  }
-
-  .FollowUp {
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: $hightlight-color;
-    color: white;
-    height: 2em;
-    width: 90px;
-    margin: 10px;
-    outline: none;
-    font-family: $main-font;
-    cursor: pointer;
-  }
-
-  .FollowUp:hover {
-    border: 2px solid $hightlight-color;
-    background-color: white;
-    color: $hightlight-color;
-  }
-
   .UserInfo--photograph {
     margin-left: auto;
   }
 
   .UserInfo--signOut {
     border-radius: 5px;
-    border: 2px solid $hightlight-color;
+    border: 2px solid $highlight-color;
     background-color: white;
-    color: $hightlight-color;
+    color: $highlight-color;
     height: 2em;
     width: 90px;
     margin: 10px;
@@ -98,7 +59,7 @@ header {
 
   .UserInfo--signOut:hover {
     border: 2px solid white;
-    background-color: $hightlight-color;
+    background-color: $highlight-color;
     color: white;
   }
 }
@@ -107,16 +68,39 @@ header {
   display: none;
 }
 
+.ContactList {
+  justify-content: center;
+}
+
 // Short view contacts
 .shortContainer {
   justify-content: space-between;
 }
 
+.FollowUp {
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+.FollowUp:hover {
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+}
+
 .followUpNotActive {
-  border: 2px solid $hightlight-color;
+  border: 2px solid $highlight-color;
   background-color: white;
   border-radius: 5px;
-  color: $hightlight-color;
+  color: $highlight-color;
   width: 80%;
   padding: 5px;
   margin: 1em auto 1em auto;
@@ -125,7 +109,7 @@ header {
 
 .followUpActive {
   border: 2px solid white;
-  background-color: $hightlight-color;
+  background-color: $highlight-color;
   border-radius: 5px;
   color: white;
   width: 80%;
@@ -135,7 +119,7 @@ header {
 }
 
 h3 {
-  color: $hightlight-color;
+  color: $highlight-color;
   font-size: 2em;
   text-align: center;
   margin-top: .5em;
@@ -158,6 +142,11 @@ h3 {
   display: inline-block;
   float: right;
   cursor: pointer;
-  // z-index: 2;
-  // position: absolute;
+  background-image: url('/assets/followUp-small-grey.png');
+  background-repeat: no-repeat;
+  outline: none;
+  height: 50px;
+  width: 50px;
+  border: none;
+  background-color: transparent;
 }
