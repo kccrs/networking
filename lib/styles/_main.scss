@@ -1,6 +1,7 @@
 .Application.logged-in {
   margin: auto;
   width: 90%;
+  margin-top: 1em;
 }
 
 header {
@@ -39,26 +40,6 @@ header {
     background-image: url('/assets/plus-circle-blue.png');
   }
 
-  .BackButton {
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: $highlight-color;
-    color: white;
-    height: 2em;
-    width: 90px;
-    margin: 10px;
-    outline: none;
-    font-family: $main-font;
-    cursor: pointer;
-  }
-
-  .BackButton:hover {
-    border: 2px solid $highlight-color;
-    background-color: white;
-    color: $highlight-color;
-  }
-
-
   .UserInfo--photograph {
     margin-left: auto;
   }
@@ -87,6 +68,10 @@ header {
   display: none;
 }
 
+.ContactList {
+  justify-content: center;
+}
+
 // Short view contacts
 .shortContainer {
   justify-content: space-between;
@@ -110,7 +95,6 @@ header {
   background-color: white;
   color: $highlight-color;
 }
-
 
 .followUpNotActive {
   border: 2px solid $highlight-color;
@@ -158,6 +142,11 @@ h3 {
   display: inline-block;
   float: right;
   cursor: pointer;
-  // z-index: 2;
-  // position: absolute;
+  background-image: url('/assets/followUp-small-grey.png');
+  background-repeat: no-repeat;
+  outline: none;
+  height: 50px;
+  width: 50px;
+  border: none;
+  background-color: transparent;
 }

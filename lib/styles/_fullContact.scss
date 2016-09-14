@@ -23,3 +23,47 @@
   margin: 10px auto 10px auto;
   font-size: 1.5em;
 }
+
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.DeleteButton {
+  border-radius: 5px;
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.DeleteButton:hover {
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
+}
+
+.BackButton {
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.BackButton:hover {
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+}

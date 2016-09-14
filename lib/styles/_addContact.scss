@@ -34,6 +34,12 @@ textarea {
 
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .SaveButton {
   border-radius: 5px;
   border: 2px solid white;
@@ -43,7 +49,6 @@ textarea {
   width: 90px;
   margin: 10px;
   outline: none;
-  margin: 5px auto 5px auto;
   cursor: pointer;
 
 }
@@ -52,6 +57,25 @@ textarea {
   border: 2px solid $highlight-color;
   background-color: white;
   color: $highlight-color;
+}
+
+.CancelButton {
+  border-radius: 5px;
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.CancelButton:hover {
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
 }
 
 
