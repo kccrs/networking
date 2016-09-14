@@ -29390,10 +29390,6 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(299);
@@ -29428,8 +29424,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Application = function (_Component) {
-	  _inherits(Application, _Component);
+	var Application = function (_React$Component) {
+	  _inherits(Application, _React$Component);
 	
 	  function Application() {
 	    _classCallCheck(this, Application);
@@ -29519,9 +29515,9 @@
 	  }]);
 	
 	  return Application;
-	}(_react.Component);
+	}(_react2.default.Component);
 	
-	exports.default = Application;
+	module.exports = Application;
 
 /***/ },
 /* 470 */
@@ -30246,11 +30242,6 @@
 	          'Back'
 	        ),
 	        _react2.default.createElement(
-	          'button',
-	          { className: 'FollowUp' },
-	          'Follow Up'
-	        ),
-	        _react2.default.createElement(
 	          'div',
 	          { className: 'UserInfo--photograph' },
 	          _react2.default.createElement('img', { className: 'userPhoto',
@@ -30330,7 +30321,8 @@
 	
 	    _this.state = {
 	      contacts: [],
-	      selectedContact: null
+	      selectedContact: null,
+	      followUpActive: false
 	    };
 	    return _this;
 	  }
@@ -30375,11 +30367,29 @@
 	      });
 	    }
 	  }, {
+	    key: 'toggleFollowUp',
+	    value: function toggleFollowUp(boolean) {
+	      if (boolean) {
+	        this.setState({ followUpActive: false });
+	      }
+	      if (!boolean) {
+	        this.setState({ followUpActive: true });
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this3 = this;
 	
 	      var selectedContact = this.state.selectedContact;
+	      var followUpActive = this.state.followUpActive;
+	      var originalContacts = this.state.contacts;
+	
+	      if (followUpActive) {
+	        originalContacts = this.state.contacts.filter(function (contact) {
+	          return contact.followUp === true;
+	        });
+	      }
 	
 	      if (selectedContact) {
 	        return _react2.default.createElement(
@@ -30399,7 +30409,7 @@
 	          }))
 	        );
 	      }
-	      var contacts = _.map(this.state.contacts, function (contact) {
+	      var contacts = _.map(originalContacts, function (contact) {
 	        return _react2.default.createElement(_ShortContact2.default, _extends({}, contact, {
 	          reference: _this3.reference.child(contact.key),
 	          handleClick: function handleClick() {
@@ -30417,6 +30427,13 @@
 	          'Contact List'
 	        ),
 	        _react2.default.createElement(
+	          'button',
+	          { className: 'FollowUp', onClick: function onClick() {
+	              return _this3.toggleFollowUp(followUpActive);
+	            } },
+	          'Follow Up'
+	        ),
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'shortContainer' },
 	          contacts
@@ -30432,10 +30449,6 @@
 	
 	  return ContactList;
 	}(_react.Component);
-	// {/* <CreateContact reference={this.reference}/> */}
-	
-	// <CreateContact reference={this.reference}/>
-	
 	
 	exports.default = ContactList;
 
@@ -30478,19 +30491,21 @@
 	    photo: '',
 	    company: '',
 	    jobTitle: '',
-	    phone: '',
-	    email: '',
+	    primaryPhone: '',
+	    seconaryPhone: '',
+	    primaryEmail: '',
+	    secondaryEmail: '',
 	    twitter: '',
 	    gitHub: '',
 	    website: '',
 	    linkedIn: '',
 	    category: '',
-	    notes: '',
+	    notes: [],
 	    followUp: true
 	  }, contact);
 	}
 	
-	function updateContact(property, value) {}
+	// function updateContact(property, value) {}
 	
 	var CreateContact = function (_Component) {
 	  _inherits(CreateContact, _Component);
@@ -30514,46 +30529,11 @@
 	    value: function createContact(e) {
 	      e.preventDefault();
 	
-<<<<<<< HEAD
-	      var reference = this.props.reference;
-	      var _state = this.state;
-	      var firstName = _state.firstName;
-	      var lastName = _state.lastName;
-	      var photo = _state.photo;
-	      var company = _state.company;
-	      var jobTitle = _state.jobTitle;
-	      var phone = _state.phone;
-	      var email = _state.email;
-	      var twitter = _state.twitter;
-	      var gitHub = _state.gitHub;
-	      var website = _state.website;
-	      var linkedIn = _state.linkedIn;
-	      var category = _state.category;
-	      var notes = _state.notes;
-	      var followUp = _state.followUp;
-	
-	
-	      reference.push({ firstName: firstName, lastName: lastName, photo: photo, company: company, jobTitle: jobTitle, phone: phone,
-	        email: email, twitter: twitter, gitHub: gitHub, website: website, linkedIn: linkedIn, category: category, notes: notes, followUp: followUp });
-	
-	      // reference.push(...this.state);
-	      this.setState({ firstName: '', lastName: '', photo: '', company: '', jobTitle: '', phone: [],
-	        email: '', twitter: '', gitHub: '', website: '', linkedIn: '', category: '', notes: '', followUp: ''
-	      });
-	    }
-	  }, {
-	    key: 'inputWithLabel',
-	    value: function inputWithLabel(property, label, value) {
-	      var _this2 = this;
-=======
 	      this.props.reference.push(this.state.contact);
->>>>>>> development
 	
 	      this.setState(createContactTemplate());
 	      this.props.handleBackClick();
 	    }
-<<<<<<< HEAD
-=======
 	
 	    // inputWithLabel(property, label, value) {
 	    //   return (
@@ -30580,7 +30560,24 @@
 	    value: function updateProperty(e) {
 	      this.setState({ contact: Object.assign(this.state.contact, _defineProperty({}, e.target.name, e.target.value)) });
 	    }
->>>>>>> development
+	
+	    // updateArray(e) {
+	    //   // debugger;
+	    //   this.setState({contact: Object.assign(this.state.contact, {[e.target.name]:[e.target.value] })});
+	    // }
+	
+	    // addNewField(e) {
+	    //   return e.target.appendChild(
+	    //     <label>
+	    //       Email
+	    //       <input type="email" name="email"
+	    //         value={this.state.contact.email}
+	    //         onChange={(e) => this.updateArray(e)}
+	    //       />
+	    //     </label>
+	    //   )
+	    // }
+	
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -30655,9 +30652,9 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Phone number',
-	            _react2.default.createElement('input', { type: 'tel', name: 'phone',
-	              value: this.state.contact.phone[0],
+	            'Primary phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'primaryPhone',
+	              value: this.state.contact.primaryPhone[0],
 	              onChange: function onChange(e) {
 	                return _this2.updateProperty(e);
 	              }
@@ -30666,11 +30663,33 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Email',
-	            _react2.default.createElement('input', { type: 'email', name: 'email',
-	              value: this.state.contact.email,
+	            'Secondary phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'secondaryPhone',
+	              value: this.state.contact.secondaryPhone[0],
 	              onChange: function onChange(e) {
 	                return _this2.updateProperty(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Primary Email',
+	            _react2.default.createElement('input', { type: 'email', name: 'primaryEmail',
+	              value: this.state.contact.primaryEmail,
+	              onChange: function onChange(e) {
+	                return _this2.updateArray(e);
+	              }
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Secondary Email',
+	            _react2.default.createElement('input', { type: 'email', name: 'secondaryEmail',
+	              value: this.state.contact.secondaryEmail,
+	              onChange: function onChange(e) {
+	                return _this2.updateArray(e);
 	              }
 	            })
 	          ),
@@ -30814,9 +30833,9 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Phone number',
-	            _react2.default.createElement('input', { type: 'tel', name: 'phone',
-	              value: this.props.phone,
+	            'Primary phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'primaryPhone',
+	              value: this.props.primaryPhone,
 	              onChange: function onChange(e) {
 	                return _this2.updateProperty(e);
 	              }
@@ -30825,13 +30844,35 @@
 	          _react2.default.createElement(
 	            'label',
 	            null,
-	            'Email',
-	            _react2.default.createElement('input', { type: 'email', name: 'email',
-	              value: this.props.email,
+	            'Secondary phone number',
+	            _react2.default.createElement('input', { type: 'tel', name: 'secondaryPhone',
+	              value: this.props.secondaryPhone,
 	              onChange: function onChange(e) {
 	                return _this2.updateProperty(e);
 	              }
 	            })
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Primary Email',
+	            _react2.default.createElement('input', { type: 'email', name: 'primaryEmail',
+	              value: this.props.primaryEmail,
+	              onChange: function onChange(e) {
+	                return _this2.updateProperty(e);
+	              }
+	            }),
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              'Secondary Email',
+	              _react2.default.createElement('input', { type: 'email', name: 'secondaryEmail',
+	                value: this.props.secondaryEmail,
+	                onChange: function onChange(e) {
+	                  return _this2.updateArray(e);
+	                }
+	              })
+	            )
 	          ),
 	          _react2.default.createElement('span', { className: 'divider' }),
 	          _react2.default.createElement(
@@ -30989,14 +31030,26 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Phone: ',
-	            this.props.phone
+	            'Primary Phone: ',
+	            this.props.primaryPhone
 	          ),
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Email: ',
-	            this.props.email
+	            'Secondary Phone: ',
+	            this.props.secondaryPhone
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Primary Email: ',
+	            this.props.primaryEmail
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Secondary Email: ',
+	            this.props.secondaryEmail
 	          ),
 	          _react2.default.createElement(
 	            'ul',
@@ -31056,54 +31109,12 @@
 	            { name: 'deselect', onClick: this.props.handleDeselect },
 	            'Back'
 	          )
-<<<<<<< HEAD
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Category: ',
-	          this.props.category
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Notes: ',
-	          this.props.notes
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          'Follow Up: ',
-	          this.props.followUp
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { name: 'delete', onClick: function onClick() {
-	              _this2.props.reference.remove();_this2.props.handleDeselect();
-	            } },
-	          'Delete'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { name: 'edit', onClick: function onClick() {
-	              return reference.update({ firstName: 'Casey' });
-	            } },
-	          'Edit'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { name: 'deselect', onClick: this.props.handleDeselect() },
-	          'Deselect'
-	        )
-	      );
-=======
 	        );
 	      }
 	
 	      if (this.state.editable === true) {
 	        return _react2.default.createElement(_CreateContact2.default, this.props);
 	      }
->>>>>>> development
 	    }
 	  }]);
 	
@@ -31203,7 +31214,8 @@
 	        ),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'followUp', name: 'Follow Up', value: this.props.followUp, onClick: function onClick() {
+	          { className: 'followUp', name: 'Follow Up', value: this.props.followUp,
+	            onClick: function onClick() {
 	              return _this2.updateProperty('followUp', _this2.props.followUp);
 	            } },
 	          'Follow Up'
