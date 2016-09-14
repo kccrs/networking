@@ -11,12 +11,6 @@ header {
   display: flex;
   font-family: $header-font;
 
-  .userPhoto {
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin-left: auto;
-  }
 
 // Add Contact Plus button
   .AddNewContact {
@@ -24,6 +18,7 @@ header {
     background-repeat: no-repeat;
     outline: none;
     height: 50px;
+    margin-bottom: 25px;
     width: 50px;
     border: none;
     cursor: pointer;
@@ -42,16 +37,27 @@ header {
 
   .UserInfo--photograph {
     margin-left: auto;
+    display: inline-block;
+  }
+
+  .userPhoto {
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-top: 20px;
+    // margin-left: auto;
   }
 
   .UserInfo--signOut {
     border-radius: 5px;
+    // display: none;
     border: 2px solid $highlight-color;
     background-color: white;
     color: $highlight-color;
     height: 2em;
     width: 90px;
-    margin: 10px;
+    margin-right: 30px;
+    // margin-bottom: 40px;
     outline: none;
     cursor: pointer;
 
@@ -63,6 +69,19 @@ header {
     color: white;
   }
 }
+
+// #some-element {
+//   border: 1px solid #ccc;
+//   display: none;
+//   font-size: 10px;
+//   margin-top: 10px;
+//   padding: 5px;
+//   text-transform: uppercase;
+// }
+//
+// #some-div:hover #some-element {
+//   display: block;
+// }
 
 .display {
   display: none;
