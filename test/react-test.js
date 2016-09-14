@@ -13,30 +13,30 @@ import { shallow, mount, render } from 'enzyme';
 
 describe('Application',function(){
   it('should have a default state of null and add Contact of false', function() {
-    const wrapper = shallow(<Application />)
+    const wrapper = shallow(<Application />);
     expect(wrapper.state().user).to.equal(null);
     expect(wrapper.state().addContact).to.equal(false);
   });
 
   it('should have only one title, one Logo, and the words for each', function() {
-    const wrapper = mount(<Application />)
+    const wrapper = mount(<Application />);
     expect(wrapper.find('.title')).to.have.length(1);
     expect(wrapper.find('.HeroLogo')).to.have.length(1);
     expect(wrapper.find('.buttonSignIn')).to.have.length(1);
-    expect(wrapper.text()).to.contain('GetWorkingSign In')
+    expect(wrapper.text()).to.contain('GetWorkingSign In');
   });
 });
 
 describe('Contact',function(){
   it('should have a default state of not editable', function() {
-    const wrapper = shallow(<Contact />)
+    const wrapper = shallow(<Contact />);
     expect(wrapper.state().editable).to.equal(false);
   });
 });
 
 describe('ContactList',function(){
   it('should have no selected Contact and an empty array of contacts', function() {
-    const wrapper = shallow(<ContactList />)
+    const wrapper = shallow(<ContactList />);
     expect(wrapper.state().selectedContact).to.equal(null);
     expect(wrapper.state().contacts).to.deep.equal([]);
   });
@@ -44,7 +44,7 @@ describe('ContactList',function(){
 
 describe('CreateContact',function(){
   it('should have default states for key values', function() {
-    const wrapper = shallow(<CreateContact />)
+    const wrapper = shallow(<CreateContact />);
     expect(wrapper.state().contact.firstName).to.equal('');
     expect(wrapper.state().contact.lastName).to.equal('');
     expect(wrapper.state().contact.company).to.equal('');
