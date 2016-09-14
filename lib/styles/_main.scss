@@ -17,15 +17,13 @@ header {
     margin-left: auto;
   }
 
-// Plus button
+// Add Contact Plus button
   .AddNewContact {
-    // background-color: none;
     background: url('/assets/plus-circle-white.png');
     background-repeat: no-repeat;
     outline: none;
     height: 50px;
     width: 50px;
-    // background: none;
     border: none;
     cursor: pointer;
   }
@@ -44,7 +42,7 @@ header {
   .BackButton {
     border-radius: 5px;
     border: 2px solid white;
-    background-color: $hightlight-color;
+    background-color: $highlight-color;
     color: white;
     height: 2em;
     width: 90px;
@@ -55,29 +53,11 @@ header {
   }
 
   .BackButton:hover {
-    border: 2px solid $hightlight-color;
+    border: 2px solid $highlight-color;
     background-color: white;
-    color: $hightlight-color;
+    color: $highlight-color;
   }
 
-  .FollowUp {
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: $hightlight-color;
-    color: white;
-    height: 2em;
-    width: 90px;
-    margin: 10px;
-    outline: none;
-    font-family: $main-font;
-    cursor: pointer;
-  }
-
-  .FollowUp:hover {
-    border: 2px solid $hightlight-color;
-    background-color: white;
-    color: $hightlight-color;
-  }
 
   .UserInfo--photograph {
     margin-left: auto;
@@ -85,9 +65,9 @@ header {
 
   .UserInfo--signOut {
     border-radius: 5px;
-    border: 2px solid $hightlight-color;
+    border: 2px solid $highlight-color;
     background-color: white;
-    color: $hightlight-color;
+    color: $highlight-color;
     height: 2em;
     width: 90px;
     margin: 10px;
@@ -98,7 +78,7 @@ header {
 
   .UserInfo--signOut:hover {
     border: 2px solid white;
-    background-color: $hightlight-color;
+    background-color: $highlight-color;
     color: white;
   }
 }
@@ -112,11 +92,31 @@ header {
   justify-content: space-between;
 }
 
+.FollowUp {
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: $highlight-color;
+  color: white;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+.FollowUp:hover {
+  border: 2px solid $highlight-color;
+  background-color: white;
+  color: $highlight-color;
+}
+
+
 .followUpNotActive {
-  border: 2px solid $hightlight-color;
+  border: 2px solid $highlight-color;
   background-color: white;
   border-radius: 5px;
-  color: $hightlight-color;
+  color: $highlight-color;
   width: 80%;
   padding: 5px;
   margin: 1em auto 1em auto;
@@ -125,7 +125,7 @@ header {
 
 .followUpActive {
   border: 2px solid white;
-  background-color: $hightlight-color;
+  background-color: $highlight-color;
   border-radius: 5px;
   color: white;
   width: 80%;
@@ -135,7 +135,7 @@ header {
 }
 
 h3 {
-  color: $hightlight-color;
+  color: $highlight-color;
   font-size: 2em;
   text-align: center;
   margin-top: .5em;
