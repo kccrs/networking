@@ -17,15 +17,13 @@ header {
     margin-left: auto;
   }
 
-// Plus button
+// Add Contact Plus button
   .AddNewContact {
-    // background-color: none;
     background: url('/assets/plus-circle-white.png');
     background-repeat: no-repeat;
     outline: none;
     height: 50px;
     width: 50px;
-    // background: none;
     border: none;
     cursor: pointer;
   }
@@ -55,25 +53,6 @@ header {
   }
 
   .BackButton:hover {
-    border: 2px solid $hightlight-color;
-    background-color: white;
-    color: $hightlight-color;
-  }
-
-  .FollowUp {
-    border-radius: 5px;
-    border: 2px solid white;
-    background-color: $hightlight-color;
-    color: white;
-    height: 2em;
-    width: 90px;
-    margin: 10px;
-    outline: none;
-    font-family: $main-font;
-    cursor: pointer;
-  }
-
-  .FollowUp:hover {
     border: 2px solid $hightlight-color;
     background-color: white;
     color: $hightlight-color;
@@ -111,6 +90,27 @@ header {
 .shortContainer {
   justify-content: space-between;
 }
+
+// Follow Up button
+.FollowUp {
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: $hightlight-color;
+  color: white;
+  height: 2em;
+  width: 90px;
+  margin: 10px;
+  outline: none;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+.FollowUp:hover {
+  border: 2px solid $hightlight-color;
+  background-color: white;
+  color: $hightlight-color;
+}
+
 
 .followUpNotActive {
   border: 2px solid $hightlight-color;

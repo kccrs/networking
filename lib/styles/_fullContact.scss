@@ -1,7 +1,3 @@
-.ShortText {
-
-}
-
 .Contact {
   border: 2px solid white;
   background-color: $hightlight-color;
@@ -14,13 +10,13 @@
 
 }
 
-.name {
-  font-size: 2em !important;
-}
-
 .Contact p {
   margin: 10px auto 10px auto;
   font-size: 1.5em;
+}
+
+.name {
+  font-size: 2em !important;
 }
 
 .Contact li {
