@@ -79,10 +79,8 @@ h3 {
 }
 
 .followUpToggle {
-  align-items: center;
-  display: inline-flex;
-  margin-left: auto;
-  &:hover .followUpMessage {
+  display: flex;
+  justify-content: flex-end;  &:hover .followUpMessage {
     display: block;
   }
 }
