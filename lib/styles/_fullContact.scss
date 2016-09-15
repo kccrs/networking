@@ -57,3 +57,16 @@
     @include color-pattern(white, $highlight-color);
   }
 }
+
+@media screen and (min-width: 600px) {
+
+  SocialMedia li,
+  .Contact p {
+    font-size: 1.1em;
+    line-height: 1.1em;
+    margin: 10px auto;
+    span {
+      font-size: 1em;
+    }
+  }
+}
