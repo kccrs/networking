@@ -25,15 +25,27 @@
   height: 2em;
   margin: 5px 40% 5px 29%;
   outline: none;
+  text-align: center;
   width: 40%;
   &:hover {
     @include color-pattern(white, $highlight-color);
   }
 }
 
-// WHY WON'T THIS ADJUST THE SIZE????? 
 @media screen and (min-width: 450px) {
   .title {
     font-size: 2.2em;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .title {
+    font-size: 3em;
+    margin: 1.5em 0;
+  }
+
+  .buttonSignIn {
+    margin: 5px 32%;
+    width: 35%;
   }
 }
