@@ -44,7 +44,6 @@
   }
 }
 
-
 .blockInlineBlock {
   display: block;
 }
@@ -53,6 +52,13 @@
   @include color-pattern(white, darken($highlight-color, 15));
   &:hover {
     @include color-pattern($highlight-color, white);
+  }
+}
+
+.EditButton {
+  @include color-pattern($highlight-color, white);
+  &:hover {
+    @include color-pattern(white, $highlight-color);
   }
 }
 
@@ -80,7 +86,6 @@
 
   .blockInlineBlock {
     display: inline-block;
-    // margin: 20px auto;
   }
 
   .name {
@@ -91,7 +96,6 @@
     padding-right: 10px;
   }
 }
-
 
 @media screen and (min-width: 850px) {
 
@@ -112,5 +116,4 @@
       width: 150px;
     }
   }
-
 }
