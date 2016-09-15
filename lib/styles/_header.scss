@@ -1,0 +1,49 @@
+.AddNewContact,
+.userPhoto {
+  cursor: pointer;
+}
+
+header {
+  align-content: middle;
+  display: flex;
+  flex-direction: flex-row;
+  font-family: $header-font;
+
+  .AddNewContact {
+    background: url('/assets/plus-circle-white.png') no-repeat;
+    border: none;
+    height: 50px;
+    outline: none;
+    width: 50px;
+    &:hover {
+      background-image: url('/assets/plus-circle-blue.png');
+    }
+  }
+
+  .UserInfoSection {
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    &:hover .SignOut {
+      display: block;
+    }
+  }
+
+  .userPhoto {
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 50px;
+    width: auto;
+  }
+
+  .SignOut {
+    background-color: rgba(255,255,255,.9);
+    border-radius: 5px;
+    color: $highlight-color;
+    display: none;
+    height: 2em;
+    margin-right: 20px;
+    outline: none;
+    width: 90px;
+  }
+}
