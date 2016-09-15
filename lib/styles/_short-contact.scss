@@ -6,7 +6,9 @@
 
 .FollowUpButton,
 .ShortText,
-.followUpIcon {
+.followUpIcon,
+.followUpToggle,
+.followUpMessage {
   cursor: pointer;
 }
 
@@ -52,7 +54,7 @@ h3 {
 .ShortText {
   display: inline-block;
   line-height: 1.3em;
-  width: 70%;
+  width: 65%;
 }
 
 .firstName {
@@ -91,8 +93,9 @@ h3 {
   @include color-pattern(rgba(255,255,255,.9), $highlight-color);
   border-radius: 5px;
   display: none;
-  height: 2em;
-  margin-right: 20px;
+  height: 2.8em;
+  margin-right: 10px;
+  margin-top: 10px;
   outline: none;
   width: 90px;
 }
@@ -101,6 +104,28 @@ h3 {
 
   .ContactList h3 {
     font-size: 2em;
-    line-height: 1.5  em;
+    line-height: 1.5em;
   }
+
+  .FollowUpButton {
+    font-size: 1em;
+  }
+
+  .followUpActive,
+  .followUpNotActive {
+    height: 70px;
+    margin-bottom: 30px;
+  }
+
+  .firstName {
+    margin-top: 25px;
+  }
+
+  .Company {
+    // color: $background-color;
+    font-size: 1.2em;
+    margin-left: 30px;
+    margin-bottom: 5px;
+  }
+
 }
