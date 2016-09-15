@@ -57,6 +57,7 @@ h3 {
 
 .firstName {
   font-size: 1.2em;
+  height: 1.3em;
   overflow-x: hidden;
 }
 
@@ -67,7 +68,7 @@ h3 {
 
 // Follow Up button in contact
 .followUpIcon {
-  background:  url('/assets/followUp-small-grey.png') no-repeat;
+  background:  url('/assets/followUp-small-green.png') no-repeat;
   border: none;
   float: right;
   height: 40px;
@@ -75,4 +76,22 @@ h3 {
   outline: none;
   padding: 0;
   width: 40px;
+}
+
+.followUpToggle {
+  align-items: center;
+  display: inline-flex;
+  margin-left: auto;
+  &:hover .followUpMessage {
+    display: block;
+  }
+}
+.followUpMessage {
+  @include color-pattern(rgba(255,255,255,.9), $highlight-color);
+  border-radius: 5px;
+  display: none;
+  height: 2em;
+  margin-right: 20px;
+  outline: none;
+  width: 90px;
 }

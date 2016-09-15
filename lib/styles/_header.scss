@@ -24,7 +24,7 @@ header {
     align-items: center;
     display: flex;
     margin-left: auto;
-    &:hover .SignOut {
+    &:hover .SignOutMessage {
       display: block;
     }
   }
@@ -36,10 +36,9 @@ header {
     width: auto;
   }
 
-  .SignOut {
-    background-color: rgba(255,255,255,.9);
+  .SignOutMessage {
+    @include color-pattern(rgba(255,255,255,.9), $highlight-color);
     border-radius: 5px;
-    color: $highlight-color;
     display: none;
     height: 2em;
     margin-right: 20px;
