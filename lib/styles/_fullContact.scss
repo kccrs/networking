@@ -25,7 +25,7 @@
   margin: 10px auto;
   padding-bottom: 5px;
   span {
-    color: $background-color;
+    color: darken($background-color, 25);
     font-size: 1em;
   }
 }
@@ -44,6 +44,11 @@
   }
 }
 
+
+.blockInlineBlock {
+  display: block;
+}
+
 .DeleteButton {
   @include color-pattern(white, darken($highlight-color, 15));
   &:hover {
@@ -60,13 +65,52 @@
 
 @media screen and (min-width: 600px) {
 
-  SocialMedia li,
+  .SocialMedia li,
   .Contact p {
-    font-size: 1.1em;
+    font-size: 1.4em;
     line-height: 1.1em;
-    margin: 10px auto;
+    margin: 20px auto;
+    margin-left: 30px;
+    width: 90%;
     span {
-      font-size: 1em;
+      font-size: 1.1em;
+
     }
   }
+
+  .blockInlineBlock {
+    display: inline-block;
+    // margin: 20px auto;
+  }
+
+  .name {
+    padding-left: 15px;
+  }
+
+  .Gravatar {
+    padding-right: 10px;
+  }
+}
+
+
+@media screen and (min-width: 850px) {
+
+  .SocialMedia li,
+  .Contact p {
+    margin: 20px;
+    span {
+      margin-right: 30px;
+    }
+  }
+
+  .buttonContainer {
+    button {
+      font-size: 1.2em;
+      height: 2em;
+      margin: 10px;
+      outline: none;
+      width: 150px;
+    }
+  }
+
 }
