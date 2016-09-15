@@ -52,7 +52,7 @@ h3 {
 .ShortText {
   display: inline-block;
   line-height: 1.3em;
-  width: 75%;
+  width: 70%;
 }
 
 .firstName {
@@ -80,7 +80,10 @@ h3 {
 
 .followUpToggle {
   display: flex;
-  justify-content: flex-end;  &:hover .followUpMessage {
+  justify-content: flex-end;
+  float: right;
+  width: 20%;
+  &:hover .followUpMessage {
     display: block;
   }
 }
@@ -92,4 +95,12 @@ h3 {
   margin-right: 20px;
   outline: none;
   width: 90px;
+}
+
+@media screen and (min-width: 600px) {
+
+  .ContactList h3 {
+    font-size: 2em;
+    line-height: 1.5  em;
+  }
 }
