@@ -16,7 +16,6 @@ h3 {
 label {
   font-size: 1.5em;
   margin: 5px auto 10px auto;
-
 }
 
 input {
@@ -31,7 +30,6 @@ textarea {
   border-bottom: 2px solid $highlight-color;
   width: 50%;
   margin: 10px auto 10px auto;
-
 }
 
 .buttonContainer {
@@ -41,29 +39,22 @@ textarea {
 }
 
 .SaveButton {
+  @include color-pattern($highlight-color, white);
   border-radius: 5px;
-  border: 2px solid white;
-  background-color: $highlight-color;
-  color: white;
   height: 2em;
   width: 90px;
   margin: 10px;
   outline: none;
   cursor: pointer;
-
 }
 
 .SaveButton:hover {
-  border: 2px solid $highlight-color;
-  background-color: white;
-  color: $highlight-color;
+  @include color-pattern(white,$highlight-color);
 }
 
 .CancelButton {
+  @include color-pattern(white,$highlight-color);
   border-radius: 5px;
-  border: 2px solid $highlight-color;
-  background-color: white;
-  color: $highlight-color;
   height: 2em;
   width: 90px;
   margin: 10px;
@@ -73,11 +64,8 @@ textarea {
 }
 
 .CancelButton:hover {
-  border: 2px solid white;
-  background-color: $highlight-color;
-  color: white;
+  @include color-pattern($highlight-color, white);
 }
-
 
 // add class to each <label> so can margin:auto
 // or align

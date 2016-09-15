@@ -1,171 +1,114 @@
 .Application.logged-in {
   margin: auto;
-  width: 90%;
   padding-top: 1em;
+  width: 90%;
 }
 
-header {
-  // align-content: middle;
-  // flex-direction: flex-row;
-  align-items: center;
-  display: flex;
-  font-family: $header-font;
-
-
-// Add Contact Plus button
-  .AddNewContact {
-    background: url('/assets/plus-circle-white.png');
-    background-repeat: no-repeat;
-    outline: none;
-    height: 50px;
-    margin-bottom: 25px;
-    width: 50px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .AddNewContact img {
-    margin-right: auto;
-    border: none;
-    height: 75px;
-    width: 75px;
-  }
-
-  .AddNewContact:hover {
-    background-image: url('/assets/plus-circle-blue.png');
-  }
-
-  .UserInfo--photograph {
-    margin-left: auto;
-    display: inline-block;
-  }
-
-  .userPhoto {
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid white;
-    margin-top: 20px;
-    // margin-left: auto;
-  }
-
-  .UserInfo--signOut {
-    border-radius: 5px;
-    // display: none;
-    border: 2px solid $highlight-color;
-    background-color: white;
-    color: $highlight-color;
-    height: 2em;
-    width: 90px;
-    margin-right: 30px;
-    // margin-bottom: 40px;
-    outline: none;
-    cursor: pointer;
-
-  }
-
-  .UserInfo--signOut:hover {
-    border: 2px solid white;
-    background-color: $highlight-color;
-    color: white;
-  }
-}
-
-// #some-element {
-//   border: 1px solid #ccc;
-//   display: none;
-//   font-size: 10px;
-//   margin-top: 10px;
-//   padding: 5px;
-//   text-transform: uppercase;
-// }
-//
-// #some-div:hover #some-element {
-//   display: block;
-// }
-
-.display {
-  display: none;
-}
-
-.ContactList {
-  justify-content: center;
-}
-
-// Short view contacts
-.shortContainer {
-  justify-content: space-between;
-}
-
-.FollowUp {
-  border-radius: 5px;
-  border: 2px solid white;
-  background-color: $highlight-color;
-  color: white;
-  height: 2em;
-  width: 90px;
-  margin: 10px;
-  outline: none;
-  font-family: $main-font;
+.AddNewContact,
+.userPhoto,
+.FollowUp,
+.ShortText,
+.followUp {
   cursor: pointer;
 }
 
-.FollowUp:hover {
-  border: 2px solid $highlight-color;
-  background-color: white;
-  color: $highlight-color;
+header {
+  display: flex;
+  flex-direction: flex-row;
+  align-content: middle;
+  font-family: $header-font;
+
+  .AddNewContact {
+    background: url('/assets/plus-circle-white.png') no-repeat;
+    border: none;
+    height: 50px;
+    outline: none;
+    width: 50px;
+    &:hover {
+      background-image: url('/assets/plus-circle-blue.png');
+    }
+  }
+
+  .UserInfoSection {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    &:hover .SignOut {
+      display: block;
+    }
+  }
+
+  .userPhoto {
+    border-radius: 50%;
+    border: 2px solid white;
+    height: 50px;
+    width: auto;
+  }
+
+  .SignOut {
+    display: none;
+    background-color: rgba(255,255,255,.9);
+    border-radius: 5px;
+    color: $highlight-color;
+    height: 2em;
+    margin-right: 20px;
+    outline: none;
+    width: 90px;
+  }
 }
 
-.followUpNotActive {
-  border: 2px solid $highlight-color;
-  background-color: white;
+// Short view contacts
+.FollowUpButton {
+  @include color-pattern($highlight-color, white);
   border-radius: 5px;
-  color: $highlight-color;
-  width: 80%;
-  padding: 5px;
-  margin: 1em auto 1em auto;
+  font-family: $main-font;
+  height: 2em;
+  margin: 0 30vw;
+  width: 30vw;
+  &:hover {
+    @include color-pattern(white, $highlight-color);
+  }
+}
 
+.followUpNotActive,
+.followUpActive {
+  border-radius: 5px;
+  margin: 1em auto;
+  padding: 5px;
+  width: 80%;
+}
+
+.followUpNotActive{
+  @include color-pattern(white, $highlight-color);
 }
 
 .followUpActive {
-  border: 2px solid white;
-  background-color: $highlight-color;
-  border-radius: 5px;
-  color: white;
-  width: 80%;
-  padding: 5px;
-  margin: 1em auto 1em auto;
-
+  @include color-pattern($highlight-color, white);
 }
 
 h3 {
   color: $highlight-color;
-  font-size: 2em;
-  text-align: center;
-  margin-top: .5em;
-  margin-bottom: .5em;
   font-family: $header-font;
+  font-size: 2em;
+  line-height: 1.3em;
+  margin: .5em 0;
+  text-align: center;
 }
 
 .ShortText {
   display: inline-block;
-  cursor: pointer;
   width: 75%;
 }
 
 .firstName {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 // Follow Up button in contact
-.followUp {
-  display: inline-block;
-  float: right;
-  cursor: pointer;
-  background-image: url('/assets/followUp-small-grey.png');
-  background-repeat: no-repeat;
-  outline: none;
-  height: 50px;
-  width: 50px;
+.followUpIcon {
+  background:  url('/assets/followUp-small-grey.png') no-repeat;
   border: none;
-  background-color: transparent;
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
 }
