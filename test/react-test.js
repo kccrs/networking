@@ -27,12 +27,12 @@ describe('Application',function(){
   });
 });
 
-describe('Contact',function(){
-  it('should have a default state of not editable', function() {
-    const wrapper = shallow(<Contact />);
-    expect(wrapper.state().editable).to.equal(false);
-  });
-});
+// describe('Contact',function(){
+//   it('should have a default state of not editable', function() {
+//     const wrapper = shallow(<Contact />);
+//     expect(wrapper.state().editable).to.equal(false);
+//   });
+// });
 
 describe('ContactList',function(){
   it('should have no selected Contact and an empty array of contacts', function() {
