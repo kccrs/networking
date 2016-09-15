@@ -1,0 +1,80 @@
+.CreateContact {
+  color: $highlight-color;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.NewContact {
+  font-family: $header-font;
+  font-size: 1.6em;
+  margin: .5em 0;
+  text-align: center;
+}
+
+.CreateContact label {
+  font-size: 1.2em;
+  margin: 5px 5px 5px 0;
+  input,
+  textarea {
+    float: right;
+    margin-bottom: 8px;
+    width: 53%;
+  }
+}
+
+input {
+  height: 25px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.LongLabel {
+  margin-top: 8px;
+}
+
+.divider {
+  border-bottom: 2px solid $highlight-color;
+  margin: 10px auto;
+  width: 60%;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.CancelButton,
+.SaveButton {
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  height: 2em;
+  margin: 10px;
+  outline: none;
+  width: 90px;
+}
+
+.SaveButton {
+  @include color-pattern($highlight-color, white);
+  &:hover {
+    @include color-pattern(white,$highlight-color);
+  }
+}
+
+.CancelButton {
+  @include color-pattern(white,$highlight-color);
+  &:hover {
+    @include color-pattern($highlight-color, white);
+  }
+}
+
+@media screen and (min-width: 450px) {
+
+  .CreateContact {
+    color: saturate($highlight-color, 20);
+  }
+}

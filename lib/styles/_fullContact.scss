@@ -1,69 +1,59 @@
 .Contact {
-  border: 2px solid white;
-  background-color: $highlight-color;
+  @include color-pattern($highlight-color, white);
   border-radius: 5px;
-  color: white;
-  width: 80%;
-  height: 70vh;
+  margin: 1em auto;
   padding: 5px;
-  margin: 1em auto 1em auto;
-
+  width: 90%;
 }
 
 .name {
-  font-size: 2em !important;
+  font-size: 1.8em !important;
+  letter-spacing: .07em;
+  text-align: center;
 }
 
+.Gravatar {
+  display: block;
+  margin: 0 auto;
+}
+
+.SocialMedia li,
 .Contact p {
-  margin: 10px auto 10px auto;
-  font-size: 1.5em;
-}
-
-.Contact li {
-  margin: 10px auto 10px auto;
-  font-size: 1.5em;
+  border-bottom: 2px solid rgba($background-color, .3);
+  font-size: 1.1em;
+  line-height: 1.1em;
+  margin: 10px auto;
+  padding-bottom: 5px;
+  span {
+    color: $background-color;
+    font-size: 1em;
+  }
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  button {
+    border-radius: 5px;
+    cursor: pointer;
+    height: 2em;
+    margin: 10px;
+    outline: none;
+    width: 90px;
+  }
 }
 
 .DeleteButton {
-  border-radius: 5px;
-  border: 2px solid $highlight-color;
-  background-color: white;
-  color: $highlight-color;
-  height: 2em;
-  width: 90px;
-  margin: 10px;
-  outline: none;
-  cursor: pointer;
-
-}
-
-.DeleteButton:hover {
-  border: 2px solid white;
-  background-color: $highlight-color;
-  color: white;
+  @include color-pattern(white, darken($highlight-color, 15));
+  &:hover {
+    @include color-pattern($highlight-color, white);
+  }
 }
 
 .BackButton {
-  border-radius: 5px;
-  border: 2px solid white;
-  background-color: $highlight-color;
-  color: white;
-  height: 2em;
-  width: 90px;
-  margin: 10px;
-  outline: none;
-  cursor: pointer;
-
-}
-
-.BackButton:hover {
-  border: 2px solid $highlight-color;
-  background-color: white;
-  color: $highlight-color;
+  @include color-pattern($highlight-color, white);
+  &:hover {
+    @include color-pattern(white, $highlight-color);
+  }
 }

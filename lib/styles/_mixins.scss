@@ -1,0 +1,5 @@
+@mixin color-pattern($main-color, $highlight) {
+  background-color: $main-color;
+  color: $highlight;
+  border: 2px solid $highlight;
+}

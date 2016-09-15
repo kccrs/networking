@@ -1,0 +1,78 @@
+.Application.logged-in {
+  margin: auto;
+  padding-top: 1em;
+  width: 90%;
+}
+
+.FollowUpButton,
+.ShortText,
+.followUpIcon {
+  cursor: pointer;
+}
+
+// Short view contacts
+.FollowUpButton {
+  @include color-pattern($highlight-color, white);
+  border-radius: 5px;
+  font-family: $main-font;
+  font-size: .8rem;
+  height: 2.5em;
+  margin: 0 30vw;
+  width: 30vw;
+  &:hover {
+    @include color-pattern(white, $highlight-color);
+  }
+}
+
+.followUpNotActive,
+.followUpActive {
+  border-radius: 5px;
+  margin: 1em auto;
+  padding: 5px;
+  width: 85%;
+}
+
+.followUpNotActive{
+  @include color-pattern(white, $highlight-color);
+}
+
+.followUpActive {
+  @include color-pattern($highlight-color, white);
+}
+
+h3 {
+  color: $highlight-color;
+  font-family: $header-font;
+  font-size: 1.7em;
+  line-height: 1.3em;
+  margin: .5em 0;
+  text-align: center;
+}
+
+.ShortText {
+  display: inline-block;
+  line-height: 1.3em;
+  width: 75%;
+}
+
+.firstName {
+  font-size: 1.2em;
+  overflow-x: hidden;
+}
+
+.Company {
+  font-size: .9em;
+  overflow-x: hidden;
+}
+
+// Follow Up button in contact
+.followUpIcon {
+  background:  url('/assets/followUp-small-grey.png') no-repeat;
+  border: none;
+  float: right;
+  height: 40px;
+  margin-top: 5px;
+  outline: none;
+  padding: 0;
+  width: 40px;
+}

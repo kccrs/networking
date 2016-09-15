@@ -1,44 +1,39 @@
 
-.Application {
-  // background-color: #38393D;
-  // height: 100vh;
-}
-
 .HeroLogo {
   background-color: $highlight-color;
   border-radius: 50%;
   border: 4px solid white;
   display: block;
   height: 200px;
-  margin: auto;
+  margin: 40px auto;
   width: 200px;
 }
 
 .title {
   color: $highlight-color;
   font-family: $header-font;
-  font-size: 2em;
-  margin-bottom: 1em;
-  margin-top: 1em;
+  font-size: 1.6em;
+  margin: 2em 0;
   text-align: center;
 }
 
 .buttonSignIn {
-  background-color: $highlight-color;
+  @include color-pattern($highlight-color, white);
   border-radius: 5px;
-  border: 2px solid white;
-  color: white;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.8em;
   height: 2em;
   margin: 5px 40% 5px 29%;
   outline: none;
   width: 40%;
-
+  &:hover {
+    @include color-pattern(white, $highlight-color);
+  }
 }
 
-.buttonSignIn:hover {
-  background-color: white;
-  border: 2px solid $highlight-color;
-  color: $highlight-color;
+// WHY WON'T THIS ADJUST THE SIZE????? 
+@media screen and (min-width: 450px) {
+  .title {
+    font-size: 2.2em;
+  }
 }
