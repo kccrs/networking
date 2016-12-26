@@ -58,12 +58,14 @@ h3 {
 }
 
 .firstName {
+  display: inline-block;
   font-size: 1.2em;
   height: 1.3em;
   overflow-x: hidden;
 }
 
 .Company {
+  display: inline-block;
   font-size: .9em;
   overflow-x: hidden;
 }
@@ -118,11 +120,12 @@ h3 {
   }
 
   .firstName {
-    margin-top: 25px;
+    display: block;
+    margin-top: 5px;
   }
 
   .Company {
-    // color: $background-color;
+    display: block;
     font-size: 1.2em;
     margin-left: 30px;
     margin-bottom: 5px;
